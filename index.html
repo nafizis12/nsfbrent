@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nsfbrent | Premium ID Rental & Earning Platform</title>
+    <title>Nsfbrent | Smart ID Renting & Passive Earning</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -30,24 +30,35 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #FFFFFF; color: #1E293B; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Utility Classes */
         .pro-card { background: #FFFFFF; border: 1px solid #F1F5F9; box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04); border-radius: 2rem; }
         .hero-red { background: linear-gradient(135deg, #E11D48 0%, #9F1239 100%); }
         .offer-card { background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%); border-left: 5px solid #E11D48; }
         .nav-active { color: #E11D48 !important; font-weight: 800; }
+        
+        /* Landing Sections Styling */
         .glass-header { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(15px); }
         .section-title { font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; line-height: 1; }
-        section { display: none; padding-bottom: 110px; }
+        .step-num { width: 40px; height: 40px; background: #E11D48; color: white; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: 800; margin-bottom: 1rem; }
+        
+        section { display: none; }
         section.active { display: block; animation: fadeInUp 0.4s ease; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        
+        /* Floating Animation */
         .floating { animation: float 3s ease-in-out infinite; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
     </style>
 </head>
 <body class="no-scrollbar">
 
-    <!-- 1. LANDING PAGE SECTION -->
+    <!-- LANDING PAGE WRAPPER -->
     <div id="landing-page" class="relative">
+        
+        <!-- Navbar -->
         <nav class="fixed top-0 left-0 right-0 z-[200] glass-header border-b border-slate-100 px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="w-10 h-10 bg-brand rounded-2xl flex items-center justify-center text-white shadow-lg shadow-brand/20">
@@ -56,68 +67,219 @@
                 <h1 class="text-2xl font-black italic tracking-tighter uppercase">NSF<span class="text-brand">BRENT</span></h1>
             </div>
             <div class="flex gap-4">
-                <button onclick="showAuth('login')" class="text-slate-600 text-sm font-bold">Sign In</button>
-                <button onclick="showAuth('signup')" class="bg-brand text-white px-6 py-2.5 rounded-full text-xs font-black shadow-lg">JOIN NOW</button>
+                <button onclick="showAuth('login')" class="text-slate-600 text-sm font-bold hover:text-brand transition-colors">Sign In</button>
+                <button onclick="showAuth('signup')" class="bg-brand text-white px-6 py-2.5 rounded-full text-xs font-black shadow-lg shadow-brand/20 active:scale-95 transition-all">JOIN NOW</button>
             </div>
         </nav>
 
-        <header class="pt-32 pb-20 px-6 hero-pattern text-center">
-            <div class="max-w-4xl mx-auto space-y-8">
-                <span class="bg-brand/5 border border-brand/10 px-4 py-2 rounded-full text-[10px] font-black uppercase text-brand tracking-widest">The Smartest ID Rental Platform</span>
-                <h2 class="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 italic leading-none">Earn Passive <br> <span class="text-brand">Income</span> Daily.</h2>
-                <p class="text-slate-500 text-lg font-medium max-w-2xl mx-auto">আপনার অব্যবহৃত ফেসবুক আইডি রেন্ট দিন এবং কোনো পরিশ্রম ছাড়াই প্রতিদিন নিশ্চিন্তে ইনকাম করুন।</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button onclick="showAuth('signup')" class="hero-red text-white px-10 py-5 rounded-3xl font-black text-sm shadow-2xl">Start Earning Now <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        <!-- Hero Section -->
+        <header class="pt-32 pb-20 px-6 hero-pattern">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="inline-flex items-center gap-2 bg-brand/5 border border-brand/10 px-4 py-2 rounded-full">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand"></span>
+                    </span>
+                    <p class="text-[10px] font-black uppercase text-brand tracking-widest">The Most Trusted ID Rental Platform</p>
+                </div>
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 italic leading-none">
+                    Earn Passive <br> <span class="text-brand">Income</span> Daily.
+                </h2>
+                <p class="text-slate-500 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
+                    আপনার অব্যবহৃত ফেসবুক আইডি রেন্ট দিন <span class="text-slate-900 font-bold">Nsfbrent</span> এ এবং কোনো পরিশ্রম ছাড়াই প্রতিদিন নিশ্চিন্তে ইনকাম করুন।
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button onclick="showAuth('signup')" class="hero-red text-white px-10 py-5 rounded-3xl font-black text-sm shadow-2xl shadow-brand/30 w-full sm:w-auto uppercase tracking-widest">Start Earning Now <i class="fa-solid fa-arrow-right ml-2"></i></button>
+                    <a href="#how-it-works" class="bg-white border-2 border-slate-100 text-slate-800 px-10 py-5 rounded-3xl font-black text-sm w-full sm:w-auto hover:bg-slate-50 transition-all">How It Works?</a>
+                </div>
+
+                <div class="pt-10 grid grid-cols-3 gap-4 max-w-lg mx-auto opacity-60">
+                    <div class="text-center">
+                        <p class="text-2xl font-black text-slate-900">5K+</p>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400">Total Users</p>
+                    </div>
+                    <div class="text-center border-x border-slate-100">
+                        <p class="text-2xl font-black text-slate-900">৳10L+</p>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400">Total Payout</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-2xl font-black text-slate-900">24/7</p>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-slate-400">Live Support</p>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- (Other landing info - Keep simple to avoid clutter) -->
-        <section class="active py-20 bg-slate-50 px-6">
-            <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-                <div class="pro-card p-8">
-                    <i class="fa-solid fa-shield-halved text-brand text-4xl mb-4"></i>
-                    <h4 class="font-black text-lg">100% Secure</h4>
-                    <p class="text-xs text-slate-400 mt-2">আপনার ডেটা আমাদের কাছে সম্পূর্ণ ইনক্রিপ্টেড এবং নিরাপদ।</p>
+        <!-- How It Works -->
+        <section id="how-it-works" class="active py-20 bg-slate-50 px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 space-y-4">
+                    <h3 class="section-title">কিভাবে কাজ শুরু করবেন?</h3>
+                    <p class="text-slate-500 font-medium">সহজ ৪টি ধাপে আপনার ইনকাম যাত্রা শুরু হোক।</p>
                 </div>
-                <div class="pro-card p-8">
-                    <i class="fa-solid fa-money-bill-trend-up text-brand text-4xl mb-4"></i>
-                    <h4 class="font-black text-lg">Daily Payout</h4>
-                    <p class="text-xs text-slate-400 mt-2">প্রতিদিনের ইনকাম লাইভ ট্র্যাক করুন এবং সাপ্তাহিক পেমেন্ট নিন।</p>
-                </div>
-                <div class="pro-card p-8">
-                    <i class="fa-solid fa-headset text-brand text-4xl mb-4"></i>
-                    <h4 class="font-black text-lg">24/7 Support</h4>
-                    <p class="text-xs text-slate-400 mt-2">যেকোনো সমস্যায় আমাদের সাপোর্ট টিম সবসময় আপনার পাশে।</p>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="pro-card p-8 relative overflow-hidden group hover:-translate-y-2 transition-all">
+                        <div class="step-num group-hover:scale-110 transition-transform">1</div>
+                        <h4 class="font-black text-slate-900 text-lg mb-2">রেজিস্ট্রেশন</h4>
+                        <p class="text-xs font-medium text-slate-400 leading-relaxed">খুব সহজেই ইমেইল এবং পাসওয়ার্ড দিয়ে অ্যাকাউন্ট তৈরি করুন।</p>
+                    </div>
+                    <div class="pro-card p-8 relative overflow-hidden group hover:-translate-y-2 transition-all">
+                        <div class="step-num group-hover:scale-110 transition-transform">2</div>
+                        <h4 class="font-black text-slate-900 text-lg mb-2">আইডি সাবমিট</h4>
+                        <p class="text-xs font-medium text-slate-400 leading-relaxed">আপনার ফেসবুক আইডির তথ্য দিয়ে 'Rent ID' সেকশনে সাবমিট করুন।</p>
+                    </div>
+                    <div class="pro-card p-8 relative overflow-hidden group hover:-translate-y-2 transition-all">
+                        <div class="step-num group-hover:scale-110 transition-transform">3</div>
+                        <h4 class="font-black text-slate-900 text-lg mb-2">অ্যাপ্রুভাল</h4>
+                        <p class="text-xs font-medium text-slate-400 leading-relaxed">আমাদের টিম আইডি চেক করে ২৪ ঘণ্টার মধ্যে অ্যাপ্রুভ করবে।</p>
+                    </div>
+                    <div class="pro-card p-8 relative overflow-hidden group hover:-translate-y-2 transition-all">
+                        <div class="step-num group-hover:scale-110 transition-transform">4</div>
+                        <h4 class="font-black text-slate-900 text-lg mb-2">ইনকাম শুরু</h4>
+                        <p class="text-xs font-medium text-slate-400 leading-relaxed">আইডি একটিভ হওয়ার সাথে সাথেই প্রতিদিনের ইনকাম ব্যালেন্সে যোগ হবে।</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <footer class="py-10 text-center border-t border-slate-100 uppercase font-bold text-[10px] text-slate-300 tracking-widest">
-            &copy; 2026 Nsfbrent Ultra. All Rights Reserved.
-        </footer>
-    </div>
+        <!-- Trust & Security -->
+        <section class="active py-20 px-6">
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h3 class="section-title">আমাদের উপর কেন <br> <span class="text-brand">ভরসা করবেন?</span></h3>
+                    <div class="space-y-4">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-check-double text-xl"></i></div>
+                            <div>
+                                <h5 class="font-black text-slate-900">গ্যারান্টেড পেমেন্ট</h5>
+                                <p class="text-xs font-medium text-slate-400">প্রতি শুক্রবার সরাসরি বিকাশ বা নগদে পেমেন্ট সম্পন্ন করা হয়।</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center"><i class="fa-solid fa-user-shield text-xl"></i></div>
+                            <div>
+                                <h5 class="font-black text-slate-900">প্রাইভেসি প্রোটেকশন</h5>
+                                <p class="text-xs font-medium text-slate-400">আপনার আইডির কোনো ব্যক্তিগত তথ্য বা মেসেজ পরিবর্তন করা হয় না।</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 bg-brand/10 text-brand rounded-2xl flex items-center justify-center"><i class="fa-solid fa-bolt text-xl"></i></div>
+                            <div>
+                                <h5 class="font-black text-slate-900">লাইভ ট্র্যাকিং</h5>
+                                <p class="text-xs font-medium text-slate-400">আপনার প্রতিটি আইডির ইনকাম আপনি ড্যাশবোর্ড থেকে লাইভ দেখতে পাবেন।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pro-card hero-red p-10 text-white relative overflow-hidden floating">
+                    <i class="fa-solid fa-shield-halved absolute -right-10 -bottom-10 text-[15rem] opacity-10"></i>
+                    <h4 class="text-3xl font-black italic mb-4">নিরাপদ ও সহজ মাধ্যম</h4>
+                    <p class="text-sm font-medium opacity-80 leading-relaxed mb-6">আমরা আইডির কোয়ালিটি অনুযায়ী রেন্ট দিয়ে থাকি। আপনার আইডি যত পুরনো এবং বন্ধু সংখ্যা যত বেশি হবে, ইনকাম তত বেশি হওয়ার সম্ভাবনা থাকে।</p>
+                    <button onclick="showAuth('signup')" class="bg-white text-brand px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">Join Nsfbrent</button>
+                </div>
+            </div>
+        </section>
 
-    <!-- 2. AUTH SCREEN -->
-    <div id="auth-screen" class="hidden fixed inset-0 z-[300] bg-white flex items-center justify-center p-6">
-        <button onclick="hideAuth()" class="absolute top-8 left-8 text-slate-400"><i class="fa-solid fa-arrow-left text-2xl"></i></button>
-        <div class="w-full max-w-sm">
-            <div id="login-box" class="space-y-4">
-                <h2 class="text-5xl font-black tracking-tighter text-slate-900 mb-8 italic uppercase leading-none">LOGIN <span class="text-brand">ACCESS</span></h2>
-                <input id="l-email" type="email" placeholder="Email Address" class="w-full p-5 rounded-3xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-brand">
-                <input id="l-pass" type="password" placeholder="Password" class="w-full p-5 rounded-3xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-brand">
-                <button id="btnLogin" class="w-full hero-red text-white font-black py-5 rounded-3xl shadow-xl shadow-brand/20 uppercase tracking-widest text-xs">Sign In</button>
-                <p class="text-center text-xs mt-6 font-bold">New User? <button onclick="toggleAuth()" class="text-brand">Create Account</button></p>
+        <!-- Income Calculator Chart -->
+        <section class="active py-20 bg-dark px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 space-y-4">
+                    <h3 class="section-title text-white">ইনকাম চার্ট (নমুনা)</h3>
+                    <p class="text-slate-400 font-medium tracking-widest uppercase text-[10px]">আইডি রেন্ট রেট: ৳২ - ৳৫০ (প্রতি আইডি/প্রতিদিন)</p>
+                </div>
+                <div class="pro-card overflow-hidden bg-white/5 border-white/10 text-white">
+                    <table class="w-full text-left">
+                        <thead class="bg-white/10 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            <tr>
+                                <th class="p-6">আইডি সংখ্যা</th>
+                                <th class="p-6">প্রতিদিন (গড়)</th>
+                                <th class="p-6">মাসিক ইনকাম</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-black text-lg divide-y divide-white/5">
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 italic">০৫ টি আইডি</td>
+                                <td class="p-6 text-brand">৳ ৩৫</td>
+                                <td class="p-6">৳ ১,০৫০</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 italic">২০ টি আইডি</td>
+                                <td class="p-6 text-brand">৳ ১৪০</td>
+                                <td class="p-6">৳ ৪,২০০</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 italic">৫০ টি আইডি</td>
+                                <td class="p-6 text-brand">৳ ৩৫০</td>
+                                <td class="p-6">৳ ১০,৫০০</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="p-6 italic">১০০ টি আইডি</td>
+                                <td class="p-6 text-brand">৳ ৭০০</td>
+                                <td class="p-6">৳ ২১,০০০</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-slate-500 text-[9px] font-bold uppercase mt-6 italic">*আইডির মান ভালো হলে ইনকাম আরও বৃদ্ধি পেতে পারে।</p>
             </div>
-            <div id="signup-box" class="space-y-4 hidden">
-                <h2 class="text-5xl font-black tracking-tighter text-brand mb-8 italic uppercase leading-none">JOIN <span class="text-slate-900">NOW</span></h2>
-                <input id="r-email" type="email" placeholder="Email Address" class="w-full p-5 rounded-3xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-brand">
-                <input id="r-pass" type="password" placeholder="Password" class="w-full p-5 rounded-3xl bg-slate-50 border-none outline-none focus:ring-2 focus:ring-brand">
-                <input id="r-ref" type="text" placeholder="Referral Code (Optional)" class="w-full p-5 rounded-3xl border-2 border-dashed border-slate-200 outline-none">
-                <button id="btnRegister" class="w-full bg-dark text-white font-black py-5 rounded-3xl shadow-xl uppercase tracking-widest text-xs">Register</button>
-                <p class="text-center text-xs mt-6 font-bold">Member? <button onclick="toggleAuth()" class="text-brand">Login</button></p>
+        </section>
+
+        <!-- Referral Bonus Section -->
+        <section class="active py-20 px-6">
+            <div class="max-w-4xl mx-auto offer-card p-12 rounded-[3rem] text-white flex flex-col md:flex-row items-center gap-10">
+                <div class="flex-1 space-y-4 text-center md:text-left">
+                    <span class="bg-brand text-[10px] px-4 py-1.5 rounded-full font-black uppercase tracking-widest">Lifetime Commission</span>
+                    <h3 class="text-4xl font-black italic">বন্ধুদের রেফার করুন, <br> ইনকাম করুন আনলিমিটেড!</h3>
+                    <p class="text-sm font-medium opacity-70">আপনার রেফারে কেউ জয়েন করলে তার প্রতিদিনের আয়ের ১০% বোনাস আপনি পাবেন সরাসরি। এছাড়া ২০ জন একটিভ মেম্বার রেফারে আছে স্পেশাল ৫০ টাকা বোনাস!</p>
+                    <button onclick="showAuth('signup')" class="bg-white text-slate-900 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest">Get Referral Link</button>
+                </div>
+                <div class="w-48 h-48 bg-white/10 rounded-full flex items-center justify-center floating">
+                    <i class="fa-solid fa-users-rays text-7xl"></i>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="active py-20 bg-slate-50 px-6">
+            <div class="max-w-2xl mx-auto space-y-8">
+                <h3 class="section-title text-center">সাধারণ জিজ্ঞাসা (FAQ)</h3>
+                <div class="space-y-4">
+                    <details class="pro-card p-6 cursor-pointer group">
+                        <summary class="font-black text-slate-900 list-none flex justify-between items-center">
+                            আইডি রেন্ট দিলে কি আইডি নষ্ট হবে?
+                            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs font-medium text-slate-400 mt-4 leading-relaxed">জি না, আমরা শুধুমাত্র ফেসবুক বিজনেস ম্যানেজার বা অ্যাডস পারপাসে আইডি ব্যবহার করি। এতে আইডির ব্যক্তিগত কোনো ক্ষতি হয় না।</p>
+                    </details>
+                    <details class="pro-card p-6 cursor-pointer group">
+                        <summary class="font-black text-slate-900 list-none flex justify-between items-center">
+                            পেমেন্ট কবে পাবো?
+                            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs font-medium text-slate-400 mt-4 leading-relaxed">পেমেন্ট রিকোয়েস্ট প্রতি শুক্রবার গৃহীত হয় এবং ঐ দিনই সব পেমেন্ট সম্পন্ন করা হয়।</p>
+                    </details>
+                    <details class="pro-card p-6 cursor-pointer group">
+                        <summary class="font-black text-slate-900 list-none flex justify-between items-center">
+                            সর্বনিম্ন উইথড্র কত?
+                            <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs font-medium text-slate-400 mt-4 leading-relaxed">আমাদের প্ল্যাটফর্মে সর্বনিম্ন ১০০ টাকা হলে আপনি বিকাশ বা নগদে উইথড্র করতে পারবেন।</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-10 text-center border-t border-slate-100">
+            <h4 class="text-xl font-black italic tracking-tighter uppercase mb-4">NSF<span class="text-brand">BRENT</span></h4>
+            <div class="flex gap-4 justify-center mb-6">
+                <a href="#" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="#" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white transition-all"><i class="fa-brands fa-telegram-plane"></i></a>
+            </div>
+            <p class="text-[9px] font-bold text-slate-300 uppercase tracking-[0.3em]">&copy; 2026 Nsfbrent Ultra. The Smart Earning Platform.</p>
+        </footer>
+
     </div>
 
     <!-- 3. MAIN APP INTERFACE -->
@@ -666,3 +828,4 @@
 </body>
 
 </html>
+
