@@ -18,23 +18,20 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;padding-bottom:100px;}
-  
-  /* Expert Adsterra Responsive Wrapper Style */
-  .ad-slot-wrapper { width: 100%; display: flex; justify-content: center; padding: 15px 0; overflow: hidden; }
+  [hidden] { display: none !important; }
+  .ad-slot-wrapper { width: 100%; display: flex; justify-content: center; padding: 15px 0; overflow: hidden; min-height: 0; }
   .ad-desktop { display: block; }
   .ad-mobile { display: none; }
   @media (max-width: 768px) {
     .ad-desktop { display: none !important; }
     .ad-mobile { display: block !important; }
   }
-
   ::selection{background:var(--accent-soft);}
   ::-webkit-scrollbar{width:6px;height:6px;}
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
   :focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
   button,input,select,textarea{font-family:inherit;color:inherit;}
   a{color:inherit;}
-
   .noise-overlay{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.03;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
   .ambient-glow{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.2;}
@@ -43,8 +40,6 @@
   @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,40px);}}
   @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,-30px);}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-
-  /* Pinterest App Header */
   .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:16px 24px;
     background:rgba(0,0,0,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft);}
   .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:.02em;
@@ -55,31 +50,23 @@
   .search-wrap input{width:100%;padding:12px 20px;border-radius:999px;border:none;background:#1A1A22;color:var(--text);font-size:.9rem;transition:.2s;}
   .search-wrap input:focus{background:#262633;outline:none;}
   select.sort-select{padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#1A1A22;font-size:.8rem;cursor:pointer;flex-shrink:0;}
-  
   .btn-glow{background:linear-gradient(135deg,var(--pinterest-red),var(--pinterest-red-hover));color:#fff;font-weight:700;border:none;padding:12px 22px;border-radius:24px;cursor:pointer;font-size:.9rem;white-space:nowrap;transition:transform .2s, box-shadow .2s;}
   .btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(230,0,35,.35);}
   .btn-glow:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
   .btn-ghost{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:11px 19px;border-radius:24px;cursor:pointer;font-size:.88rem;font-weight:600;transition:.2s;}
   .btn-ghost:hover{border-color:var(--pinterest-red);transform:translateY(-2px);}
-
-  /* Horizontal Category Pill Bar */
   .pill-bar{display:flex;gap:8px;overflow-x:auto;padding:14px 24px 6px;scrollbar-width:none;}
   .pill-bar::-webkit-scrollbar{display:none;}
   .chip{font-size:.85rem;font-weight:600;padding:8px 16px;border-radius:999px;border:none;background:#1A1A22;color:var(--text);white-space:nowrap;cursor:pointer;transition:.2s;flex-shrink:0;}
   .chip:hover:not(.active){background:#262633;}
   .chip.active{color:#fff;background:var(--pinterest-red);box-shadow:0 4px 12px rgba(230,0,35,.25);}
-
-  /* Pinterest Grid Layout */
   .gallery-section{padding:10px 24px 60px;}
   .gallery-grid{column-count:4;column-gap:16px;}
   @media (max-width:1200px){.gallery-grid{column-count:3;}}
   @media (max-width:768px){.gallery-grid{column-count:2;column-gap:12px;}}
-
-  /* Minimalist Pinterest Style Card/Pin UI */
   .pin-card{margin:0 0 16px;border-radius:0;overflow:visible;position:relative;background:transparent;border:none;break-inside:avoid;animation:fadeUp .45s ease both;box-shadow:none;}
   .card-admin-bar{display:flex;justify-content:flex-end;padding:6px 8px;background:rgba(0,0,0,0.6);border-radius:12px 12px 0 0;}
   .card-admin-bar[hidden]{display:none;}
-  
   .card-media{position:relative;background:#111116;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:transform .2s ease;}
   .card-media:hover{transform:translateY(-2px);}
   .card-media img, .card-media video{width:100%;display:block;opacity:0;transition:opacity .3s, transform .4s ease;}
@@ -89,11 +76,8 @@
   .card-media.broken{min-height:140px;background:var(--surface);}
   .card-media.broken img{display:none;}
   .card-media.broken::after{content:'⚠ Media failed to load';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--text-muted);font-size:.78rem;}
-  
   .media-tag{position:absolute;top:10px;left:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.64rem;padding:3px 8px;border-radius:6px;background:rgba(10,10,16,.6);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);color:#fff;z-index:2;}
   .media-tag.video{background:rgba(255,0,0,.78);border-color:transparent;}
-
-  /* Pinterest Floating Overlays */
   .pin-save-btn {
     position:absolute;top:12px;right:12px;
     background:var(--pinterest-red);color:#fff;
@@ -103,7 +87,6 @@
   }
   .pin-save-btn:hover { background: var(--pinterest-red-hover); }
   .pin-save-btn.saved { background: #111; color: #fff; opacity: 1; }
-  
   .pin-link-btn {
     position:absolute;bottom:12px;left:12px;
     background:var(--pinterest-red);color:#fff;
@@ -114,12 +97,10 @@
     animation: gentlePulse 2s infinite;
   }
   .pin-link-btn:hover { background: var(--pinterest-red-hover); transform:scale(1.03); }
-
   @keyframes gentlePulse {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.04); }
   }
-
   @media (hover: hover) {
     .pin-card:hover .pin-save-btn { opacity: 1; }
     .pin-card:hover .pin-link-btn { opacity: 1; }
@@ -128,31 +109,25 @@
     .pin-save-btn { opacity: 1; }
     .pin-link-btn { opacity: 0.95; }
   }
-
-  /* Minimalist Text rows underneath images */
   .pin-info{padding:8px 4px 2px;}
   .pin-title{font-size:.88rem;font-weight:600;margin-bottom:4px;cursor:pointer;color:var(--text);line-height:1.3;
     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s;}
   .pin-title:hover{color:var(--pinterest-red);}
-  
   .pin-creator-bar { display: flex; align-items: center; gap: 6px; margin-top: 6px; margin-bottom: 6px; cursor: pointer; }
   .pin-creator-avatar { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; background: var(--surface-2); border: 1px solid rgba(255,255,255,0.1); }
   .pin-creator-name { font-size: 0.76rem; font-weight: 500; color: var(--text-muted); }
   .pin-creator-bar:hover .pin-creator-name { color: #fff; }
-
   .pin-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.76rem;color:var(--text-muted);margin-top:2px;}
   .pin-likes{cursor:pointer;display:flex;align-items:center;gap:3px;transition:color .2s;}
   .pin-likes:hover{color:#fff;}
   .pin-action-icon{background:none;border:none;color:var(--text-muted);font-size:0.9rem;cursor:pointer;padding:2px 6px;transition:.18s;}
   .pin-action-icon:hover{color:#fff;}
-
-  /* Pinterest Bottom App Navigation Bar */
   .bottom-nav {
     position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
     background: rgba(14, 14, 20, 0.96); backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 35px;
     display: flex; align-items: center; justify-content: space-around;
-    padding: 8px 16px; width: min(92vw, 360px); z-index: 100;
+    padding: 8px 12px; width: min(94vw, 420px); z-index: 100;
     box-shadow: 0 10px 35px rgba(0,0,0,0.6);
   }
   .bottom-nav-item {
@@ -163,8 +138,6 @@
   .bottom-nav-item.active { color: #fff; }
   .bottom-nav-item svg { width: 22px; height: 22px; fill: currentColor; }
   .bottom-nav-item span { font-size: 0.58rem; font-weight: 600; margin-top: 3px; }
-
-  /* Premium Outbound Link Box inside Lightbox */
   .outbound-badge-glow {
     display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px;
     padding: 12px 24px; border-radius: 24px; background: var(--pinterest-red);
@@ -173,8 +146,6 @@
   }
   .outbound-badge-glow:hover { transform: translateY(-2px); background: var(--pinterest-red-hover); }
   @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(230,0,35,0.4); } 50% { box-shadow: 0 0 25px rgba(230,0,35,0.7); } }
-
-  /* New Modals Layout for Profiles & Posting */
   .pin-modal {
     position: fixed; inset: 0; z-index: 250; background: rgba(5,5,9,0.85);
     backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 20px;
@@ -183,32 +154,27 @@
   .pin-modal-content {
     background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
     width: 100%; max-width: 460px; padding: 24px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    max-height: 90vh; overflow-y: auto;
   }
   .pin-modal-close { position: absolute; top: 18px; right: 20px; background: none; border: none; font-size: 1.4rem; color: var(--text-muted); cursor: pointer; }
   .pin-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-top: 0; margin-bottom: 20px; text-align: center; }
-
-  /* Social Profiles Page Container */
   .profile-container { max-width: 680px; margin: 0 auto; padding: 24px 16px; animation: fadeUp 0.3s ease; }
   .profile-header-card { text-align: center; margin-bottom: 30px; }
   .profile-big-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--pinterest-red); margin-bottom: 12px; background: var(--surface-2); }
   .profile-display-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0; }
   .profile-username { font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 10px; font-family: 'JetBrains Mono', monospace; }
   .profile-bio { font-size: 0.92rem; line-height: 1.5; color: var(--text); margin: 0 auto 16px; max-width: 480px; }
-  
   .profile-subtabs { display: flex; justify-content: center; gap: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
   .profile-subtab-btn { background: none; border: none; font-size: 0.9rem; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 6px 12px; border-radius: 12px; transition: .2s; }
   .profile-subtab-btn:hover { color: #fff; }
   .profile-subtab-btn.active { background: var(--surface-2); color: #fff; }
-
   .empty-state{text-align:center;padding:80px 20px;color:var(--text-muted);grid-column:1/-1;}
   .empty-state h3{font-family:'Space Grotesk',sans-serif;color:var(--text);margin-bottom:8px;}
   .site-footer{padding:26px 32px 100px;text-align:center;color:var(--text-muted);font-size:.82rem;}
-
   .share-popover{position:fixed;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:3px;z-index:500;box-shadow:0 14px 36px rgba(0,0,0,.55);min-width:210px;}
   .share-popover .sp-title{font-size:.7rem;color:var(--text-muted);padding:6px 10px 4px;text-transform:uppercase;letter-spacing:.04em;}
   .share-popover a, .share-popover button{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;border-radius:8px;font-size:.86rem;font-weight:500;text-decoration:none;background:none;border:none;text-align:left;cursor:pointer;}
   .share-popover a:hover, .share-popover button:hover{background:var(--bg-soft);}
-
   .lightbox{position:fixed;inset:0;z-index:200;background:rgba(5,5,9,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:30px;overflow-y:auto;}
   .lightbox[hidden]{display:none;}
   .lightbox-stage{position:relative;max-width:min(92vw,1000px);width:100%;display:flex;flex-direction:column;align-items:center;gap:16px;margin:auto;}
@@ -226,13 +192,12 @@
   .lightbox-arrow:hover{border-color:var(--pinterest-red);box-shadow:0 0 18px rgba(230,0,35,0.3);}
   .lightbox-arrow.prev{left:-8px;} .lightbox-arrow.next{right:-8px;}
   @media (max-width:700px){.lightbox-arrow.prev{left:4px;}.lightbox-arrow.next{right:4px;}}
-
   .admin-drawer{position:fixed;inset:0;z-index:300;}
   .admin-drawer[hidden]{display:none;}
   .drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.65);}
   .drawer-panel{position:absolute;top:0;right:0;height:100%;width:440px;max-width:94vw;background:var(--surface);border-left:1px solid var(--border);overflow-y:auto;padding:26px;animation:slideIn .3s ease;}
   @keyframes slideIn{from{transform:translateX(30px);opacity:0;}to{transform:translateX(0);opacity:1;}}
-  .drawer-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+  .drawer-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
   .drawer-header h2{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;margin:0;}
   .drawer-close{background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;line-height:1;}
   .tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--bg-soft);padding:5px;border-radius:10px;}
@@ -260,16 +225,71 @@
   .icon-btn-del:hover{transform:translateY(-2px);box-shadow:0 6px 16px var(--danger-soft);}
   .admin-list-scroll{max-height:300px;overflow-y:auto;padding-right:4px;}
   .drawer-footnote{font-size:.74rem;color:var(--text-muted);line-height:1.6;margin-top:10px;}
-
   .toast-stack{position:fixed;bottom:85px;right:22px;display:flex;flex-direction:column;gap:10px;z-index:400;max-width:320px;}
   .toast{background:var(--surface-2);border:1px solid var(--border);padding:12px 16px;border-radius:10px;font-size:.84rem;box-shadow:0 10px 28px rgba(0,0,0,.45);animation:toastIn .25s ease;}
   @keyframes toastIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   .toast.success{border-color:var(--accent-2);} .toast.error{border-color:var(--danger);}
-
+  .reels-container {
+    position: fixed; inset: 0; bottom: 85px; background: #000; overflow-y: scroll;
+    scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; z-index: 90;
+    overscroll-behavior-y: contain; scroll-behavior: smooth;
+  }
+  .reel-slide {
+    width: 100%; height: calc(100vh - 85px); scroll-snap-align: start; scroll-snap-stop: always; position: relative;
+    display: flex; align-items: center; justify-content: center; background: #000;
+  }
+  .reel-media-wrapper { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  .reel-media-wrapper video, .reel-media-wrapper iframe, .reel-media-wrapper img {
+    width: 100%; height: 100%; object-fit: cover; border: none;
+  }
+  .reel-slide::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 35%, transparent 60%);
+    pointer-events: none; z-index: 2;
+  }
+  .reel-overlay { position: absolute; bottom: 25px; left: 16px; right: 75px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.8); z-index: 10; }
+  .reel-creator { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; margin-bottom: 8px; cursor: pointer; }
+  .reel-creator-img { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; }
+  .reel-title { font-size: 0.92rem; margin-bottom: 5px; font-weight: 500; }
+  .reel-story { font-size: 0.78rem; color: rgba(255,255,255,0.8); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .reel-actions { position: absolute; right: 12px; bottom: 30px; display: flex; flex-direction: column; gap: 18px; align-items: center; z-index: 10; }
+  .reel-action-btn {
+    background: rgba(20, 20, 25, 0.45); border: 1px solid rgba(255,255,255,0.08); width: 46px; height: 46px;
+    border-radius: 50%; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.1rem; backdrop-filter: blur(8px); transition: transform 0.2s;
+  }
+  .reel-action-btn:active { transform: scale(0.9); }
+  .reel-action-btn span { font-size: 0.58rem; margin-top: 2px; }
+  .native-ad-card{break-inside:avoid;border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--border-soft);margin-bottom:16px;min-height:340px;}
+  .native-ad-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:8px 10px 0;display:block;}
+  .scroll-sentinel{width:100%;height:1px;}
+  .load-more-spinner{text-align:center;padding:18px 0;color:var(--text-muted);font-size:.8rem;grid-column:1/-1;}
   @media (max-width:768px){.site-header{padding:12px 16px;} .pill-bar,.gallery-section{padding-left:12px;padding-right:12px;}}
 </style>
+
 </head>
 <body>
+<!-- Adsterra Social Bar — injected dynamically just before </body> instead of in <head>.
+     Loading it in <head> can race with the page itself on slow connections and some ad-blockers
+     are more likely to strip a static <script src> sitting in <head>. Building the tag with JS
+     and appending it after the DOM exists is the pattern Adsterra itself recommends for Social
+     Bar / native formats, and it lets us log a clear warning if the network blocks it instead of
+     failing completely silently. -->
+<script>
+  (function loadAdsterraSocialBar(){
+    var s = document.createElement('script');
+    s.src = 'https://biographygridetelegram.com/37/4b/15/374b150720985c24833e6f1d33654ef3.js';
+    s.async = true;
+    s.onerror = function(){
+      console.warn('[LUMEN] Adsterra Social Bar failed to load. This is almost always one of: ' +
+        '(1) an ad-blocker / browser privacy shield in this browser, ' +
+        '(2) the site/zone not yet "Active" in the Adsterra dashboard, or ' +
+        '(3) testing from a non-public URL (localhost, file://, a preview/staging domain) which ' +
+        'Adsterra does not serve ads to. Check Websites > your domain status in the Adsterra panel first.');
+    };
+    document.body.appendChild(s);
+  })();
+</script>
 
 <div class="noise-overlay"></div>
 <div class="ambient-glow glow-1"></div>
@@ -284,103 +304,90 @@
   </select>
 </header>
 
-<!-- Expert Header Placement: 468x60 (Desktop) / 320x50 (Mobile) Responsive Slots -->
+<!-- TOP BANNER — highest visibility slot, above the fold, best CPM placement -->
 <div class="ad-slot-wrapper ad-desktop">
   <script type="text/javascript">
-    atOptions = {
-      'key' : '4d4aa29c36cd95a72187eca815971cd1',
-      'format' : 'iframe',
-      'height' : 60,
-      'width' : 468,
-      'params' : {}
-    };
+    atOptions = { 'key':'4d4aa29c36cd95a72187eca815971cd1','format':'iframe','height':60,'width':468,'params':{} };
   </script>
   <script type="text/javascript" src="https://biographygridetelegram.com/4d4aa29c36cd95a72187eca815971cd1/invoke.js"></script>
 </div>
-
 <div class="ad-slot-wrapper ad-mobile">
   <script type="text/javascript">
-    atOptions = {
-      'key' : 'f2950bc505780fd711c1b2635615e875',
-      'format' : 'iframe',
-      'height' : 50,
-      'width' : 320,
-      'params' : {}
-    };
+    atOptions = { 'key':'f2950bc505780fd711c1b2635615e875','format':'iframe','height':50,'width':320,'params':{} };
   </script>
   <script type="text/javascript" src="https://biographygridetelegram.com/f2950bc505780fd711c1b2635615e875/invoke.js"></script>
 </div>
 
 <main>
-  <!-- Main Grid View -->
   <div id="mainFeedView">
     <nav class="pill-bar" id="pillBar"></nav>
     <section class="gallery-section">
       <div class="gallery-grid" id="galleryGrid"></div>
-      <div style="text-align:center; margin-top: 30px;" id="loadMoreContainer"></div>
+      <div class="scroll-sentinel" id="homeSentinel"></div>
+      <div class="load-more-spinner" id="homeLoadingIndicator" hidden>Loading more pins…</div>
     </section>
   </div>
 
-  <!-- Dynamic Pinterest-style Profile View -->
+  <div id="youtubeFeedView" class="gallery-section" hidden>
+    <div style="text-align: center; margin-bottom: 24px;">
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight:700; font-size:1.6rem; color: #fff;">Watch Videos</h2>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">Enjoy full high-quality YouTube clips and tutorials</p>
+    </div>
+    <div class="gallery-grid" id="youtubeGrid"></div>
+    <div class="scroll-sentinel" id="videosSentinel"></div>
+    <div class="load-more-spinner" id="videosLoadingIndicator" hidden>Loading more videos…</div>
+  </div>
+
+  <div id="reelsView" class="reels-container" hidden></div>
+
   <div id="profileView" class="profile-container" hidden></div>
 </main>
 
-<!-- Expert Footer Placement: Native Recommendation Banner -->
+<!-- MID-PAGE NATIVE AD — between feed and footer, high dwell-time slot -->
 <div class="ad-slot-wrapper">
-  <div id="container-cd49b2402b36a334921bd5803b1e32b5"></div>
+  <div id="container-cd49b2402b36a334921bd5803b1e32b5" style="width:100%;max-width:680px;"></div>
   <script async="async" data-cfasync="false" src="https://biographygridetelegram.com/cd49b2402b36a334921bd5803b1e32b5/invoke.js"></script>
 </div>
 
-<!-- Expert Footer Banner Placement: 468x60 (Desktop) / 320x50 (Mobile) Responsive Slots -->
+<!-- FOOTER BANNER — second banner impression, catches users before they leave -->
 <div class="ad-slot-wrapper ad-desktop">
   <script type="text/javascript">
-    atOptions = {
-      'key' : '4d4aa29c36cd95a72187eca815971cd1',
-      'format' : 'iframe',
-      'height' : 60,
-      'width' : 468,
-      'params' : {}
-    };
+    atOptions = { 'key':'4d4aa29c36cd95a72187eca815971cd1','format':'iframe','height':60,'width':468,'params':{} };
   </script>
   <script type="text/javascript" src="https://biographygridetelegram.com/4d4aa29c36cd95a72187eca815971cd1/invoke.js"></script>
 </div>
-
 <div class="ad-slot-wrapper ad-mobile">
   <script type="text/javascript">
-    atOptions = {
-      'key' : 'f2950bc505780fd711c1b2635615e875',
-      'format' : 'iframe',
-      'height' : 50,
-      'width' : 320,
-      'params' : {}
-    };
+    atOptions = { 'key':'f2950bc505780fd711c1b2635615e875','format':'iframe','height':50,'width':320,'params':{} };
   </script>
   <script type="text/javascript" src="https://biographygridetelegram.com/f2950bc505780fd711c1b2635615e875/invoke.js"></script>
 </div>
 
 <footer class="site-footer" id="mainFooter">Every captured moment becomes a story.</footer>
 
-<!-- Pinterest Style App Bottom Navigation -->
 <nav class="bottom-nav">
   <button class="bottom-nav-item active" id="btnNavHome" title="Home">
     <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
     <span>Home</span>
   </button>
-  <button class="bottom-nav-item" id="btnNavSearch" title="Search">
-    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-    <span>Search</span>
+  <button class="bottom-nav-item" id="btnNavReels" title="Pic Reels">
+    <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 11V5l6 4-6 4z"/></svg>
+    <span>Pic Reels</span>
+  </button>
+  <button class="bottom-nav-item" id="btnNavVideos" title="Watch">
+    <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.11-.9-2-2-2zm0 14H3V5h18v12zm-5-6l-7 4V7l7 4z"/></svg>
+    <span>Watch</span>
   </button>
   <button class="bottom-nav-item" id="btnNavAdd" title="Create Pin">
     <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
     <span>Create</span>
   </button>
-  <button class="bottom-nav-item" id="btnNavProfile" title="Saved">
+  <button class="bottom-nav-item" id="btnNavProfile" title="Profile">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
     <span>Profile</span>
   </button>
 </nav>
 
-<!-- Main Details Lightbox View -->
 <div class="lightbox" id="lightbox" hidden>
   <div class="lightbox-stage">
     <button class="lightbox-close" id="lightboxClose">✕</button>
@@ -398,7 +405,6 @@
   </div>
 </div>
 
-<!-- Public User: Create Pin Modal Overlay (No Auth Needed!) -->
 <div class="pin-modal" id="publicCreateModal" hidden>
   <div class="pin-modal-content">
     <button class="pin-modal-close" id="publicCreateClose">✕</button>
@@ -408,7 +414,7 @@
         <label>Media Source Type</label>
         <select id="pubTypeSelect" style="width:100%;">
           <option value="image">Single Image URL</option>
-          <option value="video">Video URL (YouTube, Vimeo, MP4)</option>
+          <option value="video">Video URL (TikTok, YouTube, Vimeo, MP4)</option>
         </select>
       </div>
       <div class="field">
@@ -425,7 +431,7 @@
       </div>
       <div class="field">
         <label>Category (Defaults to "General")</label>
-        <input type="text" id="pubCategory" placeholder="e.g. Travel, Milfy, Vlog">
+        <input type="text" id="pubCategory" placeholder="e.g. Travel, Vlog, Food">
       </div>
       <div class="field">
         <label>Outbound Website Link (Optional)</label>
@@ -440,7 +446,6 @@
   </div>
 </div>
 
-<!-- Public User: Edit Profile Modal Overlay -->
 <div class="pin-modal" id="editProfileModal" hidden>
   <div class="pin-modal-content">
     <button class="pin-modal-close" id="editProfileClose">✕</button>
@@ -467,16 +472,21 @@
   </div>
 </div>
 
-<!-- Hidden Secret Administrator Controller Drawer Panel -->
 <aside class="admin-drawer" id="adminDrawer" hidden>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="drawer-panel">
     <div class="drawer-header"><h2>Admin Panel</h2><button class="drawer-close" id="drawerClose">✕</button></div>
 
+    <div id="adminLiveStats" style="display:flex; justify-content:space-between; gap:6px; margin-bottom:15px; background:var(--bg-soft); padding:10px; border-radius:10px; font-size:0.72rem; border:1px solid var(--border);">
+      <div>🖼️ Images: <span id="statImages" style="color:var(--accent-2); font-weight:700;">0</span></div>
+      <div>🎬 Reels: <span id="statReels" style="color:var(--accent-2); font-weight:700;">0</span></div>
+      <div>📺 YouTube: <span id="statYoutube" style="color:var(--accent-2); font-weight:700;">0</span></div>
+    </div>
+
     <div class="tabs">
       <button class="tab-btn active" data-tab="upload" id="tabUploadBtn">Image Links</button>
       <button class="tab-btn" data-tab="video" id="tabVideoBtn">Add Video</button>
-      <button class="tab-btn" data-tab="manage">Manage All</button>
+      <button class="tab-btn" data-tab="manage" id="tabManageBtn">Manage All</button>
     </div>
 
     <div class="tab-panel" id="tab-upload">
@@ -499,7 +509,10 @@ https://example.com/2.jpg" required></textarea>
 
     <div class="tab-panel" id="tab-video" hidden>
       <form id="videoForm">
-        <div class="field"><label for="videoUrlInput">Video Link (YouTube, Vimeo or direct .mp4 URL)</label><input type="text" id="videoUrlInput" placeholder="https://www.youtube.com/... or vimeo or .mp4 link" required></div>
+        <div class="form-hint" style="color: var(--accent-2); margin-bottom: 14px; padding: 8px; background: rgba(0,229,199,0.05); border-radius: 6px; border: 1px dashed rgba(0,229,199,0.25); font-size: 0.72rem; line-height:1.4;">
+          ℹ️ <strong>Auto-Routing System:</strong> YouTube links automatically go to the "Watch" tab with full thumbnails. TikTok and MP4 videos automatically route to the scrolling vertical "Reels" section.
+        </div>
+        <div class="field"><label for="videoUrlInput">Video Link (YouTube, TikTok, Vimeo or direct .mp4 URL)</label><input type="text" id="videoUrlInput" placeholder="Enter video link here..." required></div>
         <div class="field"><label for="videoTitleInput">Title</label><input type="text" id="videoTitleInput" placeholder="Video name" required></div>
         <div class="field"><label for="videoStoryInput">Story / Description</label><textarea id="videoStoryInput" rows="3" placeholder="Write something about this video..."></textarea></div>
         <div class="field"><label for="videoCatInput">Category (defaults to "General")</label><input type="text" id="videoCatInput" list="categoryOptions" placeholder="e.g. Vlog"></div>
@@ -510,7 +523,15 @@ https://example.com/2.jpg" required></textarea>
     </div>
 
     <div class="tab-panel" id="tab-manage" hidden>
-      <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin:0 0 12px;font-weight:600;" id="adminCountHeading">Manage All</h3>
+      <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin:0 0 8px;font-weight:600;" id="adminCountHeading">Manage All</h3>
+      <div style="margin-bottom:12px;">
+        <select id="adminFilterSelect" style="width:100%; padding:8px 12px; border-radius:9px; border:1px solid var(--border); background:var(--bg-soft); color:var(--text); font-size:0.78rem;">
+          <option value="all">All Post Types</option>
+          <option value="image">Images Only (Home)</option>
+          <option value="reel">Reels Only (TikTok/MP4)</option>
+          <option value="youtube">YouTube Videos Only (Watch)</option>
+        </select>
+      </div>
       <div class="admin-list-scroll" id="adminItemList"></div>
     </div>
 
@@ -540,10 +561,27 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const itemsCol = collection(db, "gallery_items");
 
+const safeStorage = (function() {
+  try {
+    const x = '__storage_test__';
+    localStorage.setItem(x, x);
+    const val = localStorage.getItem(x);
+    localStorage.removeItem(x);
+    if (val === x) return localStorage;
+  } catch (e) {}
+  const memStore = {};
+  return {
+    getItem: (key) => memStore[key] || null,
+    setItem: (key, val) => { memStore[key] = String(val); },
+    removeItem: (key) => { delete memStore[key]; },
+    clear: () => { for (let k in memStore) delete memStore[k]; }
+  };
+})();
+
 let state = {
   items: [],
   activeCategory: 'all',
-  profileSubtab: 'created', 
+  profileSubtab: 'created',
   search: '',
   sort: 'newest',
   lightboxList: [],
@@ -551,9 +589,12 @@ let state = {
   pendingDelete: null,
   pendingCardDelete: null,
   isAdminOpen: false,
-  editItemId: null, 
+  editItemId: null,
+  editItemType: null,
   limit: 15,
-  currentView: 'home' 
+  currentView: 'home',
+  loadingMore: false,
+  hasMore: true /* becomes false once a Firestore page comes back smaller than requested */
 };
 
 let pendingHashOpenId = (function(){
@@ -561,26 +602,43 @@ let pendingHashOpenId = (function(){
   return m ? decodeURIComponent(m[1]) : null;
 })();
 
+const ADMIN_PASSCODE = "lumen2026";
+
+/* Simple per-session rate limiter to slow down spam/bot posting from the public Create form. */
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX_POSTS = 3;
+function checkRateLimit() {
+  const key = 'lumen_post_timestamps';
+  let timestamps = [];
+  try { timestamps = JSON.parse(safeStorage.getItem(key) || '[]'); } catch (e) { timestamps = []; }
+  const now = Date.now();
+  timestamps = timestamps.filter(t => now - t < RATE_LIMIT_WINDOW_MS);
+  if (timestamps.length >= RATE_LIMIT_MAX_POSTS) return false;
+  timestamps.push(now);
+  safeStorage.setItem(key, JSON.stringify(timestamps));
+  return true;
+}
+
 function initLocalProfile() {
-  if (!localStorage.getItem('lumen_user_id')) {
+  if (!safeStorage.getItem('lumen_user_id')) {
     const randomId = 'usr_' + Math.random().toString(36).substring(2, 11);
     const randomNum = Math.floor(1000 + Math.random() * 9000);
-    localStorage.setItem('lumen_user_id', randomId);
-    localStorage.setItem('lumen_user_username', '@creator_' + randomNum);
-    localStorage.setItem('lumen_user_name', 'Lumen Creator');
-    localStorage.setItem('lumen_user_avatar', '');
-    localStorage.setItem('lumen_user_bio', 'I love to discover and share amazing ideas.');
+    safeStorage.setItem('lumen_user_id', randomId);
+    safeStorage.setItem('lumen_user_username', '@creator_' + randomNum);
+    safeStorage.setItem('lumen_user_name', 'Lumen Creator');
+    safeStorage.setItem('lumen_user_avatar', '');
+    safeStorage.setItem('lumen_user_bio', 'I love to discover and share amazing ideas.');
   }
 }
 initLocalProfile();
 
 function getLocalProfile() {
   return {
-    userId: localStorage.getItem('lumen_user_id'),
-    username: localStorage.getItem('lumen_user_username'),
-    name: localStorage.getItem('lumen_user_name'),
-    avatar: localStorage.getItem('lumen_user_avatar'),
-    bio: localStorage.getItem('lumen_user_bio')
+    userId: safeStorage.getItem('lumen_user_id'),
+    username: safeStorage.getItem('lumen_user_username'),
+    name: safeStorage.getItem('lumen_user_name'),
+    avatar: safeStorage.getItem('lumen_user_avatar'),
+    bio: safeStorage.getItem('lumen_user_bio')
   };
 }
 
@@ -591,35 +649,47 @@ function getAvatarUrl(username, customUrl) {
 }
 
 function escapeHtml(str){ const d = document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
+function isSafeHttpUrl(url){
+  if(!url) return false;
+  try{
+    const u = new URL(url, window.location.origin);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  }catch(e){ return false; }
+}
 function showToast(message, type){
   const stack = document.getElementById('toastStack');
+  if (!stack) return;
   const el = document.createElement('div');
   el.className = 'toast ' + (type || '');
   el.textContent = message;
   stack.appendChild(el);
   setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .3s'; setTimeout(()=>el.remove(),300); }, 3500);
 }
-function sanitizeFilename(str){
-  return (str || 'lumen').toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').slice(0,40) || 'lumen';
-}
 
 function detectVideoPlatform(url) {
   const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  if (ytMatch) return { platform: 'youtube', embedUrl: `https://www.youtube.com/embed/${ytMatch[1]}`, rawUrl: url };
-
+  if (ytMatch) {
+    const videoId = ytMatch[1];
+    return {
+      platform: 'youtube',
+      embedUrl: `https://www.youtube.com/embed/${videoId}`,
+      rawUrl: url,
+      videoId: videoId,
+      thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+    };
+  }
   const vimeoMatch = url.match(/(?:vimeo\.com\/|player\.vimeo\.com\/video\/)([0-9]+)/);
   if (vimeoMatch) return { platform: 'vimeo', embedUrl: `https://player.vimeo.com/video/${vimeoMatch[1]}`, rawUrl: url };
-
+  const tiktokMatch = url.match(/tiktok\.com\/(?:@[^\/]+\/video|v)\/(\d+)/);
+  if (tiktokMatch) return { platform: 'tiktok', embedUrl: `https://www.tiktok.com/player/v1/${tiktokMatch[1]}?music_info=0&description=0&controls=1&autoplay=1&loop=1`, rawUrl: url, videoId: tiktokMatch[1] };
   const directMatch = url.match(/\.(mp4|webm|ogg|mov)($|\?)/i);
-  if (directMatch || url.includes('/mp4') || url.includes('.mp4')) {
-    return { platform: 'direct', embedUrl: url, rawUrl: url };
-  }
+  if (directMatch) return { platform: 'direct', embedUrl: url, rawUrl: url };
   return null;
 }
 
 function timeMs(item){ return item.createdAt && typeof item.createdAt.toMillis === 'function' ? item.createdAt.toMillis() : 0; }
-function isLiked(id){ return !!localStorage.getItem('lumen_liked_' + id); }
-function isFavorited(id){ return !!localStorage.getItem('lumen_fav_' + id); }
+function isLiked(id){ return !!safeStorage.getItem('lumen_liked_' + id); }
+function isFavorited(id){ return !!safeStorage.getItem('lumen_fav_' + id); }
 function siteShareUrl(it){
   const base = window.location.origin + window.location.pathname;
   return `${base}#post=${encodeURIComponent(it.id)}`;
@@ -627,14 +697,10 @@ function siteShareUrl(it){
 
 function allCategoriesUnion(){
   const set = new Set();
-  state.items.forEach(it => {
-    if (it.category && it.type === 'image') set.add(it.category);
-  });
+  state.items.forEach(it => { if (it.category && it.type !== 'video') set.add(it.category); });
   return Array.from(set);
 }
-function categoryCount(cat){ return state.items.filter(it => (it.category || 'General') === cat && it.type === 'image').length; }
-function favoriteCount(){ return state.items.filter(it => isFavorited(it.id)).length; }
-function videoCount(){ return state.items.filter(it => it.type === 'video').length; }
+function categoryCount(cat){ return state.items.filter(it => (it.category || 'General') === cat && it.type !== 'video').length; }
 
 function filteredItems(){
   let list = state.items.slice();
@@ -643,13 +709,12 @@ function filteredItems(){
   } else if(state.activeCategory === 'videos') {
     list = list.filter(it => it.type === 'video');
   } else if(state.activeCategory !== 'all') {
-    list = list.filter(it => (it.category || 'General') === state.activeCategory && it.type === 'image');
+    list = list.filter(it => (it.category || 'General') === state.activeCategory && it.type !== 'video');
   }
-  
   if(state.search.trim()){
     const q = state.search.trim().toLowerCase();
-    list = list.filter(it => 
-      (it.title||'').toLowerCase().includes(q) || 
+    list = list.filter(it =>
+      (it.title||'').toLowerCase().includes(q) ||
       (it.story||'').toLowerCase().includes(q) ||
       (it.category||'').toLowerCase().includes(q)
     );
@@ -658,12 +723,11 @@ function filteredItems(){
   return list;
 }
 
-// ---------- live data & pagination ----------
 let unsubscribe = null;
 function subscribeToFirestore() {
   if (unsubscribe) unsubscribe();
-  const q = query(itemsCol, orderBy('createdAt', 'desc'), limit(state.limit));
-  
+  const requestedLimit = state.limit;
+  const q = query(itemsCol, orderBy('createdAt', 'desc'), limit(requestedLimit));
   unsubscribe = onSnapshot(q, (snap)=>{
     state.items = snap.docs.map(d => {
       const data = d.data();
@@ -673,28 +737,74 @@ function subscribeToFirestore() {
       }
       return { id: d.id, ...data };
     });
+    /* If Firestore returned fewer docs than we asked for, there is nothing left to load. */
+    state.hasMore = state.items.length >= requestedLimit;
+    state.loadingMore = false;
     renderAll();
+    updateLoadMoreIndicators();
     if(pendingHashOpenId){
       const idx = state.items.findIndex(it => it.id === pendingHashOpenId);
       if(idx >= 0){ openLightbox(state.items.slice(), idx); }
       pendingHashOpenId = null;
     }
   }, (err)=>{
+    state.loadingMore = false;
     showToast('Failed to load data — check rules/configs', 'error');
     console.error(err);
   });
 }
 
-subscribeToFirestore();
+/* ---------- Infinite scroll (IntersectionObserver based — replaces the old buggy
+   window 'scroll' listener that fired many times per scroll tick and caused
+   multiple pages to load at once, producing visible jumps). ---------- */
+function requestMoreItems(){
+  if (state.loadingMore || !state.hasMore) return;
+  state.loadingMore = true;
+  updateLoadMoreIndicators();
+  state.limit += 15;
+  subscribeToFirestore();
+}
+function updateLoadMoreIndicators(){
+  const homeInd = document.getElementById('homeLoadingIndicator');
+  const videoInd = document.getElementById('videosLoadingIndicator');
+  if (homeInd) homeInd.hidden = !(state.currentView === 'home' && state.loadingMore);
+  if (videoInd) videoInd.hidden = !(state.currentView === 'videos' && state.loadingMore);
+}
 
-// ---------- pill bar ----------
+let sentinelObserver = null;
+function setupSentinelObserver(){
+  if (sentinelObserver) sentinelObserver.disconnect();
+  sentinelObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (entry.isIntersecting) requestMoreItems();
+    });
+  }, { root: null, rootMargin: '300px 0px 300px 0px', threshold: 0 });
+  const homeSentinel = document.getElementById('homeSentinel');
+  const videosSentinel = document.getElementById('videosSentinel');
+  if (homeSentinel) sentinelObserver.observe(homeSentinel);
+  if (videosSentinel) sentinelObserver.observe(videosSentinel);
+}
+
+let reelsSentinelObserver = null;
+function setupReelsSentinelObserver(){
+  const container = document.getElementById('reelsView');
+  if (!container) return;
+  if (reelsSentinelObserver) reelsSentinelObserver.disconnect();
+  const sentinel = container.querySelector('.reels-load-sentinel');
+  if (!sentinel) return;
+  reelsSentinelObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if (entry.isIntersecting) requestMoreItems();
+    });
+  }, { root: container, rootMargin: '400px 0px 400px 0px', threshold: 0 });
+  reelsSentinelObserver.observe(sentinel);
+}
+
 function renderPillBar(){
   const wrap = document.getElementById('pillBar');
   if(!wrap) return;
   const cats = allCategoriesUnion();
   let html = `<div class="chip ${state.activeCategory==='all'?'active':''}" data-cat="all">All (${state.items.length})</div>`;
-  html += `<div class="chip ${state.activeCategory==='videos'?'active':''}" data-cat="videos">🎬 Videos (${videoCount()})</div>`;
-  html += `<div class="chip ${state.activeCategory==='favorites'?'active':''}" data-cat="favorites">⭐ Saved (${favoriteCount()})</div>`;
   cats.forEach(c=>{ html += `<div class="chip ${state.activeCategory===c?'active':''}" data-cat="${escapeHtml(c)}">${escapeHtml(c)} (${categoryCount(c)})</div>`; });
   wrap.innerHTML = html;
   wrap.querySelectorAll('.chip').forEach(chip=>{
@@ -702,7 +812,6 @@ function renderPillBar(){
   });
 }
 
-// ---------- dynamic card mapping function ----------
 function mapPinCardMarkup(it, idx, list) {
   const cat = it.category || 'General';
   const liked = isLiked(it.id);
@@ -712,7 +821,7 @@ function mapPinCardMarkup(it, idx, list) {
 
   const adminBarHtml = state.isAdminOpen
     ? `<div class="card-admin-bar" style="gap:6px; width:100%;">
-        <button class="small-btn" data-edit-card="${it.id}" style="border-color:var(--accent-2);color:var(--accent-2);">Edit</button>
+        <button class="small-btn" data-edit-card="${it.id}">Edit</button>
         ${confirmingCard
         ? `<span style="font-size:.72rem;color:var(--text-muted);margin-right:6px;">Sure?</span>
            <button class="small-btn" data-cancel-card="${it.id}">No</button>
@@ -722,22 +831,28 @@ function mapPinCardMarkup(it, idx, list) {
 
   const directUrl = it.url || '';
   let mediaHtml = '';
-
-  // Restored story-reading zoom lightbox click handler trigger!
-  const mediaClickAction = `window.showPinDetails('${it.id}');`;
+  const safeLink = isSafeHttpUrl(it.linkUrl) ? it.linkUrl : null;
 
   if (it.type === 'video') {
-    mediaHtml = `<div class="card-media" onclick="${mediaClickAction}"><span class="media-tag video">VIDEO</span>
-      ${it.linkUrl ? `<a class="pin-link-btn" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
-      <div class="video-embed-wrap">
-        <video src="${escapeHtml(it.videoEmbedUrl)}" controls loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#000; display:block;"></video>
+    let videoMediaElement = '';
+    if (it.videoPlatform === 'direct') {
+      videoMediaElement = `<video src="${escapeHtml(it.videoEmbedUrl)}" controls loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#000; display:block;"></video>`;
+    } else {
+      const aspectRatio = it.videoPlatform === 'tiktok' ? '9/16' : '16/9';
+      videoMediaElement = `<iframe src="${escapeHtml(it.videoEmbedUrl)}" style="width:100%; aspect-ratio:${aspectRatio}; border:none; pointer-events:none; background:#000; display:block;" allowfullscreen></iframe>`;
+    }
+    mediaHtml = `<div class="card-media" onclick="window.showPinDetails('${it.id}')"><span class="media-tag video">${escapeHtml((it.videoPlatform||'video').toUpperCase())}</span>
+      ${safeLink ? `<a class="pin-link-btn" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
+      <div class="video-embed-wrap" style="position:relative; width:100%; overflow:hidden; border-radius:16px;">
+        ${videoMediaElement}
+        <div style="position:absolute; inset:0; background:transparent; z-index:1;"></div>
       </div></div>`;
   } else {
     mediaHtml = `
-      <div class="card-media" onclick="${mediaClickAction}">
+      <div class="card-media" onclick="window.showPinDetails('${it.id}')">
         <span class="media-tag">${escapeHtml(cat)}</span>
         <button class="pin-save-btn ${favorited?'saved':''}" data-fav="${it.id}" onclick="event.stopPropagation();window.toggleFavorite('${it.id}');">${favorited?'Saved':'Save'}</button>
-        ${it.linkUrl ? `<a class="pin-link-btn" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
+        ${safeLink ? `<a class="pin-link-btn" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
         <img src="${escapeHtml(directUrl)}" alt="${escapeHtml(it.title)}" loading="lazy"
           onload="this.classList.add('loaded'); this.closest('.card-media').classList.add('img-loaded');"
           onerror="if(!this.dataset.retry){this.dataset.retry='true'; this.src='https://wsrv.nl/?url=' + encodeURIComponent(this.src) + '&w=420&q=80';}else{this.closest('.card-media').classList.add('broken');}">
@@ -749,13 +864,11 @@ function mapPinCardMarkup(it, idx, list) {
       ${adminBarHtml}
       ${mediaHtml}
       <div class="pin-info">
-        <div class="pin-title" onclick="window.showPinDetails('${it.id}');">${escapeHtml(it.title)}</div>
-        
-        <div class="pin-creator-bar" onclick="window.showUserCreatedPins('${escapeHtml(it.creatorId)}', '${escapeHtml(it.creatorName || '')}'); event.stopPropagation();">
+        <div class="pin-title" onclick="window.showPinDetails('${it.id}')">${escapeHtml(it.title)}</div>
+        <div class="pin-creator-bar" onclick="event.stopPropagation(); window.showUserCreatedPins('${escapeHtml(it.creatorId||'')}', '${escapeHtml(it.creatorName || '')}')">
           <img class="pin-creator-avatar" src="${escapeHtml(cardCreatorAvatar)}" alt="">
           <span class="pin-creator-name">${escapeHtml(it.creatorUsername || '@anonymous')}</span>
         </div>
-
         <div class="pin-meta">
           <span class="pin-likes" data-like="${it.id}" onclick="event.stopPropagation();window.toggleLike('${it.id}');"><span class="heart">${liked?'♥':'♡'}</span> ${it.likes||0}</span>
           <button class="pin-action-icon" data-action="share" data-id="${it.id}" data-title="${escapeHtml(it.title)}" title="Share">↗ Share</button>
@@ -764,94 +877,90 @@ function mapPinCardMarkup(it, idx, list) {
     </div>`;
 }
 
-// ---------- gallery render ----------
+function mapYoutubeCardMarkup(it, idx) {
+  const coverUrl = it.youtubeThumbnail || `https://img.youtube.com/vi/${it.youtubeId}/hqdefault.jpg`;
+  const favorited = isFavorited(it.id);
+  const liked = isLiked(it.id);
+  const cardCreatorAvatar = getAvatarUrl(it.creatorUsername, it.creatorAvatar);
+
+  return `
+    <div class="photo-card pin-card" style="animation-delay:${Math.min(idx*35,350)}ms">
+      <div class="card-media" onclick="window.showPinDetails('${it.id}')">
+        <span class="media-tag" style="background: #FF0000;">YOUTUBE</span>
+        <button class="pin-save-btn ${favorited?'saved':''}" data-fav="${it.id}" onclick="event.stopPropagation();window.toggleFavorite('${it.id}');">${favorited?'Saved':'Save'}</button>
+        <img src="${escapeHtml(coverUrl)}" alt="${escapeHtml(it.title)}" class="loaded" style="width:100%; display:block;">
+        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.15); display:flex; align-items:center; justify-content:center;">
+          <div style="width:50px; height:50px; background:rgba(230,0,35,0.9); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.5rem; box-shadow:0 0 15px rgba(230,0,35,0.5);">▶</div>
+        </div>
+      </div>
+      <div class="pin-info">
+        <div class="pin-title" onclick="window.showPinDetails('${it.id}')">${escapeHtml(it.title)}</div>
+        <div class="pin-creator-bar" onclick="event.stopPropagation(); window.showUserCreatedPins('${escapeHtml(it.creatorId||'')}', '${escapeHtml(it.creatorName || '')}')">
+          <img class="pin-creator-avatar" src="${escapeHtml(cardCreatorAvatar)}" alt="">
+          <span class="pin-creator-name">${escapeHtml(it.creatorUsername || '@anonymous')}</span>
+        </div>
+        <div class="pin-meta">
+          <span class="pin-likes" data-like="${it.id}" onclick="event.stopPropagation();window.toggleLike('${it.id}');"><span class="heart">${liked?'♥':'♡'}</span> ${it.likes||0}</span>
+          <button class="pin-action-icon" data-action="share" data-id="${it.id}" data-title="${escapeHtml(it.title)}" title="Share">↗ Share</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function buildNativeAdCard(idx, adKey){
+  return `<div class="native-ad-card" id="ad-card-placeholder-${idx}">
+      <span class="native-ad-label">Sponsored</span>
+      <div style="padding:10px; text-align:center;">
+        <iframe id="ad-iframe-${adKey}-${idx}" style="width:160px;height:300px;border:none;margin:0 auto;display:block;background:transparent;" src="about:blank"></iframe>
+      </div>
+    </div>`;
+}
+function injectIframeAd(iframeId, key, w, h){
+  const iframe = document.getElementById(iframeId);
+  if (!iframe || !iframe.contentWindow) return;
+  try {
+    const adDoc = iframe.contentWindow.document;
+    adDoc.open();
+    adDoc.write(
+      '<html style="margin:0;padding:0;height:100%;width:100%;"><body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;height:100%;width:100%;background:transparent;overflow:hidden;">' +
+      '<script type="text/javascript">atOptions={"key":"' + key + '","format":"iframe","height":' + h + ',"width":' + w + ',"params":{}};</' + 'script>' +
+      '<script type="text/javascript" src="https://biographygridetelegram.com/' + key + '/invoke.js"></' + 'script>' +
+      '</body></html>'
+    );
+    adDoc.close();
+  } catch (err) { console.error('Ad inject failed:', err); }
+}
+
 function renderGallery(){
   if(state.currentView !== 'home') return;
   const grid = document.getElementById('galleryGrid');
-  const list = filteredItems();
-  
+  const list = filteredItems().filter(it => it.type !== 'video');
+  if(!grid) return;
   if(list.length === 0){
     grid.innerHTML = state.items.length === 0
       ? `<div class="empty-state"><h3>Gallery is Empty</h3><p>Be the first to upload an idea using the "Create" button!</p></div>`
       : `<div class="empty-state"><h3>No results found</h3><p>Try searching for something else.</p></div>`;
-    document.getElementById('loadMoreContainer').innerHTML = '';
     return;
   }
 
   let htmlCards = [];
   list.forEach((it, idx) => {
     htmlCards.push(mapPinCardMarkup(it, idx, list));
-
-    // Dynamic High-CTR Ad Slot insertion: Installs 160x300 vertical ads inside the masonry cards list
-    if ((idx + 1) % 6 === 0) {
-      htmlCards.push(`
-        <div class="photo-card pin-card" style="break-inside:avoid;" id="ad-card-placeholder-${idx}"></div>
-      `);
-    }
+    if ((idx + 1) % 6 === 0) htmlCards.push(buildNativeAdCard(idx, 'grid'));
   });
-
   grid.innerHTML = htmlCards.join('');
 
-  // Sandbox Iframe loader trick to force dynamically generated JavaScript Adsterra codes to execute inside Masonry cards
   list.forEach((it, idx) => {
     if ((idx + 1) % 6 === 0) {
-      const placeholder = document.getElementById(`ad-card-placeholder-${idx}`);
-      if (placeholder) {
-        placeholder.innerHTML = `
-          <div style="padding: 10px; text-align: center; background: rgba(255,255,255,0.02); border-radius:16px;">
-            <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-2); display: block; margin-bottom: 8px;">Sponsored</span>
-            <iframe id="ad-iframe-160-${idx}" style="width:160px; height:300px; border:none; margin:0 auto; display:block; background: transparent;" src="about:blank"></iframe>
-          </div>
-        `;
-        // Safe timeout thread execution to ensure the placeholder element is securely painted in the DOM first
-        setTimeout(() => {
-          const iframe = document.getElementById(`ad-iframe-160-${idx}`);
-          if (iframe && iframe.contentWindow) {
-            try {
-              const adDoc = iframe.contentWindow.document;
-              adDoc.open();
-              adDoc.write(`
-                <html style="margin:0; padding:0; height:100%; width:100%;">
-                <body style="margin:0; padding:0; display:flex; justify-content:center; align-items:center; height:100%; width:100%; background:transparent; overflow:hidden;">
-                  <script type="text/javascript">
-                    atOptions = {
-                      'key' : '9b29e6d75ac5a5521e42b92672c049fe',
-                      'format' : 'iframe',
-                      'height' : 300,
-                      'width' : 160,
-                      'params' : {}
-                    };
-                  <\/script>
-                  <script type="text/javascript" src="https://biographygridetelegram.com/9b29e6d75ac5a5521e42b92672c049fe/invoke.js"><\/script>
-                </body>
-                </html>
-              `);
-              adDoc.close();
-            } catch (err) { console.error("Dynamic Adsterra Load Error: ", err); }
-          }
-        }, 120);
-      }
+      setTimeout(() => injectIframeAd(`ad-iframe-grid-${idx}`, '9b29e6d75ac5a5521e42b92672c049fe', 160, 300), 120);
     }
   });
 
-  // Load More Pagination Button
-  const loadMoreContainer = document.getElementById('loadMoreContainer');
-  if(state.items.length >= state.limit) {
-    loadMoreContainer.innerHTML = `<button class="btn-ghost" id="loadMoreBtn" style="border-radius:24px;">Load More ⬇</button>`;
-    document.getElementById('loadMoreBtn').addEventListener('click', ()=>{
-      state.limit += 15; 
-      subscribeToFirestore();
-    });
-  } else {
-    loadMoreContainer.innerHTML = '';
-  }
-
-  // Bind Grid Actions
   grid.querySelectorAll('[data-action="share"]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ 
-      e.stopPropagation(); 
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
       const item = state.items.find(p => p.id === btn.dataset.id);
-      if (item) openSharePopover(btn, siteShareUrl(item), item.title); 
+      if (item) openSharePopover(btn, siteShareUrl(item), item.title);
     });
   });
   grid.querySelectorAll('[data-edit-card]').forEach(btn=>{
@@ -873,17 +982,142 @@ function renderGallery(){
   });
 }
 
-// ---------- profile page view rendering ----------
+function renderYoutubeView() {
+  const grid = document.getElementById('youtubeGrid');
+  if (!grid || state.currentView !== 'videos') return;
+  const ytItems = state.items.filter(it => it.type === 'video' && it.videoPlatform === 'youtube');
+  if(ytItems.length === 0){
+    grid.innerHTML = `<div class="empty-state"><h3>No YouTube Videos Uploaded</h3><p>Upload standard YouTube links to see them here.</p></div>`;
+    return;
+  }
+  let cards = [];
+  ytItems.forEach((it, idx) => {
+    cards.push(mapYoutubeCardMarkup(it, idx));
+    if ((idx + 1) % 5 === 0) cards.push(buildNativeAdCard(idx, 'yt'));
+  });
+  grid.innerHTML = cards.join('');
+  ytItems.forEach((it, idx) => {
+    if ((idx + 1) % 5 === 0) {
+      setTimeout(() => injectIframeAd(`ad-iframe-yt-${idx}`, '9b29e6d75ac5a5521e42b92672c049fe', 160, 300), 120);
+    }
+  });
+  grid.querySelectorAll('[data-action="share"]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      const item = state.items.find(p => p.id === btn.dataset.id);
+      if (item) openSharePopover(btn, siteShareUrl(item), item.title);
+    });
+  });
+}
+
+function renderReelsView() {
+  const container = document.getElementById('reelsView');
+  if(!container || state.currentView !== 'reels') return;
+  const reelItems = state.items.filter(it => it.type === 'image' || !it.type || (it.type==='video' && it.videoPlatform!=='youtube'));
+
+  if(reelItems.length === 0){
+    container.innerHTML = `<div class="empty-state" style="padding-top:150px"><h3>No Pic Reels Uploaded</h3><p>Upload images to see them here.</p></div>`;
+    return;
+  }
+
+  let reelsHtmlArr = [];
+  reelItems.forEach((it, idx) => {
+    const avatarUrl = getAvatarUrl(it.creatorUsername, it.creatorAvatar);
+    const liked = isLiked(it.id);
+    const faved = isFavorited(it.id);
+    const safeLink = isSafeHttpUrl(it.linkUrl) ? it.linkUrl : null;
+    const actionLabel = it.linkLabel || 'Visit Website ↗';
+
+    const ctaBtnHtml = safeLink ? `
+      <a href="${escapeHtml(safeLink)}" target="_blank" rel="noopener" class="btn-glow" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 24px; border-radius:30px; font-weight:700; text-decoration:none; box-shadow:0 0 20px rgba(230,0,35,0.6); animation: pulseGlow 2s infinite; font-size:0.9rem; margin-top:10px; width:fit-content; background:linear-gradient(135deg, var(--pinterest-red), var(--pinterest-red-hover));">
+        ${escapeHtml(actionLabel)}
+      </a>` : `
+      <button onclick="window.showPinDetails('${it.id}')" class="btn-ghost" style="display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 24px; border-radius:30px; font-weight:700; font-size:0.9rem; margin-top:10px; width:fit-content; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.25);">
+        View Details ↗
+      </button>`;
+
+    const isVideo = it.type === 'video';
+    const mediaMarkup = isVideo
+      ? (it.videoPlatform === 'direct'
+          ? `<video src="${escapeHtml(it.videoEmbedUrl)}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>`
+          : `<iframe src="${escapeHtml(it.videoEmbedUrl)}" style="width:100%;height:100%;border:0;" allowfullscreen></iframe>`)
+      : `<img src="${escapeHtml(it.url)}" style="width:100%; height:100%; object-fit:cover; display:block;" onerror="this.src='https://wsrv.nl/?url=' + encodeURIComponent(this.src);">`;
+
+    const adminBarHtml = state.isAdminOpen
+      ? `<div class="slide-admin-bar" style="position: absolute; top: 15px; left: 15px; z-index: 20; background: rgba(0,0,0,0.7); padding: 8px; border-radius: 12px; display: flex; gap: 8px; align-items: center;">
+          <button class="small-btn" onclick="event.stopPropagation(); window.handleSlideEdit('${it.id}');" style="border-color:var(--accent-2); color:var(--accent-2);">Edit</button>
+          <button class="danger-btn" onclick="event.stopPropagation(); window.handleSlideDelete('${it.id}');" style="padding: 6px 11px; font-size: 0.74rem;">Delete</button>
+         </div>`
+      : '';
+
+    reelsHtmlArr.push(`
+      <div class="reel-slide" data-id="${it.id}">
+        ${adminBarHtml}
+        <div class="reel-media-wrapper">${mediaMarkup}</div>
+        <div class="reel-overlay">
+          <div class="reel-creator" onclick="window.showUserCreatedPins('${escapeHtml(it.creatorId||'')}', '${escapeHtml(it.creatorName || '')}')">
+            <img class="reel-creator-img" src="${escapeHtml(avatarUrl)}" alt="">
+            <span>${escapeHtml(it.creatorUsername || '@anonymous')}</span>
+          </div>
+          <div class="reel-title" style="font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">${escapeHtml(it.title)}</div>
+          <div class="reel-story" style="font-size: 0.86rem; color: rgba(255,255,255,0.85); text-shadow: 0 1px 3px rgba(0,0,0,0.8);">${escapeHtml(it.story || '')}</div>
+          ${ctaBtnHtml}
+        </div>
+        <div class="reel-actions">
+          <button class="reel-action-btn" onclick="window.toggleReelLike('${it.id}', this)"><span class="heart-icon" style="color:${liked?'var(--danger)':'#fff'}">${liked?'♥':'♡'}</span><span class="like-count" style="font-size:0.6rem;">${it.likes||0}</span></button>
+          <button class="reel-action-btn" onclick="window.toggleReelFavorite('${it.id}', this)"><span class="fav-icon" style="color:${faved?'#FFD700':'#fff'}">${faved?'★':'☆'}</span><span style="font-size:0.55rem;">Save</span></button>
+          <button class="reel-action-btn" onclick="window.shareReel('${it.id}')">↗<span style="font-size:0.55rem;">Share</span></button>
+        </div>
+      </div>
+    `);
+
+    if ((idx + 1) % 3 === 0) {
+      reelsHtmlArr.push(`
+        <div class="reel-slide" style="scroll-snap-align: start; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;" id="reel-ad-placeholder-${idx}">
+          <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-2); display: block; margin-bottom: 15px;">Sponsored Ad</span>
+          <iframe id="reel-ad-iframe-${idx}" style="width:300px; height:250px; border:none; margin:0 auto; display:block; background: transparent;" src="about:blank"></iframe>
+        </div>
+      `);
+    }
+  });
+
+  /* Sentinel slide at the end — triggers loading more reels when it nears the viewport,
+     instead of relying on a noisy window scroll listener. */
+  reelsHtmlArr.push(`<div class="reels-load-sentinel" style="height:1px; width:100%;"></div>`);
+
+  container.innerHTML = reelsHtmlArr.join('');
+
+  reelItems.forEach((it, idx) => {
+    if ((idx + 1) % 3 === 0) {
+      setTimeout(() => injectIframeAd(`reel-ad-iframe-${idx}`, '55e49a3128311c0a5d12e687f3b0df6a', 300, 250), 150);
+    }
+  });
+
+  setupReelsAutoplayObserver();
+  setupReelsSentinelObserver();
+}
+
+function setupReelsAutoplayObserver() {
+  const slides = document.querySelectorAll('.reel-slide');
+  const observerOptions = { root: document.getElementById('reelsView'), threshold: 0.6 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.dataset.id;
+        if (id) registerView(id);
+      }
+    });
+  }, observerOptions);
+  slides.forEach(slide => observer.observe(slide));
+}
+
 function renderProfileView() {
   const profileContainer = document.getElementById('profileView');
   if (!profileContainer || state.currentView !== 'profile') return;
-
   const prof = getLocalProfile();
   const avatarUrl = getAvatarUrl(prof.username, prof.avatar);
-
   const createdPins = state.items.filter(it => it.creatorId === prof.userId);
   const savedPins = state.items.filter(it => isFavorited(it.id));
-
   const listToRender = state.profileSubtab === 'created' ? createdPins : savedPins;
 
   let gridCardsHtml = '';
@@ -901,88 +1135,92 @@ function renderProfileView() {
       <p class="profile-bio">${escapeHtml(prof.bio)}</p>
       <button class="btn-ghost" id="editProfileOpenBtn" style="border-radius:20px; padding:8px 16px; font-size:0.8rem;">Edit Profile</button>
     </div>
-
     <div class="profile-subtabs">
       <button class="profile-subtab-btn ${state.profileSubtab === 'created' ? 'active' : ''}" id="profTabCreated">Created</button>
       <button class="profile-subtab-btn ${state.profileSubtab === 'saved' ? 'active' : ''}" id="profTabSaved">Saved</button>
     </div>
-
     <div class="gallery-section" style="padding-left:0; padding-right:0;">
       <div class="gallery-grid" id="profileGrid" style="text-align:center"></div>
     </div>
   `;
 
   const profileGrid = profileContainer.querySelector('.gallery-grid');
-  profileGrid.innerHTML = gridCardsHtml;
+  if (profileGrid) profileGrid.innerHTML = gridCardsHtml;
+  if (profileGrid) {
+    profileGrid.querySelectorAll('[data-action="share"]').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); const item = state.items.find(p => p.id === btn.dataset.id); if (item) openSharePopover(btn, siteShareUrl(item), item.title); });
+    });
+  }
+  const editProfileOpenBtnEl = document.getElementById('editProfileOpenBtn');
+  if (editProfileOpenBtnEl) editProfileOpenBtnEl.addEventListener('click', openEditProfileModal);
 
-  // Bind profile gallery actions
-  profileGrid.querySelectorAll('[data-action="share"]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const item = state.items.find(p => p.id === btn.dataset.id); if (item) openSharePopover(btn, siteShareUrl(item), item.title); });
-  });
-
-  document.getElementById('editProfileOpenBtn').addEventListener('click', openEditProfileModal);
-  
-  document.getElementById('profTabCreated').addEventListener('click', () => {
-    state.profileSubtab = 'created';
-    renderProfileView();
-  });
-  document.getElementById('profTabSaved').addEventListener('click', () => {
-    state.profileSubtab = 'saved';
-    renderProfileView();
-  });
+  const profTabCreated = document.getElementById('profTabCreated');
+  const profTabSaved = document.getElementById('profTabSaved');
+  if (profTabCreated) profTabCreated.addEventListener('click', ()=>{ state.profileSubtab = 'created'; renderProfileView(); });
+  if (profTabSaved) profTabSaved.addEventListener('click', ()=>{ state.profileSubtab = 'saved'; renderProfileView(); });
 }
 
-// Filter and view user created posts by clicking username on card
 function showUserCreatedPins(creatorId, creatorName) {
   state.activeCategory = 'all';
   state.search = '';
-  document.getElementById('searchInput').value = '';
-  state.currentView = 'home';
-  document.getElementById('profileView').hidden = true;
-  document.getElementById('mainFeedView').hidden = false;
-  
-  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btnNavHome').classList.add('active');
-
-  const userPins = state.items.filter(it => it.creatorId === creatorId);
+  const searchInputEl = document.getElementById('searchInput');
+  if (searchInputEl) searchInputEl.value = '';
+  switchView('home');
+  const userPins = state.items.filter(it => it.creatorId === creatorId && it.type !== 'video');
   const grid = document.getElementById('galleryGrid');
-  
+  if(!grid) return;
   if(userPins.length === 0){
     grid.innerHTML = `<div class="empty-state"><h3>No pins uploaded</h3></div>`;
     return;
   }
   grid.innerHTML = userPins.map((it, idx) => mapPinCardMarkup(it, idx, userPins)).join('');
-  document.getElementById('loadMoreContainer').innerHTML = '';
+  grid.querySelectorAll('[data-action="share"]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const item = state.items.find(p => p.id === btn.dataset.id); if (item) openSharePopover(btn, siteShareUrl(item), item.title); });
+  });
   showToast(`Showing pins created by ${creatorName || 'user'}`, 'success');
 }
 
-// ---------- Show individual pin details inside zoom lightbox ----------
 function showPinDetails(id) {
   const idx = state.items.findIndex(p => p.id === id);
-  if (idx >= 0) {
-    openLightbox(state.items, idx);
-  }
+  if (idx >= 0) openLightbox(state.items, idx);
 }
 
-// ---------- Switch Home vs Profile views ----------
 function switchView(target) {
   state.currentView = target;
+  document.getElementById('mainFeedView').hidden = true;
+  document.getElementById('profileView').hidden = true;
+  document.getElementById('reelsView').hidden = true;
+  document.getElementById('youtubeFeedView').hidden = true;
+  document.getElementById('mainHeader').hidden = false;
+  document.getElementById('mainFooter').hidden = false;
+  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
+
   if(target === 'profile') {
-    document.getElementById('mainFeedView').hidden = true;
     document.getElementById('mainHeader').hidden = true;
     document.getElementById('mainFooter').hidden = true;
     document.getElementById('profileView').hidden = false;
+    document.getElementById('btnNavProfile').classList.add('active');
     renderProfileView();
+  } else if (target === 'reels') {
+    document.getElementById('mainHeader').hidden = true;
+    document.getElementById('mainFooter').hidden = true;
+    document.getElementById('reelsView').hidden = false;
+    document.getElementById('btnNavReels').classList.add('active');
+    renderReelsView();
+  } else if (target === 'videos') {
+    document.getElementById('youtubeFeedView').hidden = false;
+    document.getElementById('btnNavVideos').classList.add('active');
+    renderYoutubeView();
+    setupSentinelObserver();
   } else {
-    document.getElementById('profileView').hidden = true;
     document.getElementById('mainFeedView').hidden = false;
-    document.getElementById('mainHeader').hidden = false;
-    document.getElementById('mainFooter').hidden = false;
+    document.getElementById('btnNavHome').classList.add('active');
+    renderPillBar();
     renderGallery();
+    setupSentinelObserver();
   }
 }
 
-// ---------- edit profile handlers ----------
 function openEditProfileModal() {
   const prof = getLocalProfile();
   document.getElementById('profileFormName').value = prof.name;
@@ -991,43 +1229,301 @@ function openEditProfileModal() {
   document.getElementById('profileFormBio').value = prof.bio;
   document.getElementById('editProfileModal').hidden = false;
 }
-document.getElementById('editProfileClose').addEventListener('click', () => {
-  document.getElementById('editProfileModal').hidden = true;
+
+/* ---------- Lightbox ---------- */
+function openLightbox(list, idx){
+  state.lightboxList = list;
+  state.lightboxIdx = idx;
+  renderLightbox();
+  document.getElementById('lightbox').hidden = false;
+  const it = list[idx];
+  if (it) registerView(it.id);
+}
+function closeLightbox(){
+  document.getElementById('lightbox').hidden = true;
+  state.lightboxIdx = null;
+}
+function navLightbox(dir){
+  if(state.lightboxIdx === null) return;
+  let newIdx = state.lightboxIdx + dir;
+  if(newIdx < 0) newIdx = state.lightboxList.length - 1;
+  if(newIdx >= state.lightboxList.length) newIdx = 0;
+  state.lightboxIdx = newIdx;
+  renderLightbox();
+  const it = state.lightboxList[newIdx];
+  if (it) registerView(it.id);
+}
+function renderLightbox(){
+  const it = state.lightboxList[state.lightboxIdx];
+  if(!it) return;
+  const mediaSlot = document.getElementById('lightboxMediaSlot');
+  const topLinkSlot = document.getElementById('lightboxTopLinkSlot');
+  const safeLink = isSafeHttpUrl(it.linkUrl) ? it.linkUrl : null;
+
+  if(it.type === 'video'){
+    let inner = it.videoPlatform === 'direct'
+      ? `<video src="${escapeHtml(it.videoEmbedUrl)}" controls autoplay style="width:100%;height:100%;"></video>`
+      : `<iframe src="${escapeHtml(it.videoEmbedUrl)}" allowfullscreen></iframe>`;
+    mediaSlot.innerHTML = `<div class="lightbox-video-wrap">${inner}</div>`;
+  } else {
+    mediaSlot.innerHTML = `<div class="lightbox-img-wrap"><img src="${escapeHtml(it.url)}" alt="${escapeHtml(it.title)}"></div>`;
+  }
+
+  topLinkSlot.innerHTML = safeLink
+    ? `<a class="outbound-badge-glow" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener">↗ ${escapeHtml(it.linkLabel || 'Visit Website')}</a>`
+    : '';
+
+  document.getElementById('lightboxCaption').textContent = it.title || '';
+  document.getElementById('lightboxMeta').textContent = `${(it.category || 'General')} · ${escapeHtml(it.creatorUsername || '@anonymous')}`;
+  document.getElementById('lightboxStory').textContent = it.story || '';
+  document.getElementById('lightboxViews').textContent = `${it.views || 0} views`;
+
+  const liked = isLiked(it.id);
+  const favorited = isFavorited(it.id);
+  document.getElementById('lightboxBtns').innerHTML = `
+    <button class="btn-ghost" onclick="window.toggleLike('${it.id}')">${liked?'♥':'♡'} ${it.likes||0} Likes</button>
+    <button class="btn-ghost" onclick="window.toggleFavorite('${it.id}')">${favorited?'★ Saved':'☆ Save'}</button>
+    <button class="btn-ghost" id="lightboxShareBtn">↗ Share</button>
+  `;
+  const shareBtn = document.getElementById('lightboxShareBtn');
+  if (shareBtn) shareBtn.addEventListener('click', (e)=> openSharePopover(e.target, siteShareUrl(it), it.title));
+}
+
+/* ---------- Share popover ---------- */
+function closeSharePopoverIfOpen(){
+  const existing = document.querySelector('.share-popover');
+  if (existing) existing.remove();
+}
+function openSharePopover(anchorEl, url, title){
+  closeSharePopoverIfOpen();
+  const rect = anchorEl.getBoundingClientRect();
+  const pop = document.createElement('div');
+  pop.className = 'share-popover';
+  pop.style.top = `${Math.min(rect.bottom + 6, window.innerHeight - 220)}px`;
+  pop.style.left = `${Math.min(rect.left, window.innerWidth - 230)}px`;
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title || '');
+  pop.innerHTML = `
+    <div class="sp-title">Share this pin</div>
+    <a href="https://wa.me/?text=${encodedTitle}%20${encodedUrl}" target="_blank" rel="noopener">📱 WhatsApp</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" rel="noopener">📘 Facebook</a>
+    <a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener">🐦 Twitter / X</a>
+    <a href="https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}" target="_blank" rel="noopener">✈️ Telegram</a>
+    <button id="spCopyBtn">🔗 Copy Link</button>
+  `;
+  document.body.appendChild(pop);
+  pop.querySelector('#spCopyBtn').addEventListener('click', async ()=>{
+    try{ await navigator.clipboard.writeText(url); showToast('Link copied!', 'success'); }
+    catch(e){ showToast('Could not copy link', 'error'); }
+    pop.remove();
+  });
+  setTimeout(()=>{
+    document.addEventListener('click', function handler(e){
+      if(!pop.contains(e.target)){ pop.remove(); document.removeEventListener('click', handler); }
+    });
+  }, 10);
+}
+
+/* ---------- Likes / Favorites ---------- */
+async function toggleLike(id){
+  const liked = isLiked(id);
+  try{
+    await updateDoc(doc(db, 'gallery_items', id), { likes: increment(liked ? -1 : 1) });
+    if(liked) safeStorage.removeItem('lumen_liked_' + id);
+    else safeStorage.setItem('lumen_liked_' + id, '1');
+  }catch(err){ showToast('Action failed', 'error'); console.error(err); }
+}
+function toggleFavorite(id){
+  const favorited = isFavorited(id);
+  if(favorited){ safeStorage.removeItem('lumen_fav_' + id); showToast('Removed from saved', 'success'); }
+  else { safeStorage.setItem('lumen_fav_' + id, '1'); showToast('Saved!', 'success'); }
+  renderAll();
+}
+async function registerView(id){
+  const key = 'lumen_viewed_' + id;
+  if (safeStorage.getItem(key)) return;
+  safeStorage.setItem(key, '1');
+  try{ await updateDoc(doc(db, 'gallery_items', id), { views: increment(1) }); }catch(e){}
+}
+
+/* ---------- Admin open/close with passcode ---------- */
+function openAdmin(){
+  const entered = window.prompt('Enter admin passcode:');
+  if (entered === null) return;
+  if (entered !== ADMIN_PASSCODE){ showToast('Incorrect passcode', 'error'); return; }
+  state.isAdminOpen = true;
+  document.getElementById('adminDrawer').hidden = false;
+  document.getElementById('adminModeTag').hidden = false;
+  renderAdminItemList();
+  updateAdminStats();
+  renderAll();
+}
+function closeAdmin(){
+  state.isAdminOpen = false;
+  document.getElementById('adminDrawer').hidden = true;
+  document.getElementById('adminModeTag').hidden = true;
+  state.editItemId = null;
+  state.editItemType = null;
+  renderAll();
+}
+function updateAdminStats(){
+  const images = state.items.filter(it => it.type !== 'video').length;
+  const reels = state.items.filter(it => it.type === 'video' && it.videoPlatform !== 'youtube').length;
+  const yt = state.items.filter(it => it.type === 'video' && it.videoPlatform === 'youtube').length;
+  const si = document.getElementById('statImages'); if(si) si.textContent = images;
+  const sr = document.getElementById('statReels'); if(sr) sr.textContent = reels;
+  const sy = document.getElementById('statYoutube'); if(sy) sy.textContent = yt;
+}
+
+function renderAdminItemList(){
+  const listEl = document.getElementById('adminItemList');
+  if(!listEl) return;
+  const filterVal = document.getElementById('adminFilterSelect') ? document.getElementById('adminFilterSelect').value : 'all';
+  let list = state.items.slice();
+  if(filterVal === 'image') list = list.filter(it => it.type !== 'video');
+  else if(filterVal === 'reel') list = list.filter(it => it.type === 'video' && it.videoPlatform !== 'youtube');
+  else if(filterVal === 'youtube') list = list.filter(it => it.type === 'video' && it.videoPlatform === 'youtube');
+
+  const heading = document.getElementById('adminCountHeading');
+  if (heading) heading.textContent = `Manage All (${list.length})`;
+
+  if(list.length === 0){ listEl.innerHTML = `<div class="form-hint">No items match this filter.</div>`; return; }
+
+  listEl.innerHTML = list.map(it => {
+    const thumb = it.type === 'video'
+      ? (it.youtubeThumbnail ? `<img src="${escapeHtml(it.youtubeThumbnail)}">` : `<div class="admin-item-thumb">🎬</div>`)
+      : `<img src="${escapeHtml(it.url)}">`;
+    const confirming = state.pendingDelete === it.id;
+    return `
+      <div class="admin-item-row">
+        ${thumb}
+        <div class="admin-item-meta">
+          <div class="cap">${escapeHtml(it.title)}</div>
+          <div class="cat">${escapeHtml(it.category || 'General')} · ${escapeHtml(it.type || 'image')}</div>
+        </div>
+        ${confirming
+          ? `<div class="row-confirm"><span>Sure?</span><button class="small-btn" data-cancel-del="${it.id}">No</button><button class="danger-btn" data-confirm-del="${it.id}">Delete</button></div>`
+          : `<button class="small-btn" data-admin-edit="${it.id}">Edit</button><button class="icon-btn-del" data-admin-del="${it.id}">🗑</button>`
+        }
+      </div>`;
+  }).join('');
+
+  listEl.querySelectorAll('[data-admin-edit]').forEach(b=> b.addEventListener('click', ()=> handleEditLoad(b.dataset.adminEdit)));
+  listEl.querySelectorAll('[data-admin-del]').forEach(b=> b.addEventListener('click', ()=>{ state.pendingDelete = b.dataset.adminDel; renderAdminItemList(); }));
+  listEl.querySelectorAll('[data-cancel-del]').forEach(b=> b.addEventListener('click', ()=>{ state.pendingDelete = null; renderAdminItemList(); }));
+  listEl.querySelectorAll('[data-confirm-del]').forEach(b=> b.addEventListener('click', async ()=>{
+    try{ await deleteDoc(doc(db, 'gallery_items', b.dataset.confirmDel)); showToast('Deleted', 'success'); }
+    catch(err){ showToast('Delete failed', 'error'); }
+    state.pendingDelete = null;
+  }));
+}
+
+function handleEditLoad(id){
+  const it = state.items.find(p => p.id === id);
+  if(!it) return;
+  state.editItemId = id;
+  state.editItemType = it.type;
+  if(!state.isAdminOpen){
+    const entered = window.prompt('Enter admin passcode to edit:');
+    if (entered !== ADMIN_PASSCODE){ showToast('Incorrect passcode', 'error'); state.editItemId = null; return; }
+    state.isAdminOpen = true;
+    document.getElementById('adminModeTag').hidden = false;
+  }
+  document.getElementById('adminDrawer').hidden = false;
+
+  if(it.type === 'video'){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tabVideoBtn').classList.add('active');
+    document.getElementById('tab-upload').hidden = true;
+    document.getElementById('tab-video').hidden = false;
+    document.getElementById('tab-manage').hidden = true;
+    document.getElementById('videoUrlInput').value = it.rawVideoUrl || '';
+    document.getElementById('videoTitleInput').value = it.title || '';
+    document.getElementById('videoStoryInput').value = it.story || '';
+    document.getElementById('videoCatInput').value = it.category || '';
+    document.getElementById('videoLinkUrlInput').value = it.linkUrl || '';
+    document.getElementById('videoLinkLabelInput').value = it.linkLabel || '';
+    document.getElementById('videoSubmitBtn').textContent = 'Update Video';
+  } else {
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('tabUploadBtn').classList.add('active');
+    document.getElementById('tab-upload').hidden = false;
+    document.getElementById('tab-video').hidden = true;
+    document.getElementById('tab-manage').hidden = true;
+    document.getElementById('imageLinksInput').value = it.url || '';
+    document.getElementById('uploadTitleInput').value = it.title || '';
+    document.getElementById('uploadStoryInput').value = it.story || '';
+    document.getElementById('uploadCatInput').value = it.category || '';
+    document.getElementById('uploadLinkUrlInput').value = it.linkUrl || '';
+    document.getElementById('uploadLinkLabelInput').value = it.linkLabel || '';
+    document.getElementById('uploadSubmitBtn').textContent = 'Update Post';
+    document.getElementById('bulkUploadHint').textContent = 'Editing existing post — single link only.';
+  }
+}
+
+function renderAll(){
+  renderPillBar();
+  updateAdminStats();
+  if (state.isAdminOpen) renderAdminItemList();
+  if (state.currentView === 'home') renderGallery();
+  else if (state.currentView === 'videos') renderYoutubeView();
+  else if (state.currentView === 'reels') renderReelsView();
+  else if (state.currentView === 'profile') renderProfileView();
+  if (state.lightboxIdx !== null && !document.getElementById('lightbox').hidden) {
+    const stillExists = state.items.find(it => it.id === (state.lightboxList[state.lightboxIdx]||{}).id);
+    if (stillExists) {
+      state.lightboxList = state.items;
+      state.lightboxIdx = state.items.findIndex(it => it.id === stillExists.id);
+      renderLightbox();
+    } else {
+      closeLightbox();
+    }
+  }
+}
+
+function safeBind(id, event, callback) {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener(event, callback);
+}
+
+safeBind('searchInput', 'input', (e)=>{ state.search = e.target.value; renderAll(); });
+safeBind('sortSelect', 'change', (e)=>{ state.sort = e.target.value; renderAll(); });
+safeBind('drawerClose', 'click', closeAdmin);
+safeBind('drawerBackdrop', 'click', closeAdmin);
+safeBind('lightboxClose', 'click', closeLightbox);
+safeBind('lightboxPrev', 'click', ()=>navLightbox(-1));
+safeBind('lightboxNext', 'click', ()=>navLightbox(1));
+safeBind('lightbox', 'click', (e)=>{ if(e.target.id==='lightbox') closeLightbox(); });
+safeBind('adminFilterSelect', 'change', renderAdminItemList);
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-upload').hidden = btn.dataset.tab !== 'upload';
+    document.getElementById('tab-video').hidden = btn.dataset.tab !== 'video';
+    document.getElementById('tab-manage').hidden = btn.dataset.tab !== 'manage';
+    if(btn.dataset.tab === 'manage') renderAdminItemList();
+  });
 });
-document.getElementById('editProfileForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  let username = document.getElementById('profileFormUsername').value.trim();
-  if(!username.startsWith('@')) username = '@' + username;
 
-  localStorage.setItem('lumen_user_name', document.getElementById('profileFormName').value.trim());
-  localStorage.setItem('lumen_user_username', username);
-  localStorage.setItem('lumen_user_avatar', document.getElementById('profileFormAvatar').value.trim());
-  localStorage.setItem('lumen_user_bio', document.getElementById('profileFormBio').value.trim());
-
-  document.getElementById('editProfileModal').hidden = true;
-  showToast('Profile updated successfully!', 'success');
-  renderProfileView();
-});
-
-// ---------- Create Pin Modal Overlay Events ----------
-document.getElementById('pubTypeSelect').addEventListener('change', (e) => {
+safeBind('pubTypeSelect', 'change', (e) => {
   const label = document.getElementById('pubSourceLabel');
   const input = document.getElementById('pubSourceUrl');
-  if (e.target.value === 'video') {
-    label.textContent = 'Video URL (YouTube, Vimeo, MP4)';
-    input.placeholder = 'https://www.youtube.com/... or vimeo or .mp4 link';
-  } else {
-    label.textContent = 'Image URL';
-    input.placeholder = 'https://example.com/image.jpg';
+  if (label && input) {
+    if (e.target.value === 'video') {
+      label.textContent = 'Video URL (TikTok, YouTube, Vimeo, MP4)';
+      input.placeholder = 'TikTok, YouTube, Vimeo or MP4 link';
+    } else {
+      label.textContent = 'Image URL';
+      input.placeholder = 'https://example.com/image.jpg';
+    }
   }
 });
-
-document.getElementById('publicCreateClose').addEventListener('click', () => {
-  document.getElementById('publicCreateModal').hidden = true;
-});
-
-document.getElementById('publicCreateForm').addEventListener('submit', async (e) => {
+safeBind('publicCreateClose', 'click', () => { document.getElementById('publicCreateModal').hidden = true; });
+safeBind('publicCreateForm', 'submit', async (e) => {
   e.preventDefault();
+  if (!checkRateLimit()) { showToast('Too many posts too fast — please wait a minute and try again.', 'error'); return; }
   const type = document.getElementById('pubTypeSelect').value;
   const sourceUrl = document.getElementById('pubSourceUrl').value.trim();
   const title = document.getElementById('pubTitle').value.trim();
@@ -1037,40 +1533,36 @@ document.getElementById('publicCreateForm').addEventListener('submit', async (e)
   const linkLabel = document.getElementById('pubLinkLabel').value.trim();
   const submitBtn = e.target.querySelector('button[type="submit"]');
 
-  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
+  if(linkUrl && !isSafeHttpUrl(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
+  if(title.length > 120){ showToast('Title too long (max 120 chars)', 'error'); return; }
+  if(story.length > 1000){ showToast('Story too long (max 1000 chars)', 'error'); return; }
 
   submitBtn.disabled = true;
-
   try {
     const prof = getLocalProfile();
     const payload = {
-      title,
-      story,
-      category,
-      linkUrl: linkUrl || null,
-      linkLabel: linkLabel || null,
-      creatorId: prof.userId,
-      creatorUsername: prof.username,
-      creatorName: prof.name,
-      creatorAvatar: prof.avatar,
-      views: 0,
-      likes: 0,
-      createdAt: serverTimestamp()
+      title, story, category,
+      linkUrl: linkUrl || null, linkLabel: linkLabel || null,
+      creatorId: prof.userId, creatorUsername: prof.username,
+      creatorName: prof.name, creatorAvatar: prof.avatar,
+      views: 0, likes: 0, createdAt: serverTimestamp()
     };
-
     if(type === 'video') {
       const detected = detectVideoPlatform(sourceUrl);
-      if(!detected) { showToast('Provide a valid YouTube, Vimeo, or MP4 link', 'error'); submitBtn.disabled = false; return; }
+      if(!detected) { showToast('Provide a valid TikTok, YouTube, Vimeo, or MP4 link', 'error'); submitBtn.disabled = false; return; }
       payload.type = 'video';
       payload.videoPlatform = detected.platform;
       payload.videoEmbedUrl = detected.embedUrl;
       payload.rawVideoUrl = detected.rawUrl;
+      if (detected.platform === 'youtube') {
+        payload.youtubeId = detected.videoId;
+        payload.youtubeThumbnail = detected.thumbnailUrl;
+      }
     } else {
-      if(!/^https?:\/\//i.test(sourceUrl)) { showToast('Provide a valid image http/https URL', 'error'); submitBtn.disabled = false; return; }
+      if(!isSafeHttpUrl(sourceUrl)) { showToast('Provide a valid image http/https URL', 'error'); submitBtn.disabled = false; return; }
       payload.type = 'image';
       payload.url = sourceUrl;
     }
-
     await addDoc(itemsCol, payload);
     showToast('Pin created and published successfully! ✓', 'success');
     document.getElementById('publicCreateForm').reset();
@@ -1082,309 +1574,21 @@ document.getElementById('publicCreateForm').addEventListener('submit', async (e)
   submitBtn.disabled = false;
 });
 
-
-// ---------- like, favorite & view updates ----------
-async function toggleLike(id){
-  const liked = isLiked(id);
-  try{
-    await updateDoc(doc(db, 'gallery_items', id), { likes: increment(liked ? -1 : 1) });
-    if(liked) localStorage.removeItem('lumen_liked_' + id); else localStorage.setItem('lumen_liked_' + id, '1');
-  }catch(e){ showToast('Failed to perform action', 'error'); console.error(e); }
-}
-function toggleFavorite(id){
-  const faved = isFavorited(id);
-  if(faved) {
-    localStorage.removeItem('lumen_fav_' + id);
-    showToast('Removed from saved items', 'success');
-  } else {
-    localStorage.setItem('lumen_fav_' + id, '1');
-    showToast('Saved to Board ★', 'success');
-  }
-  renderAll();
-  if(state.currentView === 'profile') renderProfileView();
-}
-async function registerView(id){
-  const key = 'lumen_viewed_' + id;
-  if(localStorage.getItem(key)) return;
-  localStorage.setItem(key, '1');
-  try{ await updateDoc(doc(db, 'gallery_items', id), { views: increment(1) }); }catch(e){ console.error(e); }
-}
-
-// ---------- share popover ----------
-function closeAnySharePopover(){
-  const pop = document.getElementById('activeSharePopover');
-  if(pop) pop.remove();
-  document.removeEventListener('click', outsideShareCloseHandler, true);
-}
-function outsideShareCloseHandler(e){
-  const pop = document.getElementById('activeSharePopover');
-  if(pop && !pop.contains(e.target)) closeAnySharePopover();
-}
-function openSharePopover(anchorEl, url, title){
-  closeAnySharePopover();
-  const rect = anchorEl.getBoundingClientRect();
-  const enc = encodeURIComponent(url);
-  const encTitle = encodeURIComponent(title || '');
-  const pop = document.createElement('div');
-  pop.className = 'share-popover';
-  pop.id = 'activeSharePopover';
-  pop.innerHTML = `
-    <div class="sp-title">Share Pin</div>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener">📘 Facebook</a>
-    <a href="https://wa.me/?text=${encTitle}%20${enc}" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a href="https://t.me/share/url?url=${enc}&text=${encTitle}" target="_blank" rel="noopener">✈ Telegram</a>
-    <a href="https://twitter.com/intent/tweet?url=${enc}&text=${encTitle}" target="_blank" rel="noopener">𝕏 Twitter / X</a>
-    <button data-copy-link>🔗 Copy Link</button>
-  `;
-  document.body.appendChild(pop);
-  const top = Math.min(rect.bottom + 8, window.innerHeight - 260);
-  const left = Math.min(rect.left, window.innerWidth - 230);
-  pop.style.top = top + 'px';
-  pop.style.left = Math.max(8,left) + 'px';
-  pop.querySelector('[data-copy-link]').addEventListener('click', async ()=>{
-    try{ await navigator.clipboard.writeText(url); showToast('Link copied successfully ✓', 'success'); }
-    catch(e){ showToast('Failed to copy link', 'error'); }
-    closeAnySharePopover();
-  });
-  setTimeout(()=>{ document.addEventListener('click', outsideShareCloseHandler, true); }, 0);
-}
-
-// ---------- lightbox ----------
-function openLightbox(list, idx){
-  state.lightboxList = list; state.lightboxIdx = idx;
-  renderLightbox();
-  document.getElementById('lightbox').hidden = false;
-  const it = list[idx];
-  if(it) registerView(it.id);
-}
-function closeLightbox(){ document.getElementById('lightbox').hidden = true; }
-function navLightbox(delta){
-  const len = state.lightboxList.length;
-  state.lightboxIdx = (state.lightboxIdx + delta + len) % len;
-  renderLightbox();
-  const it = state.lightboxList[state.lightboxIdx];
-  if(it) registerView(it.id);
-}
-function renderLightbox(){
-  const it = state.lightboxList[state.lightboxIdx];
-  if(!it) return;
-  const slot = document.getElementById('lightboxMediaSlot');
-  const btns = document.getElementById('lightboxBtns');
-  const topLinkSlot = document.getElementById('lightboxTopLinkSlot');
-  
-  topLinkSlot.innerHTML = it.linkUrl ? `<a class="outbound-badge-glow" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener">✨ ${escapeHtml(it.linkLabel || 'Visit Website')} ↗</a>` : '';
-
-  if(it.type === 'video'){
-    if(it.videoPlatform === 'direct'){
-      slot.innerHTML = `<div class="lightbox-video-wrap"><video src="${escapeHtml(it.videoEmbedUrl)}" controls autoplay style="width:100%; height:100%; object-fit:contain; background:#000;"></video></div>`;
-    } else {
-      slot.innerHTML = `<div class="lightbox-video-wrap"><iframe src="${escapeHtml(it.videoEmbedUrl)}" allowfullscreen autoplay title="${escapeHtml(it.title)}"></iframe></div>`;
-    }
-  } else {
-    slot.innerHTML = `<div class="lightbox-img-wrap"><img src="${escapeHtml(it.url)}" alt="${escapeHtml(it.title)}" onerror="this.src='${escapeHtml(it.url)}';"></div>`;
-  }
-  
-  const liked = isLiked(it.id);
-  const faved = isFavorited(it.id);
-  let btnsHtml = `
-    <button class="action-btn like ${liked?'liked':''}" id="lbLikeBtn"><span class="heart">${liked?'♥':'♡'}</span> Like (${it.likes||0})</button>
-    <button class="action-btn fav ${faved?'favorited':''}" id="lbFavBtn"><span class="star">${faved?'★':'☆'}</span> Save</button>
-  `;
-  if(it.type === 'video' && it.videoPlatform !== 'direct'){
-    btnsHtml += `<button class="btn-glow" id="ytOpenBtn">▶ Visit Site</button>`;
-  } else {
-    btnsHtml += `<button class="btn-glow" id="lbDownloadBtn">⬇ Download</button>`;
-  }
-  btnsHtml += `<button class="btn-ghost" id="lbShareBtn">↗ Share</button>`;
-  btns.innerHTML = btnsHtml;
-
-  document.getElementById('lbLikeBtn').addEventListener('click', ()=> toggleLike(it.id));
-  document.getElementById('lbFavBtn').addEventListener('click', ()=> { toggleFavorite(it.id); renderLightbox(); });
-  if(it.type === 'video' && it.videoPlatform !== 'direct'){
-    document.getElementById('ytOpenBtn').addEventListener('click', ()=> window.open(it.videoEmbedUrl, '_blank'));
-  } else {
-    document.getElementById('lbDownloadBtn').addEventListener('click', ()=> downloadImage(it.url || it.videoEmbedUrl, it.title));
-  }
-  document.getElementById('lbShareBtn').addEventListener('click', (e)=> openSharePopover(e.currentTarget, siteShareUrl(it), it.title));
-
-  document.getElementById('lightboxCaption').textContent = it.title;
-  document.getElementById('lightboxMeta').textContent = `${it.category || 'General'}  ·  ${state.lightboxIdx+1}/${state.lightboxList.length}`;
-  document.getElementById('lightboxStory').textContent = it.story || '';
-  document.getElementById('lightboxViews').textContent = `${it.views||0} views`;
-}
-
-// ---------- download ----------
-async function fetchAsBlob(url){
-  const resp = await fetch(url, { mode: 'cors' });
-  if(!resp.ok) throw new Error('bad status');
-  return await resp.blob();
-}
-async function downloadImage(url, title){
-  let blob = null;
-  try{
-    blob = await fetchAsBlob(url);
-  }catch(e1){
-    try{
-      blob = await fetchAsBlob('https://wsrv.nl/?url=' + encodeURIComponent(url));
-    }catch(e2){
-      window.open(url, '_blank');
-      showToast('Download failed — opening in new tab', 'error');
-      return;
-    }
-  }
-  try{
-    let ext = (url.split('?')[0].split('.').pop() || 'jpg');
-    if(!/^[a-zA-Z0-9]{2,4}$/.test(ext)) ext = 'jpg';
-    const a = document.createElement('a');
-    const objUrl = URL.createObjectURL(blob);
-    a.href = objUrl; a.download = sanitizeFilename(title) + '.' + ext;
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(objUrl);
-    showToast('Download started ✓', 'success');
-  }catch(e){
-    window.open(url, '_blank');
-    showToast('Opening in new tab', 'error');
-  }
-}
-
-// ---------- super administrator controller drawers ----------
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.hidden = true);
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).hidden = false;
-  });
-});
-function renderCategoryDatalist(){
-  document.getElementById('categoryOptions').innerHTML = allCategoriesUnion().map(c=>`<option value="${escapeHtml(c)}"></option>`).join('');
-}
-
-function handleEditLoad(id) {
-  const it = state.items.find(item => item.id === id);
-  if (!it) return;
-  state.editItemId = it.id;
-
-  if (it.type === 'video') {
-    document.getElementById('tabVideoBtn').click();
-    document.getElementById('videoUrlInput').value = it.rawVideoUrl || it.videoEmbedUrl;
-    document.getElementById('videoTitleInput').value = it.title;
-    document.getElementById('videoStoryInput').value = it.story || '';
-    document.getElementById('videoCatInput').value = it.category || '';
-    document.getElementById('videoLinkUrlInput').value = it.linkUrl || '';
-    document.getElementById('videoLinkLabelInput').value = it.linkLabel || '';
-    document.getElementById('videoSubmitBtn').textContent = 'Update Video';
-  } else {
-    document.getElementById('tabUploadBtn').click();
-    document.getElementById('imageLinksInput').value = it.url;
-    document.getElementById('bulkUploadHint').textContent = "⚠️ Edit mode active. Submit a single image URL.";
-    document.getElementById('uploadTitleInput').value = it.title;
-    document.getElementById('uploadStoryInput').value = it.story || '';
-    document.getElementById('uploadCatInput').value = it.category || '';
-    document.getElementById('uploadLinkUrlInput').value = it.linkUrl || '';
-    document.getElementById('uploadLinkLabelInput').value = it.linkLabel || '';
-    document.getElementById('uploadSubmitBtn').textContent = 'Update Post';
-  }
-  showToast('Form prefilled successfully.', 'success');
-  openAdmin();
-}
-
-function renderAdminItemList(){
-  const wrap = document.getElementById('adminItemList');
-  document.getElementById('adminCountHeading').textContent = `Manage All (${state.items.length})`;
-  if(state.items.length === 0){ wrap.innerHTML = `<span class="form-hint">Nothing uploaded yet.</span>`; return; }
-  const sorted = state.items.slice().sort((a,b)=>timeMs(b)-timeMs(a));
-  wrap.innerHTML = sorted.map(it=>{
-    const confirming = state.pendingDelete === it.id;
-    const thumb = it.type === 'video' ? `<div class="admin-item-thumb">▶</div>` : `<img src="https://wsrv.nl/?url=${encodeURIComponent(it.url)}&w=100&q=70" alt="" onerror="this.style.opacity=0.15">`;
-    return `
-      <div class="admin-item-row">
-        ${thumb}
-        <div class="admin-item-meta"><div class="cap">${escapeHtml(it.title)}</div><div class="cat">${escapeHtml(it.category||'General')} · ${it.type === 'video' ? 'Video' : 'Image'} · ${it.views||0} views · ${it.likes||0} likes</div></div>
-        <button class="small-btn" data-edit-item="${it.id}" style="border-color:var(--accent-2);color:var(--accent-2);margin-right:4px;">Edit</button>
-        ${confirming
-          ? `<div class="row-confirm"><span>Sure?</span><button class="small-btn" data-cancel="${it.id}">No</button><button class="danger-btn" data-confirm="${it.id}">Yes</button></div>`
-          : `<button class="danger-btn" data-del="${it.id}">Delete</button>`}
-      </div>`;
-  }).join('');
-  wrap.querySelectorAll('[data-edit-item]').forEach(b=>b.addEventListener('click', ()=>{ handleEditLoad(b.dataset.editItem); }));
-  wrap.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{ state.pendingDelete = b.dataset.del; renderAdminItemList(); }));
-  wrap.querySelectorAll('[data-cancel]').forEach(b=>b.addEventListener('click', ()=>{ state.pendingDelete = null; renderAdminItemList(); }));
-  wrap.querySelectorAll('[data-confirm]').forEach(b=>b.addEventListener('click', async ()=>{
-    const id = b.dataset.confirm;
-    try{ await deleteDoc(doc(db, 'gallery_items', id)); showToast('Post deleted successfully', 'success'); }
-    catch(e){ showToast('Failed to delete post', 'error'); console.error(e); }
-    state.pendingDelete = null;
-  }));
-}
-
-// ---------- admin open/close ----------
-function openAdmin(){
-  state.isAdminOpen = true;
-  document.getElementById('adminDrawer').hidden = false;
-  document.getElementById('adminModeTag').hidden = false;
-  renderCategoryDatalist(); renderAdminItemList(); renderGallery();
-}
-function closeAdmin(){
-  state.isAdminOpen = false;
-  document.getElementById('adminDrawer').hidden = true;
-  document.getElementById('adminModeTag').hidden = true;
-  renderGallery();
-}
-function renderAll(){
-  renderPillBar(); 
-  if(state.currentView === 'profile') {
-    renderProfileView();
-  } else {
-    renderGallery();
-  }
-  if(state.isAdminOpen){ renderCategoryDatalist(); renderAdminItemList(); }
-}
-
-// ---------- Pinterest Bottom Navigation Events ----------
-document.getElementById('btnNavHome').addEventListener('click', ()=>{
-  switchView('home');
-  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btnNavHome').classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+safeBind('editProfileClose', 'click', () => { document.getElementById('editProfileModal').hidden = true; });
+safeBind('editProfileForm', 'submit', (e) => {
+  e.preventDefault();
+  let username = document.getElementById('profileFormUsername').value.trim();
+  if(!username.startsWith('@')) username = '@' + username;
+  safeStorage.setItem('lumen_user_name', document.getElementById('profileFormName').value.trim());
+  safeStorage.setItem('lumen_user_username', username);
+  safeStorage.setItem('lumen_user_avatar', document.getElementById('profileFormAvatar').value.trim());
+  safeStorage.setItem('lumen_user_bio', document.getElementById('profileFormBio').value.trim());
+  document.getElementById('editProfileModal').hidden = true;
+  showToast('Profile updated successfully!', 'success');
+  renderProfileView();
 });
 
-document.getElementById('btnNavSearch').addEventListener('click', ()=>{
-  switchView('home');
-  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btnNavSearch').classList.add('active');
-  document.getElementById('searchInput').focus();
-  document.getElementById('searchInput').scrollIntoView({behavior:'smooth'});
-});
-
-document.getElementById('btnNavAdd').addEventListener('click', () => {
-  document.getElementById('publicCreateModal').hidden = false;
-});
-
-document.getElementById('btnNavProfile').addEventListener('click', ()=>{
-  switchView('profile');
-  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
-  document.getElementById('btnNavProfile').classList.add('active');
-});
-
-// ---------- general events ----------
-document.getElementById('searchInput').addEventListener('input', (e)=>{ state.search = e.target.value; renderGallery(); });
-document.getElementById('sortSelect').addEventListener('change', (e)=>{ state.sort = e.target.value; renderGallery(); });
-document.getElementById('drawerClose').addEventListener('click', closeAdmin);
-document.getElementById('drawerBackdrop').addEventListener('click', closeAdmin);
-document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-document.getElementById('lightboxPrev').addEventListener('click', ()=>navLightbox(-1));
-document.getElementById('lightboxNext').addEventListener('click', ()=>navLightbox(1));
-document.getElementById('lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox') closeLightbox(); });
-document.addEventListener('keydown', (e)=>{
-  if(document.getElementById('lightbox').hidden) return;
-  if(e.key === 'Escape') closeLightbox();
-  if(e.key === 'ArrowLeft') navLightbox(-1);
-  if(e.key === 'ArrowRight') navLightbox(1);
-});
-
-// ---------- admin upload form (multi link or edit update) ----------
-document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
+safeBind('uploadForm', 'submit', async (e)=>{
   e.preventDefault();
   const raw = document.getElementById('imageLinksInput').value;
   const title = document.getElementById('uploadTitleInput').value.trim();
@@ -1395,30 +1599,26 @@ document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
   const submitBtn = document.getElementById('uploadSubmitBtn');
   const progressEl = document.getElementById('uploadProgress');
 
-  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
-
+  if(linkUrl && !isSafeHttpUrl(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
   submitBtn.disabled = true;
 
   if (state.editItemId) {
     try {
       await updateDoc(doc(db, "gallery_items", state.editItemId), {
-        url: raw.trim(), title, story, category,
-        linkUrl: linkUrl || null, linkLabel: linkLabel || null
+        type: 'image', url: raw.trim(), title, story, category,
+        linkUrl: linkUrl || null, linkLabel: linkLabel || null,
+        videoPlatform: null, videoEmbedUrl: null, rawVideoUrl: null, youtubeId: null, youtubeThumbnail: null
       });
       showToast('Post updated successfully ✓', 'success');
       state.editItemId = null;
       submitBtn.textContent = 'Submit';
       document.getElementById('bulkUploadHint').textContent = "Title, story, and visit link will be identical for all links.";
       document.getElementById('uploadForm').reset();
-    } catch(err) {
-      console.error(err);
-      showToast('Update failed!', 'error');
-    }
+    } catch(err) { showToast('Update failed!', 'error'); }
   } else {
     const lines = raw.split('\n').map(s=>s.trim()).filter(s=>s.length>0);
-    const validLinks = lines.filter(l=>/^https?:\/\//i.test(l));
+    const validLinks = lines.filter(l=>isSafeHttpUrl(l));
     const invalidCount = lines.length - validLinks.length;
-
     if(validLinks.length === 0){ showToast('Provide at least one valid image URL', 'error'); submitBtn.disabled = false; return; }
     if(!title){ showToast('Title is required', 'error'); submitBtn.disabled = false; return; }
 
@@ -1430,17 +1630,12 @@ document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
         await addDoc(itemsCol, {
           type: 'image', url, title, story, category,
           linkUrl: linkUrl || null, linkLabel: linkLabel || null,
-          creatorId: prof.userId,
-          creatorUsername: prof.username,
-          creatorName: prof.name,
-          creatorAvatar: prof.avatar,
+          creatorId: prof.userId, creatorUsername: prof.username,
+          creatorName: prof.name, creatorAvatar: prof.avatar,
           views: 0, likes: 0, createdAt: serverTimestamp()
         });
         done++;
-      }catch(err){
-        console.error(err);
-        showToast('Upload failed', 'error');
-      }
+      }catch(err){ console.error(err); }
     }
     progressEl.textContent = done > 0 ? `${done} image(s) uploaded ✓` : '';
     if(done > 0) showToast(`${done} image(s) uploaded ✓${invalidCount? ` (${invalidCount} links were invalid)`:''}`, 'success');
@@ -1450,8 +1645,7 @@ document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
   submitBtn.disabled = false;
 });
 
-// ---------- admin video form ----------
-document.getElementById('videoForm').addEventListener('submit', async (e)=>{
+safeBind('videoForm', 'submit', async (e)=>{
   e.preventDefault();
   const url = document.getElementById('videoUrlInput').value.trim();
   const title = document.getElementById('videoTitleInput').value.trim();
@@ -1462,53 +1656,92 @@ document.getElementById('videoForm').addEventListener('submit', async (e)=>{
   const submitBtn = document.getElementById('videoSubmitBtn');
 
   const detected = detectVideoPlatform(url);
-  if(!detected){ showToast('Provide a valid YouTube, Vimeo or MP4 link', 'error'); return; }
+  if(!detected){ showToast('Provide a valid TikTok, YouTube, Vimeo or MP4 link', 'error'); return; }
   if(!title){ showToast('Title is required', 'error'); return; }
-  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
+  if(linkUrl && !isSafeHttpUrl(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
 
   submitBtn.disabled = true;
 
   if (state.editItemId) {
     try {
-      await updateDoc(doc(db, "gallery_items", state.editItemId), {
-        videoPlatform: detected.platform,
-        videoEmbedUrl: detected.embedUrl,
-        rawVideoUrl: detected.rawUrl,
-        title, story, category,
-        linkUrl: linkUrl || null, linkLabel: linkLabel || null
-      });
+      const payload = {
+        type: 'video', videoPlatform: detected.platform, videoEmbedUrl: detected.embedUrl, rawVideoUrl: detected.rawUrl,
+        title, story, category, linkUrl: linkUrl || null, linkLabel: linkLabel || null, url: null,
+        youtubeId: detected.platform === 'youtube' ? detected.videoId : null,
+        youtubeThumbnail: detected.platform === 'youtube' ? detected.thumbnailUrl : null
+      };
+      await updateDoc(doc(db, "gallery_items", state.editItemId), payload);
       showToast('Video updated successfully ✓', 'success');
       state.editItemId = null;
       submitBtn.textContent = 'Add Video';
       document.getElementById('videoForm').reset();
-    } catch(err) {
-      console.error(err);
-      showToast('Update failed!', 'error');
-    }
+    } catch(err) { showToast('Update failed!', 'error'); }
   } else {
     const prof = getLocalProfile();
     try{
-      await addDoc(itemsCol, {
-        type: 'video', 
-        videoPlatform: detected.platform,
-        videoEmbedUrl: detected.embedUrl,
-        rawVideoUrl: detected.rawUrl,
-        title, story, category,
-        linkUrl: linkUrl || null, linkLabel: linkLabel || null,
-        creatorId: prof.userId,
-        creatorUsername: prof.username,
-        creatorName: prof.name,
-        creatorAvatar: prof.avatar,
+      const payload = {
+        type: 'video', videoPlatform: detected.platform, videoEmbedUrl: detected.embedUrl, rawVideoUrl: detected.rawUrl,
+        title, story, category, linkUrl: linkUrl || null, linkLabel: linkLabel || null,
+        creatorId: prof.userId, creatorUsername: prof.username, creatorName: prof.name, creatorAvatar: prof.avatar,
         views: 0, likes: 0, createdAt: serverTimestamp()
-      });
+      };
+      if (detected.platform === 'youtube') {
+        payload.youtubeId = detected.videoId;
+        payload.youtubeThumbnail = detected.thumbnailUrl;
+      }
+      await addDoc(itemsCol, payload);
       showToast('Video added successfully ✓', 'success');
       document.getElementById('videoForm').reset();
-    }catch(err){ console.error(err); showToast('Upload failed', 'error'); }
+    }catch(err){ showToast('Upload failed', 'error'); }
   }
   submitBtn.disabled = false;
 });
 
-// ---------- Expose module scoped functions to window globally to make inline clicks work perfectly ----------
+window.handleSlideEdit = function(id){ handleEditLoad(id); };
+window.handleSlideDelete = async function(id){
+  if (confirm("Are you sure you want to delete this post?")) {
+    try{ await deleteDoc(doc(db, 'gallery_items', id)); showToast('Post deleted successfully', 'success'); }
+    catch(err){ showToast('Failed to delete post', 'error'); }
+  }
+};
+window.toggleReelLike = function(id, btnEl){
+  toggleLike(id);
+  setTimeout(()=>{
+    const it = state.items.find(p=>p.id===id);
+    if (it && btnEl){
+      const liked = isLiked(id);
+      btnEl.querySelector('.heart-icon').textContent = liked ? '♥' : '♡';
+      btnEl.querySelector('.heart-icon').style.color = liked ? 'var(--danger)' : '#fff';
+      btnEl.querySelector('.like-count').textContent = it.likes || 0;
+    }
+  }, 250);
+};
+window.toggleReelFavorite = function(id, btnEl){
+  toggleFavorite(id);
+  const faved = isFavorited(id);
+  if (btnEl){
+    btnEl.querySelector('.fav-icon').textContent = faved ? '★' : '☆';
+    btnEl.querySelector('.fav-icon').style.color = faved ? '#FFD700' : '#fff';
+  }
+};
+window.shareReel = function(id){
+  const it = state.items.find(p=>p.id===id);
+  if(it) openSharePopover(document.activeElement || document.body, siteShareUrl(it), it.title);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupSentinelObserver();
+});
+
+safeBind('btnNavHome', 'click', ()=>{ switchView('home'); window.scrollTo({top:0, behavior:'smooth'}); });
+safeBind('btnNavReels', 'click', ()=>{ switchView('reels'); });
+safeBind('btnNavVideos', 'click', ()=>{ switchView('videos'); });
+safeBind('btnNavAdd', 'click', () => {
+  if (!checkRateLimit()) { showToast('You are posting too fast — please wait a moment.', 'error'); return; }
+  document.getElementById('publicCreateModal').hidden = false;
+});
+safeBind('btnNavProfile', 'click', ()=>{ switchView('profile'); });
+
 window.showPinDetails = showPinDetails;
 window.showUserCreatedPins = showUserCreatedPins;
 window.toggleLike = toggleLike;
@@ -1516,14 +1749,14 @@ window.toggleFavorite = toggleFavorite;
 window.getLocalProfile = getLocalProfile;
 window.state = state;
 
-// ---------- logo clicks for moderator control ----------
 let logoClicks = [];
-document.getElementById('brandLogo').addEventListener('click', ()=>{
+safeBind('brandLogo', 'click', ()=>{
   const now = Date.now();
   logoClicks.push(now);
   logoClicks = logoClicks.filter(t => now - t < 2500);
   if(logoClicks.length >= 5){ logoClicks = []; state.isAdminOpen ? closeAdmin() : openAdmin(); }
 });
+
 let keyBuffer = '';
 let keyBufferTimer = null;
 document.addEventListener('keydown', (e)=>{
@@ -1537,6 +1770,9 @@ document.addEventListener('keydown', (e)=>{
   keyBufferTimer = setTimeout(()=>{ keyBuffer = ''; }, 2000);
 });
 if(window.location.hash === '#admin') openAdmin();
+
+subscribeToFirestore();
+setupSentinelObserver();
 </script>
 </body>
 </html>
