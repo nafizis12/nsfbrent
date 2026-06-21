@@ -1,147 +1,235 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<!-- Adsterra Popunder (Header-এ বসানো হয়েছে) -->
-<script type='text/javascript' src='https://biographygridetelegram.com/09/18/de/0918de34aeedc5ed300f19a3606b3a7a.js'></script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUMEN — ফটো ও ভিডিও গ্যালারি</title>
+<title>LUMEN — Share, Save & Discover Ideas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A10; --bg-soft:#11111B; --surface:#15151F; --surface-2:#1C1C29;
-    --border:#26262F; --border-soft:#1E1E29; --text:#F2F1F7; --text-muted:#8E8DA3;
+    --bg:#000000; --bg-soft:#0D0D11; --surface:#111116; --surface-2:#1A1A22;
+    --border:#22222C; --border-soft:#181822; --text:#F2F1F7; --text-muted:#8E8DA3;
     --accent:#7C5CFF; --accent-2:#00E5C7; --accent-soft:rgba(124,92,255,.18);
     --danger:#FF5C7C; --danger-soft:rgba(255,92,124,.16);
+    --pinterest-red:#E60023; --pinterest-red-hover:#AD0018;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;}
-  /* Advertisement Wrapper Style */
-  .ad-slot-wrapper { width: 100%; display: flex; justify-content: center; padding: 15px 0; overflow: hidden; }
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;padding-bottom:100px;}
   
+  /* Expert Adsterra Responsive Wrapper Style */
+  .ad-slot-wrapper { width: 100%; display: flex; justify-content: center; padding: 15px 0; overflow: hidden; }
+  .ad-desktop { display: block; }
+  .ad-mobile { display: none; }
+  @media (max-width: 768px) {
+    .ad-desktop { display: none !important; }
+    .ad-mobile { display: block !important; }
+  }
+
   ::selection{background:var(--accent-soft);}
-  ::-webkit-scrollbar{width:8px;height:8px;}
-  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:8px;}
+  ::-webkit-scrollbar{width:6px;height:6px;}
+  ::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
   :focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;}
   button,input,select,textarea{font-family:inherit;color:inherit;}
   a{color:inherit;}
 
-  .noise-overlay{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;mix-blend-mode:overlay;
+  .noise-overlay{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.03;mix-blend-mode:overlay;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-  .ambient-glow{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.3;}
+  .ambient-glow{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;opacity:.2;}
   .glow-1{width:520px;height:520px;background:var(--accent);top:-180px;left:-120px;animation:drift1 22s ease-in-out infinite;}
   .glow-2{width:480px;height:480px;background:var(--accent-2);bottom:-200px;right:-140px;animation:drift2 26s ease-in-out infinite;}
   @keyframes drift1{0%,100%{transform:translate(0,0);}50%{transform:translate(60px,40px);}}
   @keyframes drift2{0%,100%{transform:translate(0,0);}50%{transform:translate(-50px,-30px);}}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
-  @media (prefers-reduced-motion: reduce){.ambient-glow{animation:none;} *{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
 
-  .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:16px 32px;
-    background:rgba(10,10,16,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--border-soft);}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.04em;
-    display:flex;align-items:center;gap:10px;white-space:nowrap;cursor:default;user-select:none;flex-shrink:0;}
-  .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 14px var(--accent);}
-  .admin-mode-tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent-2);border:1px solid rgba(0,229,199,.4);padding:3px 9px;border-radius:6px;background:rgba(0,229,199,.07);margin-left:4px;}
-  .search-wrap{flex:1;max-width:480px;margin:0 auto;}
-  .search-wrap input{width:100%;padding:11px 18px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.9rem;}
-  .search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
-  select.sort-select{padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:var(--surface);font-size:.8rem;cursor:pointer;flex-shrink:0;}
-  .btn-glow{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#08080c;font-weight:600;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-size:.9rem;white-space:nowrap;transition:transform .2s, box-shadow .2s;}
-  .btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--accent-soft);}
+  /* Pinterest App Header */
+  .site-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:18px;padding:16px 24px;
+    background:rgba(0,0,0,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft);}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;letter-spacing:.02em;
+    display:flex;align-items:center;gap:8px;white-space:nowrap;cursor:pointer;user-select:none;flex-shrink:0;}
+  .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--pinterest-red);box-shadow:0 0 12px var(--pinterest-red);}
+  .admin-mode-tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--accent-2);border:1px solid rgba(0,229,199,.3);padding:2px 7px;border-radius:4px;background:rgba(0,229,199,.05);margin-left:4px;}
+  .search-wrap{flex:1;max-width:540px;margin:0 auto;}
+  .search-wrap input{width:100%;padding:12px 20px;border-radius:999px;border:none;background:#1A1A22;color:var(--text);font-size:.9rem;transition:.2s;}
+  .search-wrap input:focus{background:#262633;outline:none;}
+  select.sort-select{padding:10px 14px;border-radius:999px;border:1px solid var(--border);background:#1A1A22;font-size:.8rem;cursor:pointer;flex-shrink:0;}
+  
+  .btn-glow{background:linear-gradient(135deg,var(--pinterest-red),var(--pinterest-red-hover));color:#fff;font-weight:700;border:none;padding:12px 22px;border-radius:24px;cursor:pointer;font-size:.9rem;white-space:nowrap;transition:transform .2s, box-shadow .2s;}
+  .btn-glow:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(230,0,35,.35);}
   .btn-glow:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
-  .btn-ghost{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:11px 19px;border-radius:10px;cursor:pointer;font-size:.88rem;font-weight:600;transition:.2s;}
-  .btn-ghost:hover{border-color:var(--accent-2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.3);}
+  .btn-ghost{background:var(--surface-2);border:1px solid var(--border);color:var(--text);padding:11px 19px;border-radius:24px;cursor:pointer;font-size:.88rem;font-weight:600;transition:.2s;}
+  .btn-ghost:hover{border-color:var(--pinterest-red);transform:translateY(-2px);}
 
-  .pill-bar{display:flex;gap:10px;overflow-x:auto;padding:18px 32px 6px;scrollbar-width:thin;}
-  .chip{font-size:.84rem;font-weight:500;padding:9px 17px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);white-space:nowrap;cursor:pointer;transition:.22s;flex-shrink:0;}
-  .chip:hover:not(.active){border-color:var(--accent);color:var(--text);}
-  .chip.active{color:#08080c;background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;box-shadow:0 0 18px var(--accent-soft);}
+  /* Horizontal Category Pill Bar */
+  .pill-bar{display:flex;gap:8px;overflow-x:auto;padding:14px 24px 6px;scrollbar-width:none;}
+  .pill-bar::-webkit-scrollbar{display:none;}
+  .chip{font-size:.85rem;font-weight:600;padding:8px 16px;border-radius:999px;border:none;background:#1A1A22;color:var(--text);white-space:nowrap;cursor:pointer;transition:.2s;flex-shrink:0;}
+  .chip:hover:not(.active){background:#262633;}
+  .chip.active{color:#fff;background:var(--pinterest-red);box-shadow:0 4px 12px rgba(230,0,35,.25);}
 
-  .gallery-section{padding:10px 32px 60px;}
-  .gallery-grid{column-count:4;column-gap:18px;}
-  @media (max-width:1300px){.gallery-grid{column-count:3;}}
-  @media (max-width:820px){.gallery-grid{column-count:2;}}
-  @media (max-width:480px){.gallery-grid{column-count:1;}}
+  /* Pinterest Grid Layout */
+  .gallery-section{padding:10px 24px 60px;}
+  .gallery-grid{column-count:4;column-gap:16px;}
+  @media (max-width:1200px){.gallery-grid{column-count:3;}}
+  @media (max-width:768px){.gallery-grid{column-count:2;column-gap:12px;}}
 
-  .photo-card{margin:0 0 18px;border-radius:16px;overflow:hidden;position:relative;background:var(--surface);
-    border:1px solid var(--border-soft);break-inside:avoid;animation:fadeUp .45s ease both;}
-  .card-toplink{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;text-align:center;padding:12px;
-    font-size:.84rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#08080c;
-    text-decoration:none;cursor:pointer;transition:transform .2s, box-shadow .2s,filter .2s;}
-  .card-toplink:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--accent-soft);filter:brightness(1.07);}
-  .card-toplink .arrow{transition:transform .2s;}
-  .card-toplink:hover .arrow{transform:translateX(4px);}
-  .card-admin-bar{display:flex;justify-content:flex-end;padding:8px 10px 0;}
+  /* Minimalist Pinterest Style Card/Pin UI */
+  .pin-card{margin:0 0 16px;border-radius:0;overflow:visible;position:relative;background:transparent;border:none;break-inside:avoid;animation:fadeUp .45s ease both;box-shadow:none;}
+  .card-admin-bar{display:flex;justify-content:flex-end;padding:6px 8px;background:rgba(0,0,0,0.6);border-radius:12px 12px 0 0;}
   .card-admin-bar[hidden]{display:none;}
-  .card-media{position:relative;background:linear-gradient(110deg, var(--surface) 8%, var(--surface-2) 18%, var(--surface) 33%);background-size:200% 100%;animation:shimmer 1.6s linear infinite;cursor:pointer;}
-  .card-media.img-loaded{background-image:none;animation:none;}
-  .card-media img{width:100%;display:block;opacity:0;transition:opacity .4s, transform .4s ease;}
+  
+  .card-media{position:relative;background:#111116;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:transform .2s ease;}
+  .card-media:hover{transform:translateY(-2px);}
+  .card-media img, .card-media video{width:100%;display:block;opacity:0;transition:opacity .3s, transform .4s ease;}
+  .card-media video{opacity:1;}
   .card-media img.loaded{opacity:1;}
-  .card-media:hover img.loaded{transform:scale(1.04);}
-  .card-media.broken{min-height:140px;}
+  .card-media:hover img.loaded{transform:scale(1.03);}
+  .card-media.broken{min-height:140px;background:var(--surface);}
   .card-media.broken img{display:none;}
-  .card-media.broken::after{content:'⚠ ছবির লিংক কাজ করছে না';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--text-muted);font-size:.78rem;}
-  .media-tag{position:absolute;top:10px;left:10px;font-family:'JetBrains Mono',monospace;font-size:.64rem;padding:3px 8px;border-radius:6px;background:rgba(10,10,16,.6);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);color:var(--accent-2);z-index:2;}
-  .media-tag.video{background:rgba(255,0,0,.78);color:#fff;border-color:transparent;font-weight:600;}
-  .video-embed-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
-  .video-embed-wrap iframe{width:100%;height:100%;border:0;display:block;}
+  .card-media.broken::after{content:'⚠ Media failed to load';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--text-muted);font-size:.78rem;}
+  
+  .media-tag{position:absolute;top:10px;left:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.64rem;padding:3px 8px;border-radius:6px;background:rgba(10,10,16,.6);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);color:#fff;z-index:2;}
+  .media-tag.video{background:rgba(255,0,0,.78);border-color:transparent;}
 
-  .card-body{padding:14px 15px 16px;}
-  .card-title{font-weight:600;font-size:.96rem;font-family:'Space Grotesk',sans-serif;margin-bottom:5px;cursor:pointer;}
-  .card-story{font-size:.81rem;color:var(--text-muted);line-height:1.55;}
-  .card-story.clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-  .card-story-toggle{font-size:.74rem;color:var(--accent-2);cursor:pointer;background:none;border:none;padding:5px 0 0;display:inline-block;}
-  .views-text{font-size:.76rem;color:var(--text-muted);margin-top:10px;display:block;}
+  /* Pinterest Floating Overlays */
+  .pin-save-btn {
+    position:absolute;top:12px;right:12px;
+    background:var(--pinterest-red);color:#fff;
+    border:none;padding:8px 14px;border-radius:20px;
+    font-weight:700;font-size:0.8rem;cursor:pointer;
+    z-index:10;opacity:0;transition:opacity 0.2s, background 0.2s;
+  }
+  .pin-save-btn:hover { background: var(--pinterest-red-hover); }
+  .pin-save-btn.saved { background: #111; color: #fff; opacity: 1; }
+  
+  .pin-link-btn {
+    position:absolute;bottom:12px;left:12px;
+    background:var(--pinterest-red);color:#fff;
+    text-decoration:none;padding:8px 14px;border-radius:20px;
+    font-weight:700;font-size:0.78rem;z-index:10;opacity:0;
+    transition:opacity 0.2s, transform 0.2s;display:flex;align-items:center;gap:4px;
+    box-shadow: 0 4px 15px rgba(230,0,35,0.4);
+    animation: gentlePulse 2s infinite;
+  }
+  .pin-link-btn:hover { background: var(--pinterest-red-hover); transform:scale(1.03); }
 
-  .card-actions-row{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap;}
-  .action-btn{display:flex;align-items:center;justify-content:center;gap:6px;flex:1 1 calc(50% - 4px);min-width:108px;
-    padding:10px 8px;border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;border:1px solid var(--border);
-    background:var(--bg-soft);color:var(--text);transition:transform .18s, box-shadow .18s, border-color .18s, background .18s;}
-  .action-btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.35);}
-  .action-btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#08080c;border-color:transparent;}
-  .action-btn.primary:hover{box-shadow:0 8px 22px var(--accent-soft);}
-  .action-btn.like{color:var(--text-muted);}
-  .action-btn.like .heart{font-size:1.05rem;}
-  .action-btn.like.liked{color:#ff5c7c;border-color:rgba(255,92,124,.45);background:rgba(255,92,124,.1);}
-  .action-btn.like.liked:hover{box-shadow:0 8px 18px var(--danger-soft);}
+  @keyframes gentlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  @media (hover: hover) {
+    .pin-card:hover .pin-save-btn { opacity: 1; }
+    .pin-card:hover .pin-link-btn { opacity: 1; }
+  }
+  @media (hover: none) {
+    .pin-save-btn { opacity: 1; }
+    .pin-link-btn { opacity: 0.95; }
+  }
+
+  /* Minimalist Text rows underneath images */
+  .pin-info{padding:8px 4px 2px;}
+  .pin-title{font-size:.88rem;font-weight:600;margin-bottom:4px;cursor:pointer;color:var(--text);line-height:1.3;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .2s;}
+  .pin-title:hover{color:var(--pinterest-red);}
+  
+  .pin-creator-bar { display: flex; align-items: center; gap: 6px; margin-top: 6px; margin-bottom: 6px; cursor: pointer; }
+  .pin-creator-avatar { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; background: var(--surface-2); border: 1px solid rgba(255,255,255,0.1); }
+  .pin-creator-name { font-size: 0.76rem; font-weight: 500; color: var(--text-muted); }
+  .pin-creator-bar:hover .pin-creator-name { color: #fff; }
+
+  .pin-meta{display:flex;justify-content:space-between;align-items:center;font-size:0.76rem;color:var(--text-muted);margin-top:2px;}
+  .pin-likes{cursor:pointer;display:flex;align-items:center;gap:3px;transition:color .2s;}
+  .pin-likes:hover{color:#fff;}
+  .pin-action-icon{background:none;border:none;color:var(--text-muted);font-size:0.9rem;cursor:pointer;padding:2px 6px;transition:.18s;}
+  .pin-action-icon:hover{color:#fff;}
+
+  /* Pinterest Bottom App Navigation Bar */
+  .bottom-nav {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: rgba(14, 14, 20, 0.96); backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 35px;
+    display: flex; align-items: center; justify-content: space-around;
+    padding: 8px 16px; width: min(92vw, 360px); z-index: 100;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+  }
+  .bottom-nav-item {
+    color: var(--text-muted); background: none; border: none;
+    cursor: pointer; transition: 0.2s; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; width: 55px; height: 48px; border-radius: 12px;
+  }
+  .bottom-nav-item.active { color: #fff; }
+  .bottom-nav-item svg { width: 22px; height: 22px; fill: currentColor; }
+  .bottom-nav-item span { font-size: 0.58rem; font-weight: 600; margin-top: 3px; }
+
+  /* Premium Outbound Link Box inside Lightbox */
+  .outbound-badge-glow {
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px;
+    padding: 12px 24px; border-radius: 24px; background: var(--pinterest-red);
+    color: #fff; font-weight: 700; font-size: .9rem; text-decoration: none;
+    box-shadow: 0 0 20px rgba(230,0,35,0.4); animation: pulseGlow 2s infinite; transition: .2s;
+  }
+  .outbound-badge-glow:hover { transform: translateY(-2px); background: var(--pinterest-red-hover); }
+  @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(230,0,35,0.4); } 50% { box-shadow: 0 0 25px rgba(230,0,35,0.7); } }
+
+  /* New Modals Layout for Profiles & Posting */
+  .pin-modal {
+    position: fixed; inset: 0; z-index: 250; background: rgba(5,5,9,0.85);
+    backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .pin-modal[hidden] { display: none; }
+  .pin-modal-content {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    width: 100%; max-width: 460px; padding: 24px; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  }
+  .pin-modal-close { position: absolute; top: 18px; right: 20px; background: none; border: none; font-size: 1.4rem; color: var(--text-muted); cursor: pointer; }
+  .pin-modal-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; margin-top: 0; margin-bottom: 20px; text-align: center; }
+
+  /* Social Profiles Page Container */
+  .profile-container { max-width: 680px; margin: 0 auto; padding: 24px 16px; animation: fadeUp 0.3s ease; }
+  .profile-header-card { text-align: center; margin-bottom: 30px; }
+  .profile-big-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--pinterest-red); margin-bottom: 12px; background: var(--surface-2); }
+  .profile-display-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin: 0; }
+  .profile-username { font-size: 0.88rem; color: var(--text-muted); margin: 4px 0 10px; font-family: 'JetBrains Mono', monospace; }
+  .profile-bio { font-size: 0.92rem; line-height: 1.5; color: var(--text); margin: 0 auto 16px; max-width: 480px; }
+  
+  .profile-subtabs { display: flex; justify-content: center; gap: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; }
+  .profile-subtab-btn { background: none; border: none; font-size: 0.9rem; font-weight: 700; color: var(--text-muted); cursor: pointer; padding: 6px 12px; border-radius: 12px; transition: .2s; }
+  .profile-subtab-btn:hover { color: #fff; }
+  .profile-subtab-btn.active { background: var(--surface-2); color: #fff; }
 
   .empty-state{text-align:center;padding:80px 20px;color:var(--text-muted);grid-column:1/-1;}
   .empty-state h3{font-family:'Space Grotesk',sans-serif;color:var(--text);margin-bottom:8px;}
-  .site-footer{padding:26px 32px 46px;text-align:center;color:var(--text-muted);font-size:.82rem;}
+  .site-footer{padding:26px 32px 100px;text-align:center;color:var(--text-muted);font-size:.82rem;}
 
   .share-popover{position:fixed;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:3px;z-index:500;box-shadow:0 14px 36px rgba(0,0,0,.55);min-width:210px;}
   .share-popover .sp-title{font-size:.7rem;color:var(--text-muted);padding:6px 10px 4px;text-transform:uppercase;letter-spacing:.04em;}
   .share-popover a, .share-popover button{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;border-radius:8px;font-size:.86rem;font-weight:500;text-decoration:none;background:none;border:none;text-align:left;cursor:pointer;}
   .share-popover a:hover, .share-popover button:hover{background:var(--bg-soft);}
 
-  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(5,5,9,.9);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:30px;overflow-y:auto;}
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(5,5,9,.94);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:30px;overflow-y:auto;}
   .lightbox[hidden]{display:none;}
   .lightbox-stage{position:relative;max-width:min(92vw,1000px);width:100%;display:flex;flex-direction:column;align-items:center;gap:16px;margin:auto;}
-  .lightbox-img-wrap img{max-width:100%;max-height:56vh;border-radius:14px;display:block;box-shadow:0 0 70px rgba(124,92,255,.25);}
-  .lightbox-video-wrap{width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;box-shadow:0 0 70px rgba(124,92,255,.25);}
-  .lightbox-video-wrap iframe{width:100%;height:100%;border:0;}
+  .lightbox-img-wrap img{max-width:100%;max-height:56vh;border-radius:20px;display:block;box-shadow:0 0 70px rgba(230,0,35,.15);}
+  .lightbox-video-wrap{width:100%;aspect-ratio:16/9;border-radius:20px;overflow:hidden;box-shadow:0 0 70px rgba(230,0,35,.15);background:#000;}
+  .lightbox-video-wrap iframe, .lightbox-video-wrap video{width:100%;height:100%;border:0;}
   .lightbox-info{width:100%;}
-  .lightbox-toplink{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:10px 18px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#08080c;font-weight:700;font-size:.85rem;text-decoration:none;cursor:pointer;transition:transform .2s, box-shadow .2s;}
-  .lightbox-toplink:hover{transform:translateY(-2px);box-shadow:0 8px 22px var(--accent-soft);}
-  .lightbox-caption{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:600;}
+  .lightbox-caption{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-top:6px;}
   .lightbox-meta{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--accent-2);margin-top:6px;margin-bottom:10px;}
   .lightbox-story{font-size:.88rem;color:var(--text-muted);line-height:1.7;margin-bottom:14px;white-space:pre-wrap;}
   .lightbox-views{font-size:.8rem;color:var(--text-muted);margin-bottom:14px;display:block;}
   .lightbox-btns{display:flex;gap:10px;flex-wrap:wrap;}
   .lightbox-close{position:absolute;top:-46px;right:0;background:none;border:none;color:var(--text);font-size:1.6rem;cursor:pointer;line-height:1;}
-  .lightbox-arrow{position:absolute;top:28%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(10,10,16,.5);color:var(--text);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:5;}
-  .lightbox-arrow:hover{border-color:var(--accent-2);box-shadow:0 0 18px var(--accent-soft);}
+  .lightbox-arrow{position:absolute;top:28%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(10,10,16,.6);color:var(--text);cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;transition:.2s;z-index:5;}
+  .lightbox-arrow:hover{border-color:var(--pinterest-red);box-shadow:0 0 18px rgba(230,0,35,0.3);}
   .lightbox-arrow.prev{left:-8px;} .lightbox-arrow.next{right:-8px;}
   @media (max-width:700px){.lightbox-arrow.prev{left:4px;}.lightbox-arrow.next{right:4px;}}
 
   .admin-drawer{position:fixed;inset:0;z-index:300;}
   .admin-drawer[hidden]{display:none;}
-  .drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6);}
+  .drawer-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.65);}
   .drawer-panel{position:absolute;top:0;right:0;height:100%;width:440px;max-width:94vw;background:var(--surface);border-left:1px solid var(--border);overflow-y:auto;padding:26px;animation:slideIn .3s ease;}
   @keyframes slideIn{from{transform:translateX(30px);opacity:0;}to{transform:translateX(0);opacity:1;}}
   .drawer-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
@@ -149,12 +237,12 @@
   .drawer-close{background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;line-height:1;}
   .tabs{display:flex;gap:6px;margin-bottom:20px;background:var(--bg-soft);padding:5px;border-radius:10px;}
   .tab-btn{flex:1;padding:9px;border-radius:7px;border:none;background:transparent;color:var(--text-muted);font-size:.8rem;cursor:pointer;font-weight:500;}
-  .tab-btn.active{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#08080c;}
+  .tab-btn.active{background:var(--pinterest-red);color:#fff;}
   .tab-panel[hidden]{display:none;}
   .field{margin-bottom:14px;}
   .field label{display:block;font-size:.8rem;color:var(--text-muted);margin-bottom:6px;}
   .field input, .field select, .field textarea{width:100%;padding:10px 12px;border-radius:9px;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);font-size:.88rem;resize:vertical;font-family:inherit;}
-  .field input:focus, .field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  .field input:focus, .field textarea:focus{border-color:var(--pinterest-red);box-shadow:0 0 0 3px rgba(230,0,35,.15);}
   .form-hint{font-size:.74rem;color:var(--text-muted);margin-top:5px;}
   .upload-progress{font-size:.78rem;color:var(--accent-2);margin-top:8px;font-family:'JetBrains Mono',monospace;}
   .admin-item-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border-soft);}
@@ -167,18 +255,18 @@
   .danger-btn{background:none;border:1px solid var(--danger);color:var(--danger);border-radius:7px;padding:5px 9px;font-size:.74rem;cursor:pointer;}
   .danger-btn:hover{background:var(--danger-soft);}
   .small-btn{background:none;border:1px solid var(--border);color:var(--text-muted);border-radius:7px;padding:5px 9px;font-size:.74rem;cursor:pointer;}
-  .small-btn:hover{border-color:var(--accent);color:var(--text);}
+  .small-btn:hover{border-color:var(--pinterest-red);color:var(--text);}
   .icon-btn-del{width:34px;height:34px;border-radius:9px;border:1px solid var(--danger);color:var(--danger);background:var(--danger-soft);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:.2s;}
   .icon-btn-del:hover{transform:translateY(-2px);box-shadow:0 6px 16px var(--danger-soft);}
   .admin-list-scroll{max-height:300px;overflow-y:auto;padding-right:4px;}
   .drawer-footnote{font-size:.74rem;color:var(--text-muted);line-height:1.6;margin-top:10px;}
 
-  .toast-stack{position:fixed;bottom:22px;right:22px;display:flex;flex-direction:column;gap:10px;z-index:400;max-width:320px;}
+  .toast-stack{position:fixed;bottom:85px;right:22px;display:flex;flex-direction:column;gap:10px;z-index:400;max-width:320px;}
   .toast{background:var(--surface-2);border:1px solid var(--border);padding:12px 16px;border-radius:10px;font-size:.84rem;box-shadow:0 10px 28px rgba(0,0,0,.45);animation:toastIn .25s ease;}
   @keyframes toastIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
   .toast.success{border-color:var(--accent-2);} .toast.error{border-color:var(--danger);}
 
-  @media (max-width:700px){.site-header{padding:14px 16px;flex-wrap:wrap;} .pill-bar,.gallery-section{padding-left:16px;padding-right:16px;}}
+  @media (max-width:768px){.site-header{padding:12px 16px;} .pill-bar,.gallery-section{padding-left:12px;padding-right:12px;}}
 </style>
 </head>
 <body>
@@ -187,36 +275,112 @@
 <div class="ambient-glow glow-1"></div>
 <div class="ambient-glow glow-2"></div>
 
-<header class="site-header">
-  <div class="brand" id="brandLogo"><span class="brand-dot"></span>LUMEN<span class="admin-mode-tag" id="adminModeTag" hidden>অ্যাডমিন মোড</span></div>
-  <div class="search-wrap"><input type="text" id="searchInput" placeholder="টাইটেল দিয়ে খুঁজো..."></div>
+<header class="site-header" id="mainHeader">
+  <div class="brand" id="brandLogo"><span class="brand-dot"></span>LUMEN<span class="admin-mode-tag" id="adminModeTag" hidden>Admin Mode</span></div>
+  <div class="search-wrap"><input type="text" id="searchInput" placeholder="Search by title, story or category..."></div>
   <select id="sortSelect" class="sort-select">
-    <option value="newest">নতুন আগে</option>
-    <option value="oldest">পুরাতন আগে</option>
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
   </select>
 </header>
 
-<!-- Adsterra 728x90 Banner -->
-<div class="ad-slot-wrapper">
+<!-- Expert Header Placement: 468x60 (Desktop) / 320x50 (Mobile) Responsive Slots -->
+<div class="ad-slot-wrapper ad-desktop">
   <script type="text/javascript">
-    atOptions = { 'key' : '4060d13bb21510d0e544a7f90147d177', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+    atOptions = {
+      'key' : '4d4aa29c36cd95a72187eca815971cd1',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
   </script>
-  <script type="text/javascript" src="https://biographygridetelegram.com/4060d13bb21510d0e544a7f90147d177/invoke.js"></script>
+  <script type="text/javascript" src="https://biographygridetelegram.com/4d4aa29c36cd95a72187eca815971cd1/invoke.js"></script>
+</div>
+
+<div class="ad-slot-wrapper ad-mobile">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : 'f2950bc505780fd711c1b2635615e875',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="https://biographygridetelegram.com/f2950bc505780fd711c1b2635615e875/invoke.js"></script>
 </div>
 
 <main>
-  <nav class="pill-bar" id="pillBar"></nav>
-  <section class="gallery-section"><div class="gallery-grid" id="galleryGrid"></div></section>
+  <!-- Main Grid View -->
+  <div id="mainFeedView">
+    <nav class="pill-bar" id="pillBar"></nav>
+    <section class="gallery-section">
+      <div class="gallery-grid" id="galleryGrid"></div>
+      <div style="text-align:center; margin-top: 30px;" id="loadMoreContainer"></div>
+    </section>
+  </div>
+
+  <!-- Dynamic Pinterest-style Profile View -->
+  <div id="profileView" class="profile-container" hidden></div>
 </main>
 
-<!-- Adsterra Native Banner -->
+<!-- Expert Footer Placement: Native Recommendation Banner -->
 <div class="ad-slot-wrapper">
   <div id="container-cd49b2402b36a334921bd5803b1e32b5"></div>
   <script async="async" data-cfasync="false" src="https://biographygridetelegram.com/cd49b2402b36a334921bd5803b1e32b5/invoke.js"></script>
 </div>
 
-<footer class="site-footer">তোলা মুহূর্তগুলো, একসাথে গল্প হয়ে।</footer>
+<!-- Expert Footer Banner Placement: 468x60 (Desktop) / 320x50 (Mobile) Responsive Slots -->
+<div class="ad-slot-wrapper ad-desktop">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : '4d4aa29c36cd95a72187eca815971cd1',
+      'format' : 'iframe',
+      'height' : 60,
+      'width' : 468,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="https://biographygridetelegram.com/4d4aa29c36cd95a72187eca815971cd1/invoke.js"></script>
+</div>
 
+<div class="ad-slot-wrapper ad-mobile">
+  <script type="text/javascript">
+    atOptions = {
+      'key' : 'f2950bc505780fd711c1b2635615e875',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="https://biographygridetelegram.com/f2950bc505780fd711c1b2635615e875/invoke.js"></script>
+</div>
+
+<footer class="site-footer" id="mainFooter">Every captured moment becomes a story.</footer>
+
+<!-- Pinterest Style App Bottom Navigation -->
+<nav class="bottom-nav">
+  <button class="bottom-nav-item active" id="btnNavHome" title="Home">
+    <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="bottom-nav-item" id="btnNavSearch" title="Search">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+    <span>Search</span>
+  </button>
+  <button class="bottom-nav-item" id="btnNavAdd" title="Create Pin">
+    <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+    <span>Create</span>
+  </button>
+  <button class="bottom-nav-item" id="btnNavProfile" title="Saved">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+    <span>Profile</span>
+  </button>
+</nav>
+
+<!-- Main Details Lightbox View -->
 <div class="lightbox" id="lightbox" hidden>
   <div class="lightbox-stage">
     <button class="lightbox-close" id="lightboxClose">✕</button>
@@ -234,53 +398,123 @@
   </div>
 </div>
 
+<!-- Public User: Create Pin Modal Overlay (No Auth Needed!) -->
+<div class="pin-modal" id="publicCreateModal" hidden>
+  <div class="pin-modal-content">
+    <button class="pin-modal-close" id="publicCreateClose">✕</button>
+    <h3 class="pin-modal-title">Create a Pin</h3>
+    <form id="publicCreateForm">
+      <div class="field">
+        <label>Media Source Type</label>
+        <select id="pubTypeSelect" style="width:100%;">
+          <option value="image">Single Image URL</option>
+          <option value="video">Video URL (YouTube, Vimeo, MP4)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label id="pubSourceLabel">Image URL</label>
+        <input type="text" id="pubSourceUrl" placeholder="https://example.com/image.jpg" required>
+      </div>
+      <div class="field">
+        <label>Pin Title</label>
+        <input type="text" id="pubTitle" placeholder="Give your pin a catchy title..." required>
+      </div>
+      <div class="field">
+        <label>Description / Story (Optional)</label>
+        <textarea id="pubStory" rows="3" placeholder="Tell people what this pin is about..."></textarea>
+      </div>
+      <div class="field">
+        <label>Category (Defaults to "General")</label>
+        <input type="text" id="pubCategory" placeholder="e.g. Travel, Milfy, Vlog">
+      </div>
+      <div class="field">
+        <label>Outbound Website Link (Optional)</label>
+        <input type="text" id="pubLinkUrl" placeholder="Link users to where this leads (e.g. https://...)">
+      </div>
+      <div class="field">
+        <label>Outbound Button Label (Optional)</label>
+        <input type="text" id="pubLinkLabel" placeholder="e.g. Visit Website">
+      </div>
+      <button type="submit" class="btn-glow" style="width:100%; margin-top:8px;">Publish Pin</button>
+    </form>
+  </div>
+</div>
+
+<!-- Public User: Edit Profile Modal Overlay -->
+<div class="pin-modal" id="editProfileModal" hidden>
+  <div class="pin-modal-content">
+    <button class="pin-modal-close" id="editProfileClose">✕</button>
+    <h3 class="pin-modal-title">Edit Profile</h3>
+    <form id="editProfileForm">
+      <div class="field">
+        <label>Display Name</label>
+        <input type="text" id="profileFormName" required>
+      </div>
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="profileFormUsername" placeholder="e.g. travel_lover" required>
+      </div>
+      <div class="field">
+        <label>Avatar / Profile Pic URL (Optional)</label>
+        <input type="text" id="profileFormAvatar" placeholder="Direct link to image (leave blank for random avatar)">
+      </div>
+      <div class="field">
+        <label>Bio / Description</label>
+        <textarea id="profileFormBio" rows="3" placeholder="Tell the world about yourself..."></textarea>
+      </div>
+      <button type="submit" class="btn-glow" style="width:100%; margin-top:8px;">Save Profile</button>
+    </form>
+  </div>
+</div>
+
+<!-- Hidden Secret Administrator Controller Drawer Panel -->
 <aside class="admin-drawer" id="adminDrawer" hidden>
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <div class="drawer-panel">
-    <div class="drawer-header"><h2>অ্যাডমিন প্যানেল</h2><button class="drawer-close" id="drawerClose">✕</button></div>
+    <div class="drawer-header"><h2>Admin Panel</h2><button class="drawer-close" id="drawerClose">✕</button></div>
 
     <div class="tabs">
-      <button class="tab-btn active" data-tab="upload">ছবির লিংক</button>
-      <button class="tab-btn" data-tab="video">ভিডিও যুক্ত</button>
-      <button class="tab-btn" data-tab="manage">সব কিছু</button>
+      <button class="tab-btn active" data-tab="upload" id="tabUploadBtn">Image Links</button>
+      <button class="tab-btn" data-tab="video" id="tabVideoBtn">Add Video</button>
+      <button class="tab-btn" data-tab="manage">Manage All</button>
     </div>
 
     <div class="tab-panel" id="tab-upload">
       <form id="uploadForm">
         <div class="field">
-          <label for="imageLinksInput">ছবির লিংক (একটা লাইনে একটা, একসাথে কয়েকটা দিতে পারো)</label>
+          <label for="imageLinksInput">Image Links (one link per line, bulk upload supported)</label>
           <textarea id="imageLinksInput" rows="4" placeholder="https://example.com/1.jpg
 https://example.com/2.jpg" required></textarea>
-          <div class="form-hint">সব লিংকের জন্য নিচের টাইটেল, গল্প আর বাটন-লিংক একই থাকবে।</div>
+          <div class="form-hint" id="bulkUploadHint">Title, story, and visit link will be identical for all links.</div>
         </div>
-        <div class="field"><label for="uploadTitleInput">টাইটেল</label><input type="text" id="uploadTitleInput" placeholder="যেমন: কক্সবাজার ট্রিপ" required></div>
-        <div class="field"><label for="uploadStoryInput">গল্প / বিবরণ (ভিজিটররা পড়তে পারবে)</label><textarea id="uploadStoryInput" rows="3" placeholder="ছবিটার পেছনের গল্প লেখো..."></textarea></div>
-        <div class="field"><label for="uploadCatInput">ক্যাটাগরি (না দিলে "সাধারণ" হবে)</label><input type="text" id="uploadCatInput" list="categoryOptions" placeholder="যেমন: ট্রাভেল"><datalist id="categoryOptions"></datalist></div>
-        <div class="field"><label for="uploadLinkUrlInput">পোস্টের উপরে বাটন — লিংক (না চাইলে খালি রাখো)</label><input type="text" id="uploadLinkUrlInput" placeholder="https://..."></div>
-        <div class="field"><label for="uploadLinkLabelInput">বাটনের লেখা</label><input type="text" id="uploadLinkLabelInput" placeholder="ভিজিট করো (খালি রাখলে এটাই হবে)"></div>
-        <button type="submit" class="btn-glow" id="uploadSubmitBtn" style="width:100%;margin-top:6px;">যুক্ত করো</button>
+        <div class="field"><label for="uploadTitleInput">Title</label><input type="text" id="uploadTitleInput" placeholder="e.g. Travel to Bali" required></div>
+        <div class="field"><label for="uploadStoryInput">Story / Description (visible to visitors)</label><textarea id="uploadStoryInput" rows="3" placeholder="Tell the story behind this image..."></textarea></div>
+        <div class="field"><label for="uploadCatInput">Category (defaults to "General")</label><input type="text" id="uploadCatInput" list="categoryOptions" placeholder="e.g. Travel"><datalist id="categoryOptions"></datalist></div>
+        <div class="field"><label for="uploadLinkUrlInput">External Action Button Link (optional)</label><input type="text" id="uploadLinkUrlInput" placeholder="https://..."></div>
+        <div class="field"><label for="uploadLinkLabelInput">Button Text</label><input type="text" id="uploadLinkLabelInput" placeholder="Visit Site (default label)"></div>
+        <button type="submit" class="btn-glow" id="uploadSubmitBtn" style="width:100%;margin-top:6px;">Submit</button>
         <div class="upload-progress" id="uploadProgress"></div>
       </form>
     </div>
 
     <div class="tab-panel" id="tab-video" hidden>
       <form id="videoForm">
-        <div class="field"><label for="videoUrlInput">YouTube লিংক</label><input type="text" id="videoUrlInput" placeholder="https://www.youtube.com/watch?v=..." required></div>
-        <div class="field"><label for="videoTitleInput">টাইটেল</label><input type="text" id="videoTitleInput" placeholder="ভিডিওর নাম" required></div>
-        <div class="field"><label for="videoStoryInput">গল্প / বিবরণ</label><textarea id="videoStoryInput" rows="3" placeholder="ভিডিওটা নিয়ে কিছু লেখো..."></textarea></div>
-        <div class="field"><label for="videoCatInput">ক্যাটাগরি (না দিলে "সাধারণ" হবে)</label><input type="text" id="videoCatInput" list="categoryOptions" placeholder="যেমন: ভ্লগ"></div>
-        <div class="field"><label for="videoLinkUrlInput">পোস্টের উপরে বাটন — লিংক (না চাইলে খালি রাখো)</label><input type="text" id="videoLinkUrlInput" placeholder="https://..."></div>
-        <div class="field"><label for="videoLinkLabelInput">বাটনের লেখা</label><input type="text" id="videoLinkLabelInput" placeholder="ভিজিট করো (খালি রাখলে এটাই হবে)"></div>
-        <button type="submit" class="btn-glow" style="width:100%;margin-top:6px;">ভিডিও যুক্ত করো</button>
+        <div class="field"><label for="videoUrlInput">Video Link (YouTube, Vimeo or direct .mp4 URL)</label><input type="text" id="videoUrlInput" placeholder="https://www.youtube.com/... or vimeo or .mp4 link" required></div>
+        <div class="field"><label for="videoTitleInput">Title</label><input type="text" id="videoTitleInput" placeholder="Video name" required></div>
+        <div class="field"><label for="videoStoryInput">Story / Description</label><textarea id="videoStoryInput" rows="3" placeholder="Write something about this video..."></textarea></div>
+        <div class="field"><label for="videoCatInput">Category (defaults to "General")</label><input type="text" id="videoCatInput" list="categoryOptions" placeholder="e.g. Vlog"></div>
+        <div class="field"><label for="videoLinkUrlInput">External Action Button Link (optional)</label><input type="text" id="videoLinkUrlInput" placeholder="https://..."></div>
+        <div class="field"><label for="videoLinkLabelInput">Button Text</label><input type="text" id="videoLinkLabelInput" placeholder="Visit Site (default label)"></div>
+        <button type="submit" class="btn-glow" id="videoSubmitBtn" style="width:100%;margin-top:6px;">Add Video</button>
       </form>
     </div>
 
     <div class="tab-panel" id="tab-manage" hidden>
-      <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin:0 0 12px;font-weight:600;" id="adminCountHeading">সব কিছু</h3>
+      <h3 style="font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);margin:0 0 12px;font-weight:600;" id="adminCountHeading">Manage All</h3>
       <div class="admin-list-scroll" id="adminItemList"></div>
     </div>
 
-    <div class="drawer-footnote">অ্যাডমিন মোড চালু থাকলে প্রতিটা পোস্টের উপরেও একটা ডিলিট বাটন দেখা যাবে। শেয়ার করা লিংকে ক্লিক করলে মানুষ সরাসরি এই ওয়েবসাইটে এসে ওই পোস্টটাই দেখতে পাবে।</div>
+    <div class="drawer-footnote">When Admin Mode is on, edit and delete buttons are visible above each pin. Clicking on a shared link brings users directly to that specific post.</div>
   </div>
 </aside>
 
@@ -289,7 +523,7 @@ https://example.com/2.jpg" required></textarea>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-  getFirestore, collection, addDoc, deleteDoc, doc, updateDoc, increment, onSnapshot, serverTimestamp
+  getFirestore, collection, addDoc, deleteDoc, doc, updateDoc, increment, onSnapshot, serverTimestamp, query, limit, orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -309,6 +543,7 @@ const itemsCol = collection(db, "gallery_items");
 let state = {
   items: [],
   activeCategory: 'all',
+  profileSubtab: 'created', 
   search: '',
   sort: 'newest',
   lightboxList: [],
@@ -316,11 +551,44 @@ let state = {
   pendingDelete: null,
   pendingCardDelete: null,
   isAdminOpen: false,
+  editItemId: null, 
+  limit: 15,
+  currentView: 'home' 
 };
+
 let pendingHashOpenId = (function(){
   const m = window.location.hash.match(/^#post=(.+)$/);
   return m ? decodeURIComponent(m[1]) : null;
 })();
+
+function initLocalProfile() {
+  if (!localStorage.getItem('lumen_user_id')) {
+    const randomId = 'usr_' + Math.random().toString(36).substring(2, 11);
+    const randomNum = Math.floor(1000 + Math.random() * 9000);
+    localStorage.setItem('lumen_user_id', randomId);
+    localStorage.setItem('lumen_user_username', '@creator_' + randomNum);
+    localStorage.setItem('lumen_user_name', 'Lumen Creator');
+    localStorage.setItem('lumen_user_avatar', '');
+    localStorage.setItem('lumen_user_bio', 'I love to discover and share amazing ideas.');
+  }
+}
+initLocalProfile();
+
+function getLocalProfile() {
+  return {
+    userId: localStorage.getItem('lumen_user_id'),
+    username: localStorage.getItem('lumen_user_username'),
+    name: localStorage.getItem('lumen_user_name'),
+    avatar: localStorage.getItem('lumen_user_avatar'),
+    bio: localStorage.getItem('lumen_user_bio')
+  };
+}
+
+function getAvatarUrl(username, customUrl) {
+  if (customUrl && customUrl.startsWith('http')) return customUrl;
+  const seed = (username || 'user').replace(/[^a-zA-Z0-9]/g, '');
+  return `https://api.dicebear.com/7.x/identicon/svg?seed=${seed}`;
+}
 
 function escapeHtml(str){ const d = document.createElement('div'); d.textContent = str || ''; return d.innerHTML; }
 function showToast(message, type){
@@ -332,54 +600,101 @@ function showToast(message, type){
   setTimeout(()=>{ el.style.opacity='0'; el.style.transition='opacity .3s'; setTimeout(()=>el.remove(),300); }, 3500);
 }
 function sanitizeFilename(str){
-  return (str || 'lumen').toLowerCase().replace(/[^a-z0-9আ-৿\s-]/gi,'').trim().replace(/\s+/g,'-').slice(0,40) || 'lumen';
+  return (str || 'lumen').toLowerCase().replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').slice(0,40) || 'lumen';
 }
-function extractYoutubeId(url){
-  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  return m ? m[1] : null;
+
+function detectVideoPlatform(url) {
+  const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (ytMatch) return { platform: 'youtube', embedUrl: `https://www.youtube.com/embed/${ytMatch[1]}`, rawUrl: url };
+
+  const vimeoMatch = url.match(/(?:vimeo\.com\/|player\.vimeo\.com\/video\/)([0-9]+)/);
+  if (vimeoMatch) return { platform: 'vimeo', embedUrl: `https://player.vimeo.com/video/${vimeoMatch[1]}`, rawUrl: url };
+
+  const directMatch = url.match(/\.(mp4|webm|ogg|mov)($|\?)/i);
+  if (directMatch || url.includes('/mp4') || url.includes('.mp4')) {
+    return { platform: 'direct', embedUrl: url, rawUrl: url };
+  }
+  return null;
 }
+
 function timeMs(item){ return item.createdAt && typeof item.createdAt.toMillis === 'function' ? item.createdAt.toMillis() : 0; }
 function isLiked(id){ return !!localStorage.getItem('lumen_liked_' + id); }
+function isFavorited(id){ return !!localStorage.getItem('lumen_fav_' + id); }
 function siteShareUrl(it){
   const base = window.location.origin + window.location.pathname;
   return `${base}#post=${encodeURIComponent(it.id)}`;
 }
+
 function allCategoriesUnion(){
   const set = new Set();
-  state.items.forEach(it => set.add(it.category || 'সাধারণ'));
+  state.items.forEach(it => {
+    if (it.category && it.type === 'image') set.add(it.category);
+  });
   return Array.from(set);
 }
-function categoryCount(cat){ return state.items.filter(it => (it.category || 'সাধারণ') === cat).length; }
+function categoryCount(cat){ return state.items.filter(it => (it.category || 'General') === cat && it.type === 'image').length; }
+function favoriteCount(){ return state.items.filter(it => isFavorited(it.id)).length; }
+function videoCount(){ return state.items.filter(it => it.type === 'video').length; }
+
 function filteredItems(){
   let list = state.items.slice();
-  if(state.activeCategory !== 'all') list = list.filter(it => (it.category || 'সাধারণ') === state.activeCategory);
+  if(state.activeCategory === 'favorites') {
+    list = list.filter(it => isFavorited(it.id));
+  } else if(state.activeCategory === 'videos') {
+    list = list.filter(it => it.type === 'video');
+  } else if(state.activeCategory !== 'all') {
+    list = list.filter(it => (it.category || 'General') === state.activeCategory && it.type === 'image');
+  }
+  
   if(state.search.trim()){
     const q = state.search.trim().toLowerCase();
-    list = list.filter(it => (it.title||'').toLowerCase().includes(q));
+    list = list.filter(it => 
+      (it.title||'').toLowerCase().includes(q) || 
+      (it.story||'').toLowerCase().includes(q) ||
+      (it.category||'').toLowerCase().includes(q)
+    );
   }
   list.sort((a,b) => state.sort === 'newest' ? timeMs(b) - timeMs(a) : timeMs(a) - timeMs(b));
   return list;
 }
 
-// ---------- live data ----------
-onSnapshot(itemsCol, (snap)=>{
-  state.items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  renderAll();
-  if(pendingHashOpenId){
-    const idx = state.items.findIndex(it => it.id === pendingHashOpenId);
-    if(idx >= 0){ openLightbox(state.items.slice(), idx); }
-    pendingHashOpenId = null;
-  }
-}, (err)=>{
-  showToast('ডেটা লোড করতে সমস্যা — Firestore enable/rules চেক করো', 'error');
-  console.error(err);
-});
+// ---------- live data & pagination ----------
+let unsubscribe = null;
+function subscribeToFirestore() {
+  if (unsubscribe) unsubscribe();
+  const q = query(itemsCol, orderBy('createdAt', 'desc'), limit(state.limit));
+  
+  unsubscribe = onSnapshot(q, (snap)=>{
+    state.items = snap.docs.map(d => {
+      const data = d.data();
+      if (data.type === 'video' && !data.videoPlatform) {
+        data.videoPlatform = 'youtube';
+        data.videoEmbedUrl = `https://www.youtube.com/embed/${data.videoId}`;
+      }
+      return { id: d.id, ...data };
+    });
+    renderAll();
+    if(pendingHashOpenId){
+      const idx = state.items.findIndex(it => it.id === pendingHashOpenId);
+      if(idx >= 0){ openLightbox(state.items.slice(), idx); }
+      pendingHashOpenId = null;
+    }
+  }, (err)=>{
+    showToast('Failed to load data — check rules/configs', 'error');
+    console.error(err);
+  });
+}
+
+subscribeToFirestore();
 
 // ---------- pill bar ----------
 function renderPillBar(){
   const wrap = document.getElementById('pillBar');
+  if(!wrap) return;
   const cats = allCategoriesUnion();
-  let html = `<div class="chip ${state.activeCategory==='all'?'active':''}" data-cat="all">সব (${state.items.length})</div>`;
+  let html = `<div class="chip ${state.activeCategory==='all'?'active':''}" data-cat="all">All (${state.items.length})</div>`;
+  html += `<div class="chip ${state.activeCategory==='videos'?'active':''}" data-cat="videos">🎬 Videos (${videoCount()})</div>`;
+  html += `<div class="chip ${state.activeCategory==='favorites'?'active':''}" data-cat="favorites">⭐ Saved (${favoriteCount()})</div>`;
   cats.forEach(c=>{ html += `<div class="chip ${state.activeCategory===c?'active':''}" data-cat="${escapeHtml(c)}">${escapeHtml(c)} (${categoryCount(c)})</div>`; });
   wrap.innerHTML = html;
   wrap.querySelectorAll('.chip').forEach(chip=>{
@@ -387,90 +702,160 @@ function renderPillBar(){
   });
 }
 
-// ---------- gallery ----------
+// ---------- dynamic card mapping function ----------
+function mapPinCardMarkup(it, idx, list) {
+  const cat = it.category || 'General';
+  const liked = isLiked(it.id);
+  const favorited = isFavorited(it.id);
+  const confirmingCard = state.pendingCardDelete === it.id;
+  const cardCreatorAvatar = getAvatarUrl(it.creatorUsername, it.creatorAvatar);
+
+  const adminBarHtml = state.isAdminOpen
+    ? `<div class="card-admin-bar" style="gap:6px; width:100%;">
+        <button class="small-btn" data-edit-card="${it.id}" style="border-color:var(--accent-2);color:var(--accent-2);">Edit</button>
+        ${confirmingCard
+        ? `<span style="font-size:.72rem;color:var(--text-muted);margin-right:6px;">Sure?</span>
+           <button class="small-btn" data-cancel-card="${it.id}">No</button>
+           <button class="danger-btn" data-confirm-card="${it.id}">Delete</button>`
+        : `<button class="icon-btn-del" data-del-card="${it.id}" title="Delete Post">🗑</button>`}</div>`
+    : '';
+
+  const directUrl = it.url || '';
+  let mediaHtml = '';
+
+  // Restored story-reading zoom lightbox click handler trigger!
+  const mediaClickAction = `window.showPinDetails('${it.id}');`;
+
+  if (it.type === 'video') {
+    mediaHtml = `<div class="card-media" onclick="${mediaClickAction}"><span class="media-tag video">VIDEO</span>
+      ${it.linkUrl ? `<a class="pin-link-btn" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
+      <div class="video-embed-wrap">
+        <video src="${escapeHtml(it.videoEmbedUrl)}" controls loading="lazy" style="width:100%; height:100%; object-fit:contain; background:#000; display:block;"></video>
+      </div></div>`;
+  } else {
+    mediaHtml = `
+      <div class="card-media" onclick="${mediaClickAction}">
+        <span class="media-tag">${escapeHtml(cat)}</span>
+        <button class="pin-save-btn ${favorited?'saved':''}" data-fav="${it.id}" onclick="event.stopPropagation();window.toggleFavorite('${it.id}');">${favorited?'Saved':'Save'}</button>
+        ${it.linkUrl ? `<a class="pin-link-btn" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${escapeHtml(it.linkLabel || 'Visit')}</a>` : ''}
+        <img src="${escapeHtml(directUrl)}" alt="${escapeHtml(it.title)}" loading="lazy"
+          onload="this.classList.add('loaded'); this.closest('.card-media').classList.add('img-loaded');"
+          onerror="if(!this.dataset.retry){this.dataset.retry='true'; this.src='https://wsrv.nl/?url=' + encodeURIComponent(this.src) + '&w=420&q=80';}else{this.closest('.card-media').classList.add('broken');}">
+      </div>`;
+  }
+
+  return `
+    <div class="photo-card pin-card" style="animation-delay:${Math.min(idx*35,350)}ms">
+      ${adminBarHtml}
+      ${mediaHtml}
+      <div class="pin-info">
+        <div class="pin-title" onclick="window.showPinDetails('${it.id}');">${escapeHtml(it.title)}</div>
+        
+        <div class="pin-creator-bar" onclick="window.showUserCreatedPins('${escapeHtml(it.creatorId)}', '${escapeHtml(it.creatorName || '')}'); event.stopPropagation();">
+          <img class="pin-creator-avatar" src="${escapeHtml(cardCreatorAvatar)}" alt="">
+          <span class="pin-creator-name">${escapeHtml(it.creatorUsername || '@anonymous')}</span>
+        </div>
+
+        <div class="pin-meta">
+          <span class="pin-likes" data-like="${it.id}" onclick="event.stopPropagation();window.toggleLike('${it.id}');"><span class="heart">${liked?'♥':'♡'}</span> ${it.likes||0}</span>
+          <button class="pin-action-icon" data-action="share" data-id="${it.id}" data-title="${escapeHtml(it.title)}" title="Share">↗ Share</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ---------- gallery render ----------
 function renderGallery(){
+  if(state.currentView !== 'home') return;
   const grid = document.getElementById('galleryGrid');
   const list = filteredItems();
+  
   if(list.length === 0){
     grid.innerHTML = state.items.length === 0
-      ? `<div class="empty-state"><h3>গ্যালারি খালি</h3><p>অ্যাডমিন প্যানেল থেকে প্রথম ছবি বা ভিডিওর লিংক যুক্ত করো।</p></div>`
-      : `<div class="empty-state"><h3>কিছু পাওয়া যায়নি</h3><p>খোঁজ বা ক্যাটাগরি পরিবর্তন করে দেখো।</p></div>`;
+      ? `<div class="empty-state"><h3>Gallery is Empty</h3><p>Be the first to upload an idea using the "Create" button!</p></div>`
+      : `<div class="empty-state"><h3>No results found</h3><p>Try searching for something else.</p></div>`;
+    document.getElementById('loadMoreContainer').innerHTML = '';
     return;
   }
-  grid.innerHTML = list.map((it, idx) => {
-    const cat = it.category || 'সাধারণ';
-    const story = it.story || '';
-    const liked = isLiked(it.id);
-    const confirmingCard = state.pendingCardDelete === it.id;
 
-    const topLinkHtml = it.linkUrl
-      ? `<a class="card-toplink" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();">${escapeHtml(it.linkLabel || 'ভিজিট করো')} <span class="arrow">↗</span></a>`
-      : '';
+  let htmlCards = [];
+  list.forEach((it, idx) => {
+    htmlCards.push(mapPinCardMarkup(it, idx, list));
 
-    const adminBarHtml = state.isAdminOpen
-      ? `<div class="card-admin-bar">${confirmingCard
-          ? `<span style="font-size:.72rem;color:var(--text-muted);margin-right:6px;">নিশ্চিত?</span>
-             <button class="small-btn" data-cancel-card="${it.id}" style="margin-right:4px;">না</button>
-             <button class="danger-btn" data-confirm-card="${it.id}">হ্যাঁ, ডিলিট</button>`
-          : `<button class="icon-btn-del" data-del-card="${it.id}" title="পোস্ট ডিলিট করো">🗑</button>`}</div>`
-      : '';
+    // Dynamic High-CTR Ad Slot insertion: Installs 160x300 vertical ads inside the masonry cards list
+    if ((idx + 1) % 6 === 0) {
+      htmlCards.push(`
+        <div class="photo-card pin-card" style="break-inside:avoid;" id="ad-card-placeholder-${idx}"></div>
+      `);
+    }
+  });
 
-    const mediaHtml = it.type === 'video'
-      ? `<div class="card-media" data-idx="${idx}"><span class="media-tag video">YOUTUBE</span>
-          <div class="video-embed-wrap"><iframe src="https://www.youtube.com/embed/${escapeHtml(it.videoId)}" loading="lazy" allowfullscreen title="${escapeHtml(it.title)}"></iframe></div></div>`
-      : `<div class="card-media" data-idx="${idx}"><span class="media-tag">${escapeHtml(cat)}</span>
-          <img src="${escapeHtml(it.url)}" alt="${escapeHtml(it.title)}" loading="lazy"
-            onload="this.classList.add('loaded'); this.closest('.card-media').classList.add('img-loaded');"
-            onerror="this.closest('.card-media').classList.add('broken');"></div>`;
+  grid.innerHTML = htmlCards.join('');
 
-    const likeBtnHtml = `<button class="action-btn like ${liked?'liked':''}" data-like="${it.id}" data-idx="${idx}"><span class="heart">${liked?'♥':'♡'}</span> লাইক (${it.likes||0})</button>`;
-    const shareBtnHtml = `<button class="action-btn" data-action="share" data-idx="${idx}">↗ শেয়ার করো</button>`;
-    const expandBtnHtml = `<button class="action-btn" data-action="open" data-idx="${idx}">⤢ বড় করো</button>`;
-    const middleBtnHtml = it.type === 'video'
-      ? `<button class="action-btn primary" data-action="open-yt" data-idx="${idx}">▶ ইউটিউবে দেখো</button>`
-      : `<button class="action-btn primary" data-action="download" data-idx="${idx}">⬇ ডাউনলোড করো</button>`;
-
-    return `
-      <div class="photo-card" style="animation-delay:${Math.min(idx*35,350)}ms">
-        ${adminBarHtml}
-        ${topLinkHtml}
-        ${mediaHtml}
-        <div class="card-body">
-          <div class="card-title" data-action="open" data-idx="${idx}">${escapeHtml(it.title)}</div>
-          ${story ? `<div class="card-story clamped" id="story-${idx}">${escapeHtml(story)}</div>
-            <button class="card-story-toggle" data-toggle-story="${idx}">বিস্তারিত পড়ো</button>` : ''}
-          <span class="views-text">${it.views||0} বার দেখা হয়েছে</span>
-          <div class="card-actions-row">
-            ${likeBtnHtml}
-            ${middleBtnHtml}
-            ${shareBtnHtml}
-            ${expandBtnHtml}
+  // Sandbox Iframe loader trick to force dynamically generated JavaScript Adsterra codes to execute inside Masonry cards
+  list.forEach((it, idx) => {
+    if ((idx + 1) % 6 === 0) {
+      const placeholder = document.getElementById(`ad-card-placeholder-${idx}`);
+      if (placeholder) {
+        placeholder.innerHTML = `
+          <div style="padding: 10px; text-align: center; background: rgba(255,255,255,0.02); border-radius:16px;">
+            <span style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-2); display: block; margin-bottom: 8px;">Sponsored</span>
+            <iframe id="ad-iframe-160-${idx}" style="width:160px; height:300px; border:none; margin:0 auto; display:block; background: transparent;" src="about:blank"></iframe>
           </div>
-        </div>
-      </div>`;
-  }).join('');
+        `;
+        // Safe timeout thread execution to ensure the placeholder element is securely painted in the DOM first
+        setTimeout(() => {
+          const iframe = document.getElementById(`ad-iframe-160-${idx}`);
+          if (iframe && iframe.contentWindow) {
+            try {
+              const adDoc = iframe.contentWindow.document;
+              adDoc.open();
+              adDoc.write(`
+                <html style="margin:0; padding:0; height:100%; width:100%;">
+                <body style="margin:0; padding:0; display:flex; justify-content:center; align-items:center; height:100%; width:100%; background:transparent; overflow:hidden;">
+                  <script type="text/javascript">
+                    atOptions = {
+                      'key' : '9b29e6d75ac5a5521e42b92672c049fe',
+                      'format' : 'iframe',
+                      'height' : 300,
+                      'width' : 160,
+                      'params' : {}
+                    };
+                  <\/script>
+                  <script type="text/javascript" src="https://biographygridetelegram.com/9b29e6d75ac5a5521e42b92672c049fe/invoke.js"><\/script>
+                </body>
+                </html>
+              `);
+              adDoc.close();
+            } catch (err) { console.error("Dynamic Adsterra Load Error: ", err); }
+          }
+        }, 120);
+      }
+    }
+  });
 
-  grid.querySelectorAll('[data-toggle-story]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const el = document.getElementById('story-' + btn.dataset.toggleStory);
-      const nowClamped = el.classList.toggle('clamped');
-      btn.textContent = nowClamped ? 'বিস্তারিত পড়ো' : 'সংক্ষেপে দেখো';
+  // Load More Pagination Button
+  const loadMoreContainer = document.getElementById('loadMoreContainer');
+  if(state.items.length >= state.limit) {
+    loadMoreContainer.innerHTML = `<button class="btn-ghost" id="loadMoreBtn" style="border-radius:24px;">Load More ⬇</button>`;
+    document.getElementById('loadMoreBtn').addEventListener('click', ()=>{
+      state.limit += 15; 
+      subscribeToFirestore();
+    });
+  } else {
+    loadMoreContainer.innerHTML = '';
+  }
+
+  // Bind Grid Actions
+  grid.querySelectorAll('[data-action="share"]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{ 
+      e.stopPropagation(); 
+      const item = state.items.find(p => p.id === btn.dataset.id);
+      if (item) openSharePopover(btn, siteShareUrl(item), item.title); 
     });
   });
-  grid.querySelectorAll('[data-action="open"]').forEach(el=>{
-    el.addEventListener('click', ()=> openLightbox(list, parseInt(el.dataset.idx,10)));
-  });
-  grid.querySelectorAll('[data-action="download"]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const it = list[parseInt(btn.dataset.idx,10)]; downloadImage(it.url, it.title); });
-  });
-  grid.querySelectorAll('[data-action="share"]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const it = list[parseInt(btn.dataset.idx,10)]; openSharePopover(btn, siteShareUrl(it), it.title); });
-  });
-  grid.querySelectorAll('[data-action="open-yt"]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const it = list[parseInt(btn.dataset.idx,10)]; window.open(`https://www.youtube.com/watch?v=${it.videoId}`, '_blank'); });
-  });
-  grid.querySelectorAll('[data-like]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleLike(btn.dataset.like); });
+  grid.querySelectorAll('[data-edit-card]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{ e.stopPropagation(); handleEditLoad(btn.dataset.editCard); });
   });
   grid.querySelectorAll('[data-del-card]').forEach(btn=>{
     btn.addEventListener('click', (e)=>{ e.stopPropagation(); state.pendingCardDelete = btn.dataset.delCard; renderGallery(); });
@@ -481,20 +866,242 @@ function renderGallery(){
   grid.querySelectorAll('[data-confirm-card]').forEach(btn=>{
     btn.addEventListener('click', async (e)=>{
       e.stopPropagation();
-      try{ await deleteDoc(doc(db, 'gallery_items', btn.dataset.confirmCard)); showToast('পোস্ট ডিলিট হয়েছে', 'success'); }
-      catch(err){ showToast('ডিলিট করতে সমস্যা হয়েছে', 'error'); console.error(err); }
+      try{ await deleteDoc(doc(db, 'gallery_items', btn.dataset.confirmCard)); showToast('Post deleted successfully', 'success'); }
+      catch(err){ showToast('Failed to delete post', 'error'); console.error(err); }
       state.pendingCardDelete = null;
     });
   });
 }
 
-// ---------- like & view ----------
+// ---------- profile page view rendering ----------
+function renderProfileView() {
+  const profileContainer = document.getElementById('profileView');
+  if (!profileContainer || state.currentView !== 'profile') return;
+
+  const prof = getLocalProfile();
+  const avatarUrl = getAvatarUrl(prof.username, prof.avatar);
+
+  const createdPins = state.items.filter(it => it.creatorId === prof.userId);
+  const savedPins = state.items.filter(it => isFavorited(it.id));
+
+  const listToRender = state.profileSubtab === 'created' ? createdPins : savedPins;
+
+  let gridCardsHtml = '';
+  if (listToRender.length === 0) {
+    gridCardsHtml = `<div class="empty-state"><h3>No Pins Yet</h3><p>Pins you ${state.profileSubtab} will appear here.</p></div>`;
+  } else {
+    gridCardsHtml = listToRender.map((it, idx) => mapPinCardMarkup(it, idx, listToRender)).join('');
+  }
+
+  profileContainer.innerHTML = `
+    <div class="profile-header-card">
+      <img class="profile-big-avatar" src="${escapeHtml(avatarUrl)}" alt="">
+      <h2 class="profile-display-name">${escapeHtml(prof.name)}</h2>
+      <div class="profile-username">${escapeHtml(prof.username)}</div>
+      <p class="profile-bio">${escapeHtml(prof.bio)}</p>
+      <button class="btn-ghost" id="editProfileOpenBtn" style="border-radius:20px; padding:8px 16px; font-size:0.8rem;">Edit Profile</button>
+    </div>
+
+    <div class="profile-subtabs">
+      <button class="profile-subtab-btn ${state.profileSubtab === 'created' ? 'active' : ''}" id="profTabCreated">Created</button>
+      <button class="profile-subtab-btn ${state.profileSubtab === 'saved' ? 'active' : ''}" id="profTabSaved">Saved</button>
+    </div>
+
+    <div class="gallery-section" style="padding-left:0; padding-right:0;">
+      <div class="gallery-grid" id="profileGrid" style="text-align:center"></div>
+    </div>
+  `;
+
+  const profileGrid = profileContainer.querySelector('.gallery-grid');
+  profileGrid.innerHTML = gridCardsHtml;
+
+  // Bind profile gallery actions
+  profileGrid.querySelectorAll('[data-action="share"]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{ e.stopPropagation(); const item = state.items.find(p => p.id === btn.dataset.id); if (item) openSharePopover(btn, siteShareUrl(item), item.title); });
+  });
+
+  document.getElementById('editProfileOpenBtn').addEventListener('click', openEditProfileModal);
+  
+  document.getElementById('profTabCreated').addEventListener('click', () => {
+    state.profileSubtab = 'created';
+    renderProfileView();
+  });
+  document.getElementById('profTabSaved').addEventListener('click', () => {
+    state.profileSubtab = 'saved';
+    renderProfileView();
+  });
+}
+
+// Filter and view user created posts by clicking username on card
+function showUserCreatedPins(creatorId, creatorName) {
+  state.activeCategory = 'all';
+  state.search = '';
+  document.getElementById('searchInput').value = '';
+  state.currentView = 'home';
+  document.getElementById('profileView').hidden = true;
+  document.getElementById('mainFeedView').hidden = false;
+  
+  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btnNavHome').classList.add('active');
+
+  const userPins = state.items.filter(it => it.creatorId === creatorId);
+  const grid = document.getElementById('galleryGrid');
+  
+  if(userPins.length === 0){
+    grid.innerHTML = `<div class="empty-state"><h3>No pins uploaded</h3></div>`;
+    return;
+  }
+  grid.innerHTML = userPins.map((it, idx) => mapPinCardMarkup(it, idx, userPins)).join('');
+  document.getElementById('loadMoreContainer').innerHTML = '';
+  showToast(`Showing pins created by ${creatorName || 'user'}`, 'success');
+}
+
+// ---------- Show individual pin details inside zoom lightbox ----------
+function showPinDetails(id) {
+  const idx = state.items.findIndex(p => p.id === id);
+  if (idx >= 0) {
+    openLightbox(state.items, idx);
+  }
+}
+
+// ---------- Switch Home vs Profile views ----------
+function switchView(target) {
+  state.currentView = target;
+  if(target === 'profile') {
+    document.getElementById('mainFeedView').hidden = true;
+    document.getElementById('mainHeader').hidden = true;
+    document.getElementById('mainFooter').hidden = true;
+    document.getElementById('profileView').hidden = false;
+    renderProfileView();
+  } else {
+    document.getElementById('profileView').hidden = true;
+    document.getElementById('mainFeedView').hidden = false;
+    document.getElementById('mainHeader').hidden = false;
+    document.getElementById('mainFooter').hidden = false;
+    renderGallery();
+  }
+}
+
+// ---------- edit profile handlers ----------
+function openEditProfileModal() {
+  const prof = getLocalProfile();
+  document.getElementById('profileFormName').value = prof.name;
+  document.getElementById('profileFormUsername').value = prof.username;
+  document.getElementById('profileFormAvatar').value = prof.avatar;
+  document.getElementById('profileFormBio').value = prof.bio;
+  document.getElementById('editProfileModal').hidden = false;
+}
+document.getElementById('editProfileClose').addEventListener('click', () => {
+  document.getElementById('editProfileModal').hidden = true;
+});
+document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  let username = document.getElementById('profileFormUsername').value.trim();
+  if(!username.startsWith('@')) username = '@' + username;
+
+  localStorage.setItem('lumen_user_name', document.getElementById('profileFormName').value.trim());
+  localStorage.setItem('lumen_user_username', username);
+  localStorage.setItem('lumen_user_avatar', document.getElementById('profileFormAvatar').value.trim());
+  localStorage.setItem('lumen_user_bio', document.getElementById('profileFormBio').value.trim());
+
+  document.getElementById('editProfileModal').hidden = true;
+  showToast('Profile updated successfully!', 'success');
+  renderProfileView();
+});
+
+// ---------- Create Pin Modal Overlay Events ----------
+document.getElementById('pubTypeSelect').addEventListener('change', (e) => {
+  const label = document.getElementById('pubSourceLabel');
+  const input = document.getElementById('pubSourceUrl');
+  if (e.target.value === 'video') {
+    label.textContent = 'Video URL (YouTube, Vimeo, MP4)';
+    input.placeholder = 'https://www.youtube.com/... or vimeo or .mp4 link';
+  } else {
+    label.textContent = 'Image URL';
+    input.placeholder = 'https://example.com/image.jpg';
+  }
+});
+
+document.getElementById('publicCreateClose').addEventListener('click', () => {
+  document.getElementById('publicCreateModal').hidden = true;
+});
+
+document.getElementById('publicCreateForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const type = document.getElementById('pubTypeSelect').value;
+  const sourceUrl = document.getElementById('pubSourceUrl').value.trim();
+  const title = document.getElementById('pubTitle').value.trim();
+  const story = document.getElementById('pubStory').value.trim();
+  const category = document.getElementById('pubCategory').value.trim() || 'General';
+  const linkUrl = document.getElementById('pubLinkUrl').value.trim();
+  const linkLabel = document.getElementById('pubLinkLabel').value.trim();
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+
+  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
+
+  submitBtn.disabled = true;
+
+  try {
+    const prof = getLocalProfile();
+    const payload = {
+      title,
+      story,
+      category,
+      linkUrl: linkUrl || null,
+      linkLabel: linkLabel || null,
+      creatorId: prof.userId,
+      creatorUsername: prof.username,
+      creatorName: prof.name,
+      creatorAvatar: prof.avatar,
+      views: 0,
+      likes: 0,
+      createdAt: serverTimestamp()
+    };
+
+    if(type === 'video') {
+      const detected = detectVideoPlatform(sourceUrl);
+      if(!detected) { showToast('Provide a valid YouTube, Vimeo, or MP4 link', 'error'); submitBtn.disabled = false; return; }
+      payload.type = 'video';
+      payload.videoPlatform = detected.platform;
+      payload.videoEmbedUrl = detected.embedUrl;
+      payload.rawVideoUrl = detected.rawUrl;
+    } else {
+      if(!/^https?:\/\//i.test(sourceUrl)) { showToast('Provide a valid image http/https URL', 'error'); submitBtn.disabled = false; return; }
+      payload.type = 'image';
+      payload.url = sourceUrl;
+    }
+
+    await addDoc(itemsCol, payload);
+    showToast('Pin created and published successfully! ✓', 'success');
+    document.getElementById('publicCreateForm').reset();
+    document.getElementById('publicCreateModal').hidden = true;
+  } catch(err) {
+    console.error(err);
+    showToast('Failed to publish Pin. Try again!', 'error');
+  }
+  submitBtn.disabled = false;
+});
+
+
+// ---------- like, favorite & view updates ----------
 async function toggleLike(id){
   const liked = isLiked(id);
   try{
     await updateDoc(doc(db, 'gallery_items', id), { likes: increment(liked ? -1 : 1) });
     if(liked) localStorage.removeItem('lumen_liked_' + id); else localStorage.setItem('lumen_liked_' + id, '1');
-  }catch(e){ showToast('সমস্যা হয়েছে, আবার চেষ্টা করো', 'error'); console.error(e); }
+  }catch(e){ showToast('Failed to perform action', 'error'); console.error(e); }
+}
+function toggleFavorite(id){
+  const faved = isFavorited(id);
+  if(faved) {
+    localStorage.removeItem('lumen_fav_' + id);
+    showToast('Removed from saved items', 'success');
+  } else {
+    localStorage.setItem('lumen_fav_' + id, '1');
+    showToast('Saved to Board ★', 'success');
+  }
+  renderAll();
+  if(state.currentView === 'profile') renderProfileView();
 }
 async function registerView(id){
   const key = 'lumen_viewed_' + id;
@@ -522,12 +1129,12 @@ function openSharePopover(anchorEl, url, title){
   pop.className = 'share-popover';
   pop.id = 'activeSharePopover';
   pop.innerHTML = `
-    <div class="sp-title">শেয়ার করো</div>
+    <div class="sp-title">Share Pin</div>
     <a href="https://www.facebook.com/sharer/sharer.php?u=${enc}" target="_blank" rel="noopener">📘 Facebook</a>
     <a href="https://wa.me/?text=${encTitle}%20${enc}" target="_blank" rel="noopener">💬 WhatsApp</a>
     <a href="https://t.me/share/url?url=${enc}&text=${encTitle}" target="_blank" rel="noopener">✈ Telegram</a>
     <a href="https://twitter.com/intent/tweet?url=${enc}&text=${encTitle}" target="_blank" rel="noopener">𝕏 Twitter / X</a>
-    <button data-copy-link>🔗 লিংক কপি করো</button>
+    <button data-copy-link>🔗 Copy Link</button>
   `;
   document.body.appendChild(pop);
   const top = Math.min(rect.bottom + 8, window.innerHeight - 260);
@@ -535,8 +1142,8 @@ function openSharePopover(anchorEl, url, title){
   pop.style.top = top + 'px';
   pop.style.left = Math.max(8,left) + 'px';
   pop.querySelector('[data-copy-link]').addEventListener('click', async ()=>{
-    try{ await navigator.clipboard.writeText(url); showToast('ওয়েবসাইটের লিংক কপি হয়েছে ✓', 'success'); }
-    catch(e){ showToast('কপি করা সম্ভব হয়নি', 'error'); }
+    try{ await navigator.clipboard.writeText(url); showToast('Link copied successfully ✓', 'success'); }
+    catch(e){ showToast('Failed to copy link', 'error'); }
     closeAnySharePopover();
   });
   setTimeout(()=>{ document.addEventListener('click', outsideShareCloseHandler, true); }, 0);
@@ -564,35 +1171,46 @@ function renderLightbox(){
   const slot = document.getElementById('lightboxMediaSlot');
   const btns = document.getElementById('lightboxBtns');
   const topLinkSlot = document.getElementById('lightboxTopLinkSlot');
-  topLinkSlot.innerHTML = it.linkUrl ? `<a class="lightbox-toplink" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener">${escapeHtml(it.linkLabel || 'ভিজিট করো')} ↗</a>` : '';
+  
+  topLinkSlot.innerHTML = it.linkUrl ? `<a class="outbound-badge-glow" href="${escapeHtml(it.linkUrl)}" target="_blank" rel="noopener">✨ ${escapeHtml(it.linkLabel || 'Visit Website')} ↗</a>` : '';
 
   if(it.type === 'video'){
-    slot.innerHTML = `<div class="lightbox-video-wrap"><iframe src="https://www.youtube.com/embed/${escapeHtml(it.videoId)}" allowfullscreen title="${escapeHtml(it.title)}"></iframe></div>`;
+    if(it.videoPlatform === 'direct'){
+      slot.innerHTML = `<div class="lightbox-video-wrap"><video src="${escapeHtml(it.videoEmbedUrl)}" controls autoplay style="width:100%; height:100%; object-fit:contain; background:#000;"></video></div>`;
+    } else {
+      slot.innerHTML = `<div class="lightbox-video-wrap"><iframe src="${escapeHtml(it.videoEmbedUrl)}" allowfullscreen autoplay title="${escapeHtml(it.title)}"></iframe></div>`;
+    }
   } else {
-    slot.innerHTML = `<div class="lightbox-img-wrap"><img src="${escapeHtml(it.url)}" alt="${escapeHtml(it.title)}"></div>`;
+    slot.innerHTML = `<div class="lightbox-img-wrap"><img src="${escapeHtml(it.url)}" alt="${escapeHtml(it.title)}" onerror="this.src='${escapeHtml(it.url)}';"></div>`;
   }
+  
   const liked = isLiked(it.id);
-  let btnsHtml = `<button class="action-btn like ${liked?'liked':''}" id="lbLikeBtn"><span class="heart">${liked?'♥':'♡'}</span> লাইক (${it.likes||0})</button>`;
-  if(it.type === 'video'){
-    btnsHtml += `<button class="btn-glow" id="ytOpenBtn">▶ ইউটিউবে দেখো</button>`;
+  const faved = isFavorited(it.id);
+  let btnsHtml = `
+    <button class="action-btn like ${liked?'liked':''}" id="lbLikeBtn"><span class="heart">${liked?'♥':'♡'}</span> Like (${it.likes||0})</button>
+    <button class="action-btn fav ${faved?'favorited':''}" id="lbFavBtn"><span class="star">${faved?'★':'☆'}</span> Save</button>
+  `;
+  if(it.type === 'video' && it.videoPlatform !== 'direct'){
+    btnsHtml += `<button class="btn-glow" id="ytOpenBtn">▶ Visit Site</button>`;
   } else {
-    btnsHtml += `<button class="btn-glow" id="lbDownloadBtn">⬇ ডাউনলোড করো</button>`;
+    btnsHtml += `<button class="btn-glow" id="lbDownloadBtn">⬇ Download</button>`;
   }
-  btnsHtml += `<button class="btn-ghost" id="lbShareBtn">↗ শেয়ার করো</button>`;
+  btnsHtml += `<button class="btn-ghost" id="lbShareBtn">↗ Share</button>`;
   btns.innerHTML = btnsHtml;
 
   document.getElementById('lbLikeBtn').addEventListener('click', ()=> toggleLike(it.id));
-  if(it.type === 'video'){
-    document.getElementById('ytOpenBtn').addEventListener('click', ()=> window.open(`https://www.youtube.com/watch?v=${it.videoId}`, '_blank'));
+  document.getElementById('lbFavBtn').addEventListener('click', ()=> { toggleFavorite(it.id); renderLightbox(); });
+  if(it.type === 'video' && it.videoPlatform !== 'direct'){
+    document.getElementById('ytOpenBtn').addEventListener('click', ()=> window.open(it.videoEmbedUrl, '_blank'));
   } else {
-    document.getElementById('lbDownloadBtn').addEventListener('click', ()=> downloadImage(it.url, it.title));
+    document.getElementById('lbDownloadBtn').addEventListener('click', ()=> downloadImage(it.url || it.videoEmbedUrl, it.title));
   }
   document.getElementById('lbShareBtn').addEventListener('click', (e)=> openSharePopover(e.currentTarget, siteShareUrl(it), it.title));
 
   document.getElementById('lightboxCaption').textContent = it.title;
-  document.getElementById('lightboxMeta').textContent = `${it.category || 'সাধারণ'}  ·  ${state.lightboxIdx+1}/${state.lightboxList.length}`;
+  document.getElementById('lightboxMeta').textContent = `${it.category || 'General'}  ·  ${state.lightboxIdx+1}/${state.lightboxList.length}`;
   document.getElementById('lightboxStory').textContent = it.story || '';
-  document.getElementById('lightboxViews').textContent = `${it.views||0} বার দেখা হয়েছে`;
+  document.getElementById('lightboxViews').textContent = `${it.views||0} views`;
 }
 
 // ---------- download ----------
@@ -610,7 +1228,7 @@ async function downloadImage(url, title){
       blob = await fetchAsBlob('https://wsrv.nl/?url=' + encodeURIComponent(url));
     }catch(e2){
       window.open(url, '_blank');
-      showToast('সরাসরি ডাউনলোড সম্ভব হয়নি — নতুন ট্যাবে খোলা হলো, ছবির উপর রাইট ক্লিক করে "Save image as" বেছে নাও', 'error');
+      showToast('Download failed — opening in new tab', 'error');
       return;
     }
   }
@@ -622,14 +1240,14 @@ async function downloadImage(url, title){
     a.href = objUrl; a.download = sanitizeFilename(title) + '.' + ext;
     document.body.appendChild(a); a.click(); a.remove();
     URL.revokeObjectURL(objUrl);
-    showToast('ডাউনলোড শুরু হয়েছে ✓', 'success');
+    showToast('Download started ✓', 'success');
   }catch(e){
     window.open(url, '_blank');
-    showToast('ডাউনলোড করতে সমস্যা হয়েছে — নতুন ট্যাবে খোলা হলো', 'error');
+    showToast('Opening in new tab', 'error');
   }
 }
 
-// ---------- admin: tabs ----------
+// ---------- super administrator controller drawers ----------
 document.querySelectorAll('.tab-btn').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
@@ -641,29 +1259,61 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 function renderCategoryDatalist(){
   document.getElementById('categoryOptions').innerHTML = allCategoriesUnion().map(c=>`<option value="${escapeHtml(c)}"></option>`).join('');
 }
+
+function handleEditLoad(id) {
+  const it = state.items.find(item => item.id === id);
+  if (!it) return;
+  state.editItemId = it.id;
+
+  if (it.type === 'video') {
+    document.getElementById('tabVideoBtn').click();
+    document.getElementById('videoUrlInput').value = it.rawVideoUrl || it.videoEmbedUrl;
+    document.getElementById('videoTitleInput').value = it.title;
+    document.getElementById('videoStoryInput').value = it.story || '';
+    document.getElementById('videoCatInput').value = it.category || '';
+    document.getElementById('videoLinkUrlInput').value = it.linkUrl || '';
+    document.getElementById('videoLinkLabelInput').value = it.linkLabel || '';
+    document.getElementById('videoSubmitBtn').textContent = 'Update Video';
+  } else {
+    document.getElementById('tabUploadBtn').click();
+    document.getElementById('imageLinksInput').value = it.url;
+    document.getElementById('bulkUploadHint').textContent = "⚠️ Edit mode active. Submit a single image URL.";
+    document.getElementById('uploadTitleInput').value = it.title;
+    document.getElementById('uploadStoryInput').value = it.story || '';
+    document.getElementById('uploadCatInput').value = it.category || '';
+    document.getElementById('uploadLinkUrlInput').value = it.linkUrl || '';
+    document.getElementById('uploadLinkLabelInput').value = it.linkLabel || '';
+    document.getElementById('uploadSubmitBtn').textContent = 'Update Post';
+  }
+  showToast('Form prefilled successfully.', 'success');
+  openAdmin();
+}
+
 function renderAdminItemList(){
   const wrap = document.getElementById('adminItemList');
-  document.getElementById('adminCountHeading').textContent = `সব কিছু (${state.items.length})`;
-  if(state.items.length === 0){ wrap.innerHTML = `<span class="form-hint">এখনো কিছু যুক্ত হয়নি।</span>`; return; }
+  document.getElementById('adminCountHeading').textContent = `Manage All (${state.items.length})`;
+  if(state.items.length === 0){ wrap.innerHTML = `<span class="form-hint">Nothing uploaded yet.</span>`; return; }
   const sorted = state.items.slice().sort((a,b)=>timeMs(b)-timeMs(a));
   wrap.innerHTML = sorted.map(it=>{
     const confirming = state.pendingDelete === it.id;
-    const thumb = it.type === 'video' ? `<div class="admin-item-thumb">▶</div>` : `<img src="${escapeHtml(it.url)}" alt="" onerror="this.style.opacity=0.15">`;
+    const thumb = it.type === 'video' ? `<div class="admin-item-thumb">▶</div>` : `<img src="https://wsrv.nl/?url=${encodeURIComponent(it.url)}&w=100&q=70" alt="" onerror="this.style.opacity=0.15">`;
     return `
       <div class="admin-item-row">
         ${thumb}
-        <div class="admin-item-meta"><div class="cap">${escapeHtml(it.title)}</div><div class="cat">${escapeHtml(it.category||'সাধারণ')} · ${it.type === 'video' ? 'ভিডিও' : 'ছবি'} · ${it.views||0} ভিউ · ${it.likes||0} লাইক</div></div>
+        <div class="admin-item-meta"><div class="cap">${escapeHtml(it.title)}</div><div class="cat">${escapeHtml(it.category||'General')} · ${it.type === 'video' ? 'Video' : 'Image'} · ${it.views||0} views · ${it.likes||0} likes</div></div>
+        <button class="small-btn" data-edit-item="${it.id}" style="border-color:var(--accent-2);color:var(--accent-2);margin-right:4px;">Edit</button>
         ${confirming
-          ? `<div class="row-confirm"><span>নিশ্চিত?</span><button class="small-btn" data-cancel="${it.id}">না</button><button class="danger-btn" data-confirm="${it.id}">হ্যাঁ</button></div>`
-          : `<button class="danger-btn" data-del="${it.id}">ডিলিট</button>`}
+          ? `<div class="row-confirm"><span>Sure?</span><button class="small-btn" data-cancel="${it.id}">No</button><button class="danger-btn" data-confirm="${it.id}">Yes</button></div>`
+          : `<button class="danger-btn" data-del="${it.id}">Delete</button>`}
       </div>`;
   }).join('');
+  wrap.querySelectorAll('[data-edit-item]').forEach(b=>b.addEventListener('click', ()=>{ handleEditLoad(b.dataset.editItem); }));
   wrap.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{ state.pendingDelete = b.dataset.del; renderAdminItemList(); }));
   wrap.querySelectorAll('[data-cancel]').forEach(b=>b.addEventListener('click', ()=>{ state.pendingDelete = null; renderAdminItemList(); }));
   wrap.querySelectorAll('[data-confirm]').forEach(b=>b.addEventListener('click', async ()=>{
     const id = b.dataset.confirm;
-    try{ await deleteDoc(doc(db, 'gallery_items', id)); showToast('ডিলিট হয়েছে', 'success'); }
-    catch(e){ showToast('ডিলিট করতে সমস্যা হয়েছে', 'error'); console.error(e); }
+    try{ await deleteDoc(doc(db, 'gallery_items', id)); showToast('Post deleted successfully', 'success'); }
+    catch(e){ showToast('Failed to delete post', 'error'); console.error(e); }
     state.pendingDelete = null;
   }));
 }
@@ -682,9 +1332,40 @@ function closeAdmin(){
   renderGallery();
 }
 function renderAll(){
-  renderPillBar(); renderGallery();
+  renderPillBar(); 
+  if(state.currentView === 'profile') {
+    renderProfileView();
+  } else {
+    renderGallery();
+  }
   if(state.isAdminOpen){ renderCategoryDatalist(); renderAdminItemList(); }
 }
+
+// ---------- Pinterest Bottom Navigation Events ----------
+document.getElementById('btnNavHome').addEventListener('click', ()=>{
+  switchView('home');
+  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btnNavHome').classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+document.getElementById('btnNavSearch').addEventListener('click', ()=>{
+  switchView('home');
+  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btnNavSearch').classList.add('active');
+  document.getElementById('searchInput').focus();
+  document.getElementById('searchInput').scrollIntoView({behavior:'smooth'});
+});
+
+document.getElementById('btnNavAdd').addEventListener('click', () => {
+  document.getElementById('publicCreateModal').hidden = false;
+});
+
+document.getElementById('btnNavProfile').addEventListener('click', ()=>{
+  switchView('profile');
+  document.querySelectorAll('.bottom-nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btnNavProfile').classList.add('active');
+});
 
 // ---------- general events ----------
 document.getElementById('searchInput').addEventListener('input', (e)=>{ state.search = e.target.value; renderGallery(); });
@@ -702,73 +1383,140 @@ document.addEventListener('keydown', (e)=>{
   if(e.key === 'ArrowRight') navLightbox(1);
 });
 
-// ---------- upload form (multi link) ----------
+// ---------- admin upload form (multi link or edit update) ----------
 document.getElementById('uploadForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
   const raw = document.getElementById('imageLinksInput').value;
-  const lines = raw.split('\n').map(s=>s.trim()).filter(s=>s.length>0);
-  const validLinks = lines.filter(l=>/^https?:\/\//i.test(l));
-  const invalidCount = lines.length - validLinks.length;
   const title = document.getElementById('uploadTitleInput').value.trim();
   const story = document.getElementById('uploadStoryInput').value.trim();
-  const category = document.getElementById('uploadCatInput').value.trim() || 'সাধারণ';
+  const category = document.getElementById('uploadCatInput').value.trim() || 'General';
   const linkUrl = document.getElementById('uploadLinkUrlInput').value.trim();
   const linkLabel = document.getElementById('uploadLinkLabelInput').value.trim();
   const submitBtn = document.getElementById('uploadSubmitBtn');
   const progressEl = document.getElementById('uploadProgress');
 
-  if(validLinks.length === 0){ showToast('অন্তত একটা সঠিক ছবির লিংক দাও (http/https দিয়ে শুরু)', 'error'); return; }
-  if(!title){ showToast('একটা টাইটেল লেখো', 'error'); return; }
-  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('বাটনের লিংক http/https দিয়ে শুরু হতে হবে', 'error'); return; }
+  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
 
   submitBtn.disabled = true;
-  let done = 0;
-  for(const url of validLinks){
-    progressEl.textContent = `যুক্ত হচ্ছে ${done+1}/${validLinks.length}...`;
-    try{
-      await addDoc(itemsCol, {
-        type: 'image', url, title, story, category,
-        linkUrl: linkUrl || null, linkLabel: linkLabel || null,
-        views: 0, likes: 0, createdAt: serverTimestamp()
+
+  if (state.editItemId) {
+    try {
+      await updateDoc(doc(db, "gallery_items", state.editItemId), {
+        url: raw.trim(), title, story, category,
+        linkUrl: linkUrl || null, linkLabel: linkLabel || null
       });
-      done++;
-    }catch(err){
+      showToast('Post updated successfully ✓', 'success');
+      state.editItemId = null;
+      submitBtn.textContent = 'Submit';
+      document.getElementById('bulkUploadHint').textContent = "Title, story, and visit link will be identical for all links.";
+      document.getElementById('uploadForm').reset();
+    } catch(err) {
       console.error(err);
-      showToast('একটা ছবি যুক্ত করতে সমস্যা হয়েছে — Firestore enable/rules চেক করো', 'error');
+      showToast('Update failed!', 'error');
     }
+  } else {
+    const lines = raw.split('\n').map(s=>s.trim()).filter(s=>s.length>0);
+    const validLinks = lines.filter(l=>/^https?:\/\//i.test(l));
+    const invalidCount = lines.length - validLinks.length;
+
+    if(validLinks.length === 0){ showToast('Provide at least one valid image URL', 'error'); submitBtn.disabled = false; return; }
+    if(!title){ showToast('Title is required', 'error'); submitBtn.disabled = false; return; }
+
+    const prof = getLocalProfile();
+    let done = 0;
+    for(const url of validLinks){
+      progressEl.textContent = `Uploading ${done+1}/${validLinks.length}...`;
+      try{
+        await addDoc(itemsCol, {
+          type: 'image', url, title, story, category,
+          linkUrl: linkUrl || null, linkLabel: linkLabel || null,
+          creatorId: prof.userId,
+          creatorUsername: prof.username,
+          creatorName: prof.name,
+          creatorAvatar: prof.avatar,
+          views: 0, likes: 0, createdAt: serverTimestamp()
+        });
+        done++;
+      }catch(err){
+        console.error(err);
+        showToast('Upload failed', 'error');
+      }
+    }
+    progressEl.textContent = done > 0 ? `${done} image(s) uploaded ✓` : '';
+    if(done > 0) showToast(`${done} image(s) uploaded ✓${invalidCount? ` (${invalidCount} links were invalid)`:''}`, 'success');
+    document.getElementById('uploadForm').reset();
+    setTimeout(()=>{ progressEl.textContent=''; }, 4000);
   }
-  progressEl.textContent = done > 0 ? `${done}টা ছবি যুক্ত হয়েছে ✓` : '';
-  if(done > 0) showToast(`${done}টা ছবি যুক্ত হয়েছে ✓${invalidCount? ` (${invalidCount}টা লিংক ভুল ছিল)`:''}`, 'success');
   submitBtn.disabled = false;
-  document.getElementById('uploadForm').reset();
-  setTimeout(()=>{ progressEl.textContent=''; }, 4000);
 });
 
-// ---------- video form ----------
+// ---------- admin video form ----------
 document.getElementById('videoForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
   const url = document.getElementById('videoUrlInput').value.trim();
   const title = document.getElementById('videoTitleInput').value.trim();
   const story = document.getElementById('videoStoryInput').value.trim();
-  const category = document.getElementById('videoCatInput').value.trim() || 'সাধারণ';
+  const category = document.getElementById('videoCatInput').value.trim() || 'General';
   const linkUrl = document.getElementById('videoLinkUrlInput').value.trim();
   const linkLabel = document.getElementById('videoLinkLabelInput').value.trim();
-  const videoId = extractYoutubeId(url);
-  if(!videoId){ showToast('সঠিক YouTube লিংক দাও', 'error'); return; }
-  if(!title){ showToast('একটা টাইটেল লেখো', 'error'); return; }
-  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('বাটনের লিংক http/https দিয়ে শুরু হতে হবে', 'error'); return; }
-  try{
-    await addDoc(itemsCol, {
-      type: 'video', videoId, title, story, category,
-      linkUrl: linkUrl || null, linkLabel: linkLabel || null,
-      views: 0, likes: 0, createdAt: serverTimestamp()
-    });
-    showToast('ভিডিও যুক্ত হয়েছে ✓', 'success');
-    document.getElementById('videoForm').reset();
-  }catch(err){ console.error(err); showToast('ভিডিও যুক্ত করতে সমস্যা হয়েছে — Firestore rules চেক করো', 'error'); }
+  const submitBtn = document.getElementById('videoSubmitBtn');
+
+  const detected = detectVideoPlatform(url);
+  if(!detected){ showToast('Provide a valid YouTube, Vimeo or MP4 link', 'error'); return; }
+  if(!title){ showToast('Title is required', 'error'); return; }
+  if(linkUrl && !/^https?:\/\//i.test(linkUrl)){ showToast('Action link must start with http/https', 'error'); return; }
+
+  submitBtn.disabled = true;
+
+  if (state.editItemId) {
+    try {
+      await updateDoc(doc(db, "gallery_items", state.editItemId), {
+        videoPlatform: detected.platform,
+        videoEmbedUrl: detected.embedUrl,
+        rawVideoUrl: detected.rawUrl,
+        title, story, category,
+        linkUrl: linkUrl || null, linkLabel: linkLabel || null
+      });
+      showToast('Video updated successfully ✓', 'success');
+      state.editItemId = null;
+      submitBtn.textContent = 'Add Video';
+      document.getElementById('videoForm').reset();
+    } catch(err) {
+      console.error(err);
+      showToast('Update failed!', 'error');
+    }
+  } else {
+    const prof = getLocalProfile();
+    try{
+      await addDoc(itemsCol, {
+        type: 'video', 
+        videoPlatform: detected.platform,
+        videoEmbedUrl: detected.embedUrl,
+        rawVideoUrl: detected.rawUrl,
+        title, story, category,
+        linkUrl: linkUrl || null, linkLabel: linkLabel || null,
+        creatorId: prof.userId,
+        creatorUsername: prof.username,
+        creatorName: prof.name,
+        creatorAvatar: prof.avatar,
+        views: 0, likes: 0, createdAt: serverTimestamp()
+      });
+      showToast('Video added successfully ✓', 'success');
+      document.getElementById('videoForm').reset();
+    }catch(err){ console.error(err); showToast('Upload failed', 'error'); }
+  }
+  submitBtn.disabled = false;
 });
 
-// ---------- hidden admin access ----------
+// ---------- Expose module scoped functions to window globally to make inline clicks work perfectly ----------
+window.showPinDetails = showPinDetails;
+window.showUserCreatedPins = showUserCreatedPins;
+window.toggleLike = toggleLike;
+window.toggleFavorite = toggleFavorite;
+window.getLocalProfile = getLocalProfile;
+window.state = state;
+
+// ---------- logo clicks for moderator control ----------
 let logoClicks = [];
 document.getElementById('brandLogo').addEventListener('click', ()=>{
   const now = Date.now();
