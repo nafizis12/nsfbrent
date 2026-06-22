@@ -1,0 +1,21 @@
+{
+  "short_name": "LUMEN",
+  "name": "LUMEN — Share, Save & Discover Ideas",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#000000",
+  "theme_color": "#E60023",
+  "display": "standalone",
+  "orientation": "portrait"
+}
